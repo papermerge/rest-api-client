@@ -1,4 +1,4 @@
-# papermerge-restapi-client.model.include_version_enum.IncludeVersionEnum
+# papermerge_restapi_client.model.include_version_enum.IncludeVersionEnum
 
 ## Model Type Info
 Input Type | Accessed Type | Description | Notes

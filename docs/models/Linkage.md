@@ -1,4 +1,4 @@
-# papermerge-restapi-client.model.linkage.Linkage
+# papermerge_restapi_client.model.linkage.Linkage
 
 the 'type' and 'id'
 

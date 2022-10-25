@@ -1,4 +1,4 @@
-# papermerge-restapi-client.model.version.Version
+# papermerge_restapi_client.model.version.Version
 
 ## Model Type Info
 Input Type | Accessed Type | Description | Notes

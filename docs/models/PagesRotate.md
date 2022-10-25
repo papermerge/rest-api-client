@@ -1,4 +1,4 @@
-# papermerge-restapi-client.model.pages_rotate.PagesRotate
+# papermerge_restapi_client.model.pages_rotate.PagesRotate
 
 ## Model Type Info
 Input Type | Accessed Type | Description | Notes

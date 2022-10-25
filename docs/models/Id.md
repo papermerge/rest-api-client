@@ -1,4 +1,4 @@
-# papermerge-restapi-client.model.id.Id
+# papermerge_restapi_client.model.id.Id
 
 Each resource object’s type and id pair MUST [identify](https://jsonapi.org/format/#document-resource-object-identification) a single, unique resource.
 

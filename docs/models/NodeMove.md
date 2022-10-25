@@ -1,4 +1,4 @@
-# papermerge-restapi-client.model.node_move.NodeMove
+# papermerge_restapi_client.model.node_move.NodeMove
 
 ## Model Type Info
 Input Type | Accessed Type | Description | Notes

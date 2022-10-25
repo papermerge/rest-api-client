@@ -11,9 +11,9 @@
 
 import unittest
 
-import papermerge-restapi-client
-from papermerge-restapi-client.model.resource import Resource
-from papermerge-restapi-client import configuration
+import papermerge_restapi_client
+from papermerge_restapi_client.model.resource import Resource
+from papermerge_restapi_client import configuration
 
 
 class TestResource(unittest.TestCase):

@@ -1,4 +1,4 @@
-# papermerge-restapi-client.model.pagination.Pagination
+# papermerge_restapi_client.model.pagination.Pagination
 
 ## Model Type Info
 Input Type | Accessed Type | Description | Notes

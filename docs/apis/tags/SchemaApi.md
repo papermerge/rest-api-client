@@ -1,5 +1,5 @@
 <a name="__pageTop"></a>
-# papermerge-restapi-client.apis.tags.schema_api.SchemaApi
+# papermerge_restapi_client.apis.tags.schema_api.SchemaApi
 
 All URIs are relative to *http://localhost*
 
@@ -19,12 +19,12 @@ OpenApi3 schema for this API. Format can be selected via content negotiation.  -
 
 * Api Key Authentication (Token Authentication):
 ```python
-import papermerge-restapi-client
-from papermerge-restapi-client.apis.tags import schema_api
+import papermerge_restapi_client
+from papermerge_restapi_client.apis.tags import schema_api
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = papermerge-restapi-client.Configuration(
+configuration = papermerge_restapi_client.Configuration(
     host = "http://localhost"
 )
 
@@ -39,7 +39,7 @@ configuration.api_key['Token Authentication'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Token Authentication'] = 'Bearer'
 # Enter a context with an instance of the API client
-with papermerge-restapi-client.ApiClient(configuration) as api_client:
+with papermerge_restapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = schema_api.SchemaApi(api_client)
 
@@ -53,7 +53,7 @@ with papermerge-restapi-client.ApiClient(configuration) as api_client:
             query_params=query_params,
         )
         pprint(api_response)
-    except papermerge-restapi-client.ApiException as e:
+    except papermerge_restapi_client.ApiException as e:
         print("Exception when calling SchemaApi->schema_retrieve: %s\n" % e)
 ```
 ### Parameters

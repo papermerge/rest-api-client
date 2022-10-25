@@ -1,4 +1,4 @@
-# papermerge-restapi-client.model.reltoone.Reltoone
+# papermerge_restapi_client.model.reltoone.Reltoone
 
 a singular 'to-one' relationship
 

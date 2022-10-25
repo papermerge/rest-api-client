@@ -1,4 +1,4 @@
-# papermerge-restapi-client.model.relationship_to_many.RelationshipToMany
+# papermerge_restapi_client.model.relationship_to_many.RelationshipToMany
 
 An array of objects each containing the 'type' and 'id' for to-many relationships
 

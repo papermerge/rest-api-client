@@ -11,9 +11,9 @@
 
 import unittest
 
-import papermerge-restapi-client
-from papermerge-restapi-client.model.resource_identifier_object import ResourceIdentifierObject
-from papermerge-restapi-client import configuration
+import papermerge_restapi_client
+from papermerge_restapi_client.model.resource_identifier_object import ResourceIdentifierObject
+from papermerge_restapi_client import configuration
 
 
 class TestResourceIdentifierObject(unittest.TestCase):

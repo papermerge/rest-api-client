@@ -1,4 +1,4 @@
-# papermerge-restapi-client.model.paginated_group_list.PaginatedGroupList
+# papermerge_restapi_client.model.paginated_group_list.PaginatedGroupList
 
 ## Model Type Info
 Input Type | Accessed Type | Description | Notes

@@ -11,9 +11,9 @@
 
 import unittest
 
-import papermerge-restapi-client
-from papermerge-restapi-client.model.patched_custom_user_preference import PatchedCustomUserPreference
-from papermerge-restapi-client import configuration
+import papermerge_restapi_client
+from papermerge_restapi_client.model.patched_custom_user_preference import PatchedCustomUserPreference
+from papermerge_restapi_client import configuration
 
 
 class TestPatchedCustomUserPreference(unittest.TestCase):

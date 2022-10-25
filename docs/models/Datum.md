@@ -1,4 +1,4 @@
-# papermerge-restapi-client.model.datum.Datum
+# papermerge_restapi_client.model.datum.Datum
 
 singular item
 

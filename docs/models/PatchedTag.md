@@ -1,4 +1,4 @@
-# papermerge-restapi-client.model.patched_tag.PatchedTag
+# papermerge_restapi_client.model.patched_tag.PatchedTag
 
 ## Model Type Info
 Input Type | Accessed Type | Description | Notes

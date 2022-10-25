@@ -1,4 +1,4 @@
-# papermerge-restapi-client.model.meta.Meta
+# papermerge_restapi_client.model.meta.Meta
 
 ## Model Type Info
 Input Type | Accessed Type | Description | Notes

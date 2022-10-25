@@ -11,9 +11,9 @@
 
 import unittest
 
-import papermerge-restapi-client
-from papermerge-restapi-client.model.paginated_custom_user_preference_list import PaginatedCustomUserPreferenceList
-from papermerge-restapi-client import configuration
+import papermerge_restapi_client
+from papermerge_restapi_client.model.paginated_custom_user_preference_list import PaginatedCustomUserPreferenceList
+from papermerge_restapi_client import configuration
 
 
 class TestPaginatedCustomUserPreferenceList(unittest.TestCase):

@@ -1,4 +1,4 @@
-# papermerge-restapi-client.model.user.User
+# papermerge_restapi_client.model.user.User
 
 ## Model Type Info
 Input Type | Accessed Type | Description | Notes

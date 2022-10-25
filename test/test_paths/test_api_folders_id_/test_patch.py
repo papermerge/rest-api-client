@@ -11,9 +11,9 @@ from unittest.mock import patch
 
 import urllib3
 
-import papermerge-restapi-client
-from papermerge-restapi-client.paths.api_folders_id_ import patch  # noqa: E501
-from papermerge-restapi-client import configuration, schemas, api_client
+import papermerge_restapi_client
+from papermerge_restapi_client.paths.api_folders_id_ import patch  # noqa: E501
+from papermerge_restapi_client import configuration, schemas, api_client
 
 from .. import ApiTestMixin
 

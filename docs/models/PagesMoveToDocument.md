@@ -1,4 +1,4 @@
-# papermerge-restapi-client.model.pages_move_to_document.PagesMoveToDocument
+# papermerge_restapi_client.model.pages_move_to_document.PagesMoveToDocument
 
 ## Model Type Info
 Input Type | Accessed Type | Description | Notes

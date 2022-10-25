@@ -1,4 +1,4 @@
-# papermerge-restapi-client.model.documents_merge.DocumentsMerge
+# papermerge_restapi_client.model.documents_merge.DocumentsMerge
 
 A `Serializer` is a model-less serializer class with additional support for JSON:API spec features.  As in JSON:API specification a type is always required you need to make sure that you define `resource_name` in your `Meta` class when deriving from this class.  Included Mixins:  * A mixin class to enable sparse fieldsets is included * A mixin class to enable validation of included resources is included
 

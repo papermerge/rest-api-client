@@ -1,4 +1,4 @@
-# papermerge-restapi-client.model.paginated_token_list.PaginatedTokenList
+# papermerge_restapi_client.model.paginated_token_list.PaginatedTokenList
 
 ## Model Type Info
 Input Type | Accessed Type | Description | Notes

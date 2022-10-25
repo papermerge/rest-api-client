@@ -1,4 +1,4 @@
-# papermerge-restapi-client.model.relationship_links.RelationshipLinks
+# papermerge_restapi_client.model.relationship_links.RelationshipLinks
 
 optional references to other resource objects
 

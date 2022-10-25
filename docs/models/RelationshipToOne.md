@@ -1,4 +1,4 @@
-# papermerge-restapi-client.model.relationship_to_one.RelationshipToOne
+# papermerge_restapi_client.model.relationship_to_one.RelationshipToOne
 
 reference to other resource in a to-one relationship
 

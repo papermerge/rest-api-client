@@ -1,4 +1,4 @@
-# papermerge-restapi-client.model.document_version_ocr_text.DocumentVersionOcrText
+# papermerge_restapi_client.model.document_version_ocr_text.DocumentVersionOcrText
 
 Returns OCRed Text of the document
 

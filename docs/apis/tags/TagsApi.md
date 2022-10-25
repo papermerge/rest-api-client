@@ -1,5 +1,5 @@
 <a name="__pageTop"></a>
-# papermerge-restapi-client.apis.tags.tags_api.TagsApi
+# papermerge_restapi_client.apis.tags.tags_api.TagsApi
 
 All URIs are relative to *http://localhost*
 
@@ -23,13 +23,13 @@ This mixin provides a helper attributes to select or prefetch related models bas
 
 * Api Key Authentication (Token Authentication):
 ```python
-import papermerge-restapi-client
-from papermerge-restapi-client.apis.tags import tags_api
-from papermerge-restapi-client.model.tag import Tag
+import papermerge_restapi_client
+from papermerge_restapi_client.apis.tags import tags_api
+from papermerge_restapi_client.model.tag import Tag
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = papermerge-restapi-client.Configuration(
+configuration = papermerge_restapi_client.Configuration(
     host = "http://localhost"
 )
 
@@ -44,7 +44,7 @@ configuration.api_key['Token Authentication'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Token Authentication'] = 'Bearer'
 # Enter a context with an instance of the API client
-with papermerge-restapi-client.ApiClient(configuration) as api_client:
+with papermerge_restapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tags_api.TagsApi(api_client)
 
@@ -72,7 +72,7 @@ with papermerge-restapi-client.ApiClient(configuration) as api_client:
             body=body,
         )
         pprint(api_response)
-    except papermerge-restapi-client.ApiException as e:
+    except papermerge_restapi_client.ApiException as e:
         print("Exception when calling TagsApi->tags_create: %s\n" % e)
 ```
 ### Parameters
@@ -166,12 +166,12 @@ This mixin provides a helper attributes to select or prefetch related models bas
 
 * Api Key Authentication (Token Authentication):
 ```python
-import papermerge-restapi-client
-from papermerge-restapi-client.apis.tags import tags_api
+import papermerge_restapi_client
+from papermerge_restapi_client.apis.tags import tags_api
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = papermerge-restapi-client.Configuration(
+configuration = papermerge_restapi_client.Configuration(
     host = "http://localhost"
 )
 
@@ -186,7 +186,7 @@ configuration.api_key['Token Authentication'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Token Authentication'] = 'Bearer'
 # Enter a context with an instance of the API client
-with papermerge-restapi-client.ApiClient(configuration) as api_client:
+with papermerge_restapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tags_api.TagsApi(api_client)
 
@@ -201,7 +201,7 @@ with papermerge-restapi-client.ApiClient(configuration) as api_client:
             path_params=path_params,
             query_params=query_params,
         )
-    except papermerge-restapi-client.ApiException as e:
+    except papermerge_restapi_client.ApiException as e:
         print("Exception when calling TagsApi->tags_destroy: %s\n" % e)
 
     # example passing only optional values
@@ -216,7 +216,7 @@ with papermerge-restapi-client.ApiClient(configuration) as api_client:
             path_params=path_params,
             query_params=query_params,
         )
-    except papermerge-restapi-client.ApiException as e:
+    except papermerge_restapi_client.ApiException as e:
         print("Exception when calling TagsApi->tags_destroy: %s\n" % e)
 ```
 ### Parameters
@@ -290,13 +290,13 @@ This mixin provides a helper attributes to select or prefetch related models bas
 
 * Api Key Authentication (Token Authentication):
 ```python
-import papermerge-restapi-client
-from papermerge-restapi-client.apis.tags import tags_api
-from papermerge-restapi-client.model.paginated_tag_list import PaginatedTagList
+import papermerge_restapi_client
+from papermerge_restapi_client.apis.tags import tags_api
+from papermerge_restapi_client.model.paginated_tag_list import PaginatedTagList
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = papermerge-restapi-client.Configuration(
+configuration = papermerge_restapi_client.Configuration(
     host = "http://localhost"
 )
 
@@ -311,7 +311,7 @@ configuration.api_key['Token Authentication'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Token Authentication'] = 'Bearer'
 # Enter a context with an instance of the API client
-with papermerge-restapi-client.ApiClient(configuration) as api_client:
+with papermerge_restapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tags_api.TagsApi(api_client)
 
@@ -328,7 +328,7 @@ with papermerge-restapi-client.ApiClient(configuration) as api_client:
             query_params=query_params,
         )
         pprint(api_response)
-    except papermerge-restapi-client.ApiException as e:
+    except papermerge_restapi_client.ApiException as e:
         print("Exception when calling TagsApi->tags_list: %s\n" % e)
 ```
 ### Parameters
@@ -432,14 +432,14 @@ This mixin provides a helper attributes to select or prefetch related models bas
 
 * Api Key Authentication (Token Authentication):
 ```python
-import papermerge-restapi-client
-from papermerge-restapi-client.apis.tags import tags_api
-from papermerge-restapi-client.model.patched_tag import PatchedTag
-from papermerge-restapi-client.model.tag import Tag
+import papermerge_restapi_client
+from papermerge_restapi_client.apis.tags import tags_api
+from papermerge_restapi_client.model.patched_tag import PatchedTag
+from papermerge_restapi_client.model.tag import Tag
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = papermerge-restapi-client.Configuration(
+configuration = papermerge_restapi_client.Configuration(
     host = "http://localhost"
 )
 
@@ -454,7 +454,7 @@ configuration.api_key['Token Authentication'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Token Authentication'] = 'Bearer'
 # Enter a context with an instance of the API client
-with papermerge-restapi-client.ApiClient(configuration) as api_client:
+with papermerge_restapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tags_api.TagsApi(api_client)
 
@@ -470,7 +470,7 @@ with papermerge-restapi-client.ApiClient(configuration) as api_client:
             query_params=query_params,
         )
         pprint(api_response)
-    except papermerge-restapi-client.ApiException as e:
+    except papermerge_restapi_client.ApiException as e:
         print("Exception when calling TagsApi->tags_partial_update: %s\n" % e)
 
     # example passing only optional values
@@ -501,7 +501,7 @@ with papermerge-restapi-client.ApiClient(configuration) as api_client:
             body=body,
         )
         pprint(api_response)
-    except papermerge-restapi-client.ApiException as e:
+    except papermerge_restapi_client.ApiException as e:
         print("Exception when calling TagsApi->tags_partial_update: %s\n" % e)
 ```
 ### Parameters
@@ -610,13 +610,13 @@ This mixin provides a helper attributes to select or prefetch related models bas
 
 * Api Key Authentication (Token Authentication):
 ```python
-import papermerge-restapi-client
-from papermerge-restapi-client.apis.tags import tags_api
-from papermerge-restapi-client.model.tag import Tag
+import papermerge_restapi_client
+from papermerge_restapi_client.apis.tags import tags_api
+from papermerge_restapi_client.model.tag import Tag
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = papermerge-restapi-client.Configuration(
+configuration = papermerge_restapi_client.Configuration(
     host = "http://localhost"
 )
 
@@ -631,7 +631,7 @@ configuration.api_key['Token Authentication'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Token Authentication'] = 'Bearer'
 # Enter a context with an instance of the API client
-with papermerge-restapi-client.ApiClient(configuration) as api_client:
+with papermerge_restapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tags_api.TagsApi(api_client)
 
@@ -647,7 +647,7 @@ with papermerge-restapi-client.ApiClient(configuration) as api_client:
             query_params=query_params,
         )
         pprint(api_response)
-    except papermerge-restapi-client.ApiException as e:
+    except papermerge_restapi_client.ApiException as e:
         print("Exception when calling TagsApi->tags_retrieve: %s\n" % e)
 
     # example passing only optional values
@@ -663,7 +663,7 @@ with papermerge-restapi-client.ApiClient(configuration) as api_client:
             query_params=query_params,
         )
         pprint(api_response)
-    except papermerge-restapi-client.ApiException as e:
+    except papermerge_restapi_client.ApiException as e:
         print("Exception when calling TagsApi->tags_retrieve: %s\n" % e)
 ```
 ### Parameters

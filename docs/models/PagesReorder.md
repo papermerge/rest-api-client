@@ -1,4 +1,4 @@
-# papermerge-restapi-client.model.pages_reorder.PagesReorder
+# papermerge_restapi_client.model.pages_reorder.PagesReorder
 
 ## Model Type Info
 Input Type | Accessed Type | Description | Notes

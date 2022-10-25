@@ -1,4 +1,4 @@
-# papermerge-restapi-client.model.token.Token
+# papermerge_restapi_client.model.token.Token
 
 ## Model Type Info
 Input Type | Accessed Type | Description | Notes

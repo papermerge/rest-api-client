@@ -114,7 +114,7 @@ pip install git+https://github.com/GIT_USER_ID/GIT_REPO_ID.git
 
 Then import the package:
 ```python
-import papermerge-restapi-client
+import papermerge_restapi_client
 ```
 
 ### Setuptools
@@ -128,7 +128,7 @@ python setup.py install --user
 
 Then import the package:
 ```python
-import papermerge-restapi-client
+import papermerge_restapi_client
 ```
 
 ## Getting Started
@@ -138,13 +138,13 @@ Please follow the [installation procedure](#installation--usage) and then run th
 ```python
 
 import time
-import papermerge-restapi-client
+import papermerge_restapi_client
 from pprint import pprint
-from papermerge-restapi-client.apis import auth_api
-from papermerge-restapi-client.model.auth_token import AuthToken
+from papermerge_restapi_client.apis import auth_api
+from papermerge_restapi_client.model.auth_token import AuthToken
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = papermerge-restapi-client.Configuration(
+configuration = papermerge_restapi_client.Configuration(
     host = "http://localhost"
 )
 
@@ -160,7 +160,7 @@ configuration.api_key['Token Authentication'] = 'YOUR_API_KEY'
 # configuration.api_key_prefix['Token Authentication'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with papermerge-restapi-client.ApiClient(configuration) as api_client:
+with papermerge_restapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = auth_api.AuthApi(api_client)
     auth_token = AuthToken(
@@ -172,7 +172,7 @@ with papermerge-restapi-client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.login_authenticate(auth_token)
         pprint(api_response)
-    except papermerge-restapi-client.ApiException as e:
+    except papermerge_restapi_client.ApiException as e:
         print("Exception when calling AuthApi->login_authenticate: %s\n" % e)
 ```
 
@@ -351,20 +351,20 @@ Class | Method | HTTP request | Description
 
 
 ## Notes for Large OpenAPI documents
-If the OpenAPI document is large, imports in papermerge-restapi-client.apis and papermerge-restapi-client.models may fail with a
+If the OpenAPI document is large, imports in papermerge_restapi_client.apis and papermerge_restapi_client.models may fail with a
 RecursionError indicating the maximum recursion limit has been exceeded. In that case, there are a couple of solutions:
 
 Solution 1:
 Use specific imports for apis and models like:
-- `from papermerge-restapi-client.apis.default_api import DefaultApi`
-- `from papermerge-restapi-client.model.pet import Pet`
+- `from papermerge_restapi_client.apis.default_api import DefaultApi`
+- `from papermerge_restapi_client.model.pet import Pet`
 
 Solution 1:
 Before importing the package, adjust the maximum recursion limit as shown below:
 ```
 import sys
 sys.setrecursionlimit(1500)
-import papermerge-restapi-client
-from papermerge-restapi-client.apis import *
-from papermerge-restapi-client.models import *
+import papermerge_restapi_client
+from papermerge_restapi_client.apis import *
+from papermerge_restapi_client.models import *
 ```

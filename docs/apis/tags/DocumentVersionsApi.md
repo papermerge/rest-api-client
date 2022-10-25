@@ -1,5 +1,5 @@
 <a name="__pageTop"></a>
-# papermerge-restapi-client.apis.tags.document_versions_api.DocumentVersionsApi
+# papermerge_restapi_client.apis.tags.document_versions_api.DocumentVersionsApi
 
 All URIs are relative to *http://localhost*
 
@@ -18,12 +18,12 @@ Method | HTTP request | Description
 
 * Api Key Authentication (Token Authentication):
 ```python
-import papermerge-restapi-client
-from papermerge-restapi-client.apis.tags import document_versions_api
+import papermerge_restapi_client
+from papermerge_restapi_client.apis.tags import document_versions_api
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = papermerge-restapi-client.Configuration(
+configuration = papermerge_restapi_client.Configuration(
     host = "http://localhost"
 )
 
@@ -38,7 +38,7 @@ configuration.api_key['Token Authentication'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Token Authentication'] = 'Bearer'
 # Enter a context with an instance of the API client
-with papermerge-restapi-client.ApiClient(configuration) as api_client:
+with papermerge_restapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = document_versions_api.DocumentVersionsApi(api_client)
 
@@ -53,7 +53,7 @@ with papermerge-restapi-client.ApiClient(configuration) as api_client:
             path_params=path_params,
             query_params=query_params,
         )
-    except papermerge-restapi-client.ApiException as e:
+    except papermerge_restapi_client.ApiException as e:
         print("Exception when calling DocumentVersionsApi->document_versions_download_retrieve: %s\n" % e)
 
     # example passing only optional values
@@ -68,7 +68,7 @@ with papermerge-restapi-client.ApiClient(configuration) as api_client:
             path_params=path_params,
             query_params=query_params,
         )
-    except papermerge-restapi-client.ApiException as e:
+    except papermerge_restapi_client.ApiException as e:
         print("Exception when calling DocumentVersionsApi->document_versions_download_retrieve: %s\n" % e)
 ```
 ### Parameters
@@ -140,13 +140,13 @@ headers | Unset | headers were not defined |
 
 * Api Key Authentication (Token Authentication):
 ```python
-import papermerge-restapi-client
-from papermerge-restapi-client.apis.tags import document_versions_api
-from papermerge-restapi-client.model.document_version import DocumentVersion
+import papermerge_restapi_client
+from papermerge_restapi_client.apis.tags import document_versions_api
+from papermerge_restapi_client.model.document_version import DocumentVersion
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = papermerge-restapi-client.Configuration(
+configuration = papermerge_restapi_client.Configuration(
     host = "http://localhost"
 )
 
@@ -161,7 +161,7 @@ configuration.api_key['Token Authentication'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Token Authentication'] = 'Bearer'
 # Enter a context with an instance of the API client
-with papermerge-restapi-client.ApiClient(configuration) as api_client:
+with papermerge_restapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = document_versions_api.DocumentVersionsApi(api_client)
 
@@ -177,7 +177,7 @@ with papermerge-restapi-client.ApiClient(configuration) as api_client:
             query_params=query_params,
         )
         pprint(api_response)
-    except papermerge-restapi-client.ApiException as e:
+    except papermerge_restapi_client.ApiException as e:
         print("Exception when calling DocumentVersionsApi->document_versions_retrieve: %s\n" % e)
 
     # example passing only optional values
@@ -193,7 +193,7 @@ with papermerge-restapi-client.ApiClient(configuration) as api_client:
             query_params=query_params,
         )
         pprint(api_response)
-    except papermerge-restapi-client.ApiException as e:
+    except papermerge_restapi_client.ApiException as e:
         print("Exception when calling DocumentVersionsApi->document_versions_retrieve: %s\n" % e)
 ```
 ### Parameters

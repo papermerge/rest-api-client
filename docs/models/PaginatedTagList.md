@@ -1,4 +1,4 @@
-# papermerge-restapi-client.model.paginated_tag_list.PaginatedTagList
+# papermerge_restapi_client.model.paginated_tag_list.PaginatedTagList
 
 ## Model Type Info
 Input Type | Accessed Type | Description | Notes

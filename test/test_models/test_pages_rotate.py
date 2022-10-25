@@ -11,9 +11,9 @@
 
 import unittest
 
-import papermerge-restapi-client
-from papermerge-restapi-client.model.pages_rotate import PagesRotate
-from papermerge-restapi-client import configuration
+import papermerge_restapi_client
+from papermerge_restapi_client.model.pages_rotate import PagesRotate
+from papermerge_restapi_client import configuration
 
 
 class TestPagesRotate(unittest.TestCase):

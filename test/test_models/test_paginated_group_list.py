@@ -11,9 +11,9 @@
 
 import unittest
 
-import papermerge-restapi-client
-from papermerge-restapi-client.model.paginated_group_list import PaginatedGroupList
-from papermerge-restapi-client import configuration
+import papermerge_restapi_client
+from papermerge_restapi_client.model.paginated_group_list import PaginatedGroupList
+from papermerge_restapi_client import configuration
 
 
 class TestPaginatedGroupList(unittest.TestCase):

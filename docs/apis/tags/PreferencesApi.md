@@ -1,5 +1,5 @@
 <a name="__pageTop"></a>
-# papermerge-restapi-client.apis.tags.preferences_api.PreferencesApi
+# papermerge_restapi_client.apis.tags.preferences_api.PreferencesApi
 
 All URIs are relative to *http://localhost*
 
@@ -23,13 +23,13 @@ Update multiple preferences at once  this is a long method because we ensure eve
 
 * Api Key Authentication (Token Authentication):
 ```python
-import papermerge-restapi-client
-from papermerge-restapi-client.apis.tags import preferences_api
-from papermerge-restapi-client.model.custom_user_preference import CustomUserPreference
+import papermerge_restapi_client
+from papermerge_restapi_client.apis.tags import preferences_api
+from papermerge_restapi_client.model.custom_user_preference import CustomUserPreference
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = papermerge-restapi-client.Configuration(
+configuration = papermerge_restapi_client.Configuration(
     host = "http://localhost"
 )
 
@@ -44,7 +44,7 @@ configuration.api_key['Token Authentication'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Token Authentication'] = 'Bearer'
 # Enter a context with an instance of the API client
-with papermerge-restapi-client.ApiClient(configuration) as api_client:
+with papermerge_restapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = preferences_api.PreferencesApi(api_client)
 
@@ -69,7 +69,7 @@ with papermerge-restapi-client.ApiClient(configuration) as api_client:
             body=body,
         )
         pprint(api_response)
-    except papermerge-restapi-client.ApiException as e:
+    except papermerge_restapi_client.ApiException as e:
         print("Exception when calling PreferencesApi->preferences_bulk_create: %s\n" % e)
 
     # example passing only optional values
@@ -94,7 +94,7 @@ with papermerge-restapi-client.ApiClient(configuration) as api_client:
             body=body,
         )
         pprint(api_response)
-    except papermerge-restapi-client.ApiException as e:
+    except papermerge_restapi_client.ApiException as e:
         print("Exception when calling PreferencesApi->preferences_bulk_create: %s\n" % e)
 ```
 ### Parameters
@@ -188,13 +188,13 @@ Type | Description  | Notes
 
 * Api Key Authentication (Token Authentication):
 ```python
-import papermerge-restapi-client
-from papermerge-restapi-client.apis.tags import preferences_api
-from papermerge-restapi-client.model.paginated_custom_user_preference_list import PaginatedCustomUserPreferenceList
+import papermerge_restapi_client
+from papermerge_restapi_client.apis.tags import preferences_api
+from papermerge_restapi_client.model.paginated_custom_user_preference_list import PaginatedCustomUserPreferenceList
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = papermerge-restapi-client.Configuration(
+configuration = papermerge_restapi_client.Configuration(
     host = "http://localhost"
 )
 
@@ -209,7 +209,7 @@ configuration.api_key['Token Authentication'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Token Authentication'] = 'Bearer'
 # Enter a context with an instance of the API client
-with papermerge-restapi-client.ApiClient(configuration) as api_client:
+with papermerge_restapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = preferences_api.PreferencesApi(api_client)
 
@@ -226,7 +226,7 @@ with papermerge-restapi-client.ApiClient(configuration) as api_client:
             query_params=query_params,
         )
         pprint(api_response)
-    except papermerge-restapi-client.ApiException as e:
+    except papermerge_restapi_client.ApiException as e:
         print("Exception when calling PreferencesApi->preferences_list: %s\n" % e)
 ```
 ### Parameters
@@ -330,14 +330,14 @@ Type | Description  | Notes
 
 * Api Key Authentication (Token Authentication):
 ```python
-import papermerge-restapi-client
-from papermerge-restapi-client.apis.tags import preferences_api
-from papermerge-restapi-client.model.patched_custom_user_preference import PatchedCustomUserPreference
-from papermerge-restapi-client.model.custom_user_preference import CustomUserPreference
+import papermerge_restapi_client
+from papermerge_restapi_client.apis.tags import preferences_api
+from papermerge_restapi_client.model.custom_user_preference import CustomUserPreference
+from papermerge_restapi_client.model.patched_custom_user_preference import PatchedCustomUserPreference
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = papermerge-restapi-client.Configuration(
+configuration = papermerge_restapi_client.Configuration(
     host = "http://localhost"
 )
 
@@ -352,7 +352,7 @@ configuration.api_key['Token Authentication'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Token Authentication'] = 'Bearer'
 # Enter a context with an instance of the API client
-with papermerge-restapi-client.ApiClient(configuration) as api_client:
+with papermerge_restapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = preferences_api.PreferencesApi(api_client)
 
@@ -368,7 +368,7 @@ with papermerge-restapi-client.ApiClient(configuration) as api_client:
             query_params=query_params,
         )
         pprint(api_response)
-    except papermerge-restapi-client.ApiException as e:
+    except papermerge_restapi_client.ApiException as e:
         print("Exception when calling PreferencesApi->preferences_partial_update: %s\n" % e)
 
     # example passing only optional values
@@ -397,7 +397,7 @@ with papermerge-restapi-client.ApiClient(configuration) as api_client:
             body=body,
         )
         pprint(api_response)
-    except papermerge-restapi-client.ApiException as e:
+    except papermerge_restapi_client.ApiException as e:
         print("Exception when calling PreferencesApi->preferences_partial_update: %s\n" % e)
 ```
 ### Parameters
@@ -506,13 +506,13 @@ Type | Description  | Notes
 
 * Api Key Authentication (Token Authentication):
 ```python
-import papermerge-restapi-client
-from papermerge-restapi-client.apis.tags import preferences_api
-from papermerge-restapi-client.model.custom_user_preference import CustomUserPreference
+import papermerge_restapi_client
+from papermerge_restapi_client.apis.tags import preferences_api
+from papermerge_restapi_client.model.custom_user_preference import CustomUserPreference
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = papermerge-restapi-client.Configuration(
+configuration = papermerge_restapi_client.Configuration(
     host = "http://localhost"
 )
 
@@ -527,7 +527,7 @@ configuration.api_key['Token Authentication'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Token Authentication'] = 'Bearer'
 # Enter a context with an instance of the API client
-with papermerge-restapi-client.ApiClient(configuration) as api_client:
+with papermerge_restapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = preferences_api.PreferencesApi(api_client)
 
@@ -543,7 +543,7 @@ with papermerge-restapi-client.ApiClient(configuration) as api_client:
             query_params=query_params,
         )
         pprint(api_response)
-    except papermerge-restapi-client.ApiException as e:
+    except papermerge_restapi_client.ApiException as e:
         print("Exception when calling PreferencesApi->preferences_retrieve: %s\n" % e)
 
     # example passing only optional values
@@ -559,7 +559,7 @@ with papermerge-restapi-client.ApiClient(configuration) as api_client:
             query_params=query_params,
         )
         pprint(api_response)
-    except papermerge-restapi-client.ApiException as e:
+    except papermerge_restapi_client.ApiException as e:
         print("Exception when calling PreferencesApi->preferences_retrieve: %s\n" % e)
 ```
 ### Parameters
@@ -646,13 +646,13 @@ Type | Description  | Notes
 
 * Api Key Authentication (Token Authentication):
 ```python
-import papermerge-restapi-client
-from papermerge-restapi-client.apis.tags import preferences_api
-from papermerge-restapi-client.model.custom_user_preference import CustomUserPreference
+import papermerge_restapi_client
+from papermerge_restapi_client.apis.tags import preferences_api
+from papermerge_restapi_client.model.custom_user_preference import CustomUserPreference
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = papermerge-restapi-client.Configuration(
+configuration = papermerge_restapi_client.Configuration(
     host = "http://localhost"
 )
 
@@ -667,7 +667,7 @@ configuration.api_key['Token Authentication'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Token Authentication'] = 'Bearer'
 # Enter a context with an instance of the API client
-with papermerge-restapi-client.ApiClient(configuration) as api_client:
+with papermerge_restapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = preferences_api.PreferencesApi(api_client)
 
@@ -696,7 +696,7 @@ with papermerge-restapi-client.ApiClient(configuration) as api_client:
             body=body,
         )
         pprint(api_response)
-    except papermerge-restapi-client.ApiException as e:
+    except papermerge_restapi_client.ApiException as e:
         print("Exception when calling PreferencesApi->preferences_update: %s\n" % e)
 
     # example passing only optional values
@@ -725,7 +725,7 @@ with papermerge-restapi-client.ApiClient(configuration) as api_client:
             body=body,
         )
         pprint(api_response)
-    except papermerge-restapi-client.ApiException as e:
+    except papermerge_restapi_client.ApiException as e:
         print("Exception when calling PreferencesApi->preferences_update: %s\n" % e)
 ```
 ### Parameters

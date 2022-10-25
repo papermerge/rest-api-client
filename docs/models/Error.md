@@ -1,4 +1,4 @@
-# papermerge-restapi-client.model.error.Error
+# papermerge_restapi_client.model.error.Error
 
 ## Model Type Info
 Input Type | Accessed Type | Description | Notes

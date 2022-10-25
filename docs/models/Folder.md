@@ -1,4 +1,4 @@
-# papermerge-restapi-client.model.folder.Folder
+# papermerge_restapi_client.model.folder.Folder
 
 ## Model Type Info
 Input Type | Accessed Type | Description | Notes

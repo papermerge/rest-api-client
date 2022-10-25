@@ -11,9 +11,9 @@
 
 import unittest
 
-import papermerge-restapi-client
-from papermerge-restapi-client.model.token import Token
-from papermerge-restapi-client import configuration
+import papermerge_restapi_client
+from papermerge_restapi_client.model.token import Token
+from papermerge_restapi_client import configuration
 
 
 class TestToken(unittest.TestCase):

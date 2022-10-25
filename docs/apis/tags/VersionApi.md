@@ -1,5 +1,5 @@
 <a name="__pageTop"></a>
-# papermerge-restapi-client.apis.tags.version_api.VersionApi
+# papermerge_restapi_client.apis.tags.version_api.VersionApi
 
 All URIs are relative to *http://localhost*
 
@@ -19,13 +19,13 @@ Retrieves papermerge core module version
 
 * Api Key Authentication (Token Authentication):
 ```python
-import papermerge-restapi-client
-from papermerge-restapi-client.apis.tags import version_api
-from papermerge-restapi-client.model.version import Version
+import papermerge_restapi_client
+from papermerge_restapi_client.apis.tags import version_api
+from papermerge_restapi_client.model.version import Version
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = papermerge-restapi-client.Configuration(
+configuration = papermerge_restapi_client.Configuration(
     host = "http://localhost"
 )
 
@@ -40,7 +40,7 @@ configuration.api_key['Token Authentication'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Token Authentication'] = 'Bearer'
 # Enter a context with an instance of the API client
-with papermerge-restapi-client.ApiClient(configuration) as api_client:
+with papermerge_restapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = version_api.VersionApi(api_client)
 
@@ -48,7 +48,7 @@ with papermerge-restapi-client.ApiClient(configuration) as api_client:
     try:
         api_response = api_instance.version_retrieve()
         pprint(api_response)
-    except papermerge-restapi-client.ApiException as e:
+    except papermerge_restapi_client.ApiException as e:
         print("Exception when calling VersionApi->version_retrieve: %s\n" % e)
 ```
 ### Parameters

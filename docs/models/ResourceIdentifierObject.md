@@ -1,4 +1,4 @@
-# papermerge-restapi-client.model.resource_identifier_object.ResourceIdentifierObject
+# papermerge_restapi_client.model.resource_identifier_object.ResourceIdentifierObject
 
 ## Model Type Info
 Input Type | Accessed Type | Description | Notes

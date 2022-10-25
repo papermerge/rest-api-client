@@ -1,4 +1,4 @@
-# papermerge-restapi-client.model.group.Group
+# papermerge_restapi_client.model.group.Group
 
 ## Model Type Info
 Input Type | Accessed Type | Description | Notes

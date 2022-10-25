@@ -11,9 +11,9 @@
 
 import unittest
 
-import papermerge-restapi-client
-from papermerge-restapi-client.model.permission import Permission
-from papermerge-restapi-client import configuration
+import papermerge_restapi_client
+from papermerge_restapi_client.model.permission import Permission
+from papermerge_restapi_client import configuration
 
 
 class TestPermission(unittest.TestCase):

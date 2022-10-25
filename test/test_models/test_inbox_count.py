@@ -11,9 +11,9 @@
 
 import unittest
 
-import papermerge-restapi-client
-from papermerge-restapi-client.model.inbox_count import InboxCount
-from papermerge-restapi-client import configuration
+import papermerge_restapi_client
+from papermerge_restapi_client.model.inbox_count import InboxCount
+from papermerge_restapi_client import configuration
 
 
 class TestInboxCount(unittest.TestCase):

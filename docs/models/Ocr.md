@@ -1,4 +1,4 @@
-# papermerge-restapi-client.model.ocr.Ocr
+# papermerge_restapi_client.model.ocr.Ocr
 
 ## Model Type Info
 Input Type | Accessed Type | Description | Notes

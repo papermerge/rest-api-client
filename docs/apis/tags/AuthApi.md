@@ -1,5 +1,5 @@
 <a name="__pageTop"></a>
-# papermerge-restapi-client.apis.tags.auth_api.AuthApi
+# papermerge_restapi_client.apis.tags.auth_api.AuthApi
 
 All URIs are relative to *http://localhost*
 
@@ -21,13 +21,13 @@ Authenticates user with given username and password. Response will contain token
 
 * Api Key Authentication (Token Authentication):
 ```python
-import papermerge-restapi-client
-from papermerge-restapi-client.apis.tags import auth_api
-from papermerge-restapi-client.model.auth_token import AuthToken
+import papermerge_restapi_client
+from papermerge_restapi_client.apis.tags import auth_api
+from papermerge_restapi_client.model.auth_token import AuthToken
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = papermerge-restapi-client.Configuration(
+configuration = papermerge_restapi_client.Configuration(
     host = "http://localhost"
 )
 
@@ -42,7 +42,7 @@ configuration.api_key['Token Authentication'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Token Authentication'] = 'Bearer'
 # Enter a context with an instance of the API client
-with papermerge-restapi-client.ApiClient(configuration) as api_client:
+with papermerge_restapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = auth_api.AuthApi(api_client)
 
@@ -57,7 +57,7 @@ with papermerge-restapi-client.ApiClient(configuration) as api_client:
             body=body,
         )
         pprint(api_response)
-    except papermerge-restapi-client.ApiException as e:
+    except papermerge_restapi_client.ApiException as e:
         print("Exception when calling AuthApi->login_authenticate: %s\n" % e)
 ```
 ### Parameters
@@ -117,12 +117,12 @@ Logs the user out of current session.  On a successful request, the token used t
 
 * Api Key Authentication (Token Authentication):
 ```python
-import papermerge-restapi-client
-from papermerge-restapi-client.apis.tags import auth_api
+import papermerge_restapi_client
+from papermerge_restapi_client.apis.tags import auth_api
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = papermerge-restapi-client.Configuration(
+configuration = papermerge_restapi_client.Configuration(
     host = "http://localhost"
 )
 
@@ -137,7 +137,7 @@ configuration.api_key['Token Authentication'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Token Authentication'] = 'Bearer'
 # Enter a context with an instance of the API client
-with papermerge-restapi-client.ApiClient(configuration) as api_client:
+with papermerge_restapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = auth_api.AuthApi(api_client)
 
@@ -149,7 +149,7 @@ with papermerge-restapi-client.ApiClient(configuration) as api_client:
         api_response = api_instance.logout(
             query_params=query_params,
         )
-    except papermerge-restapi-client.ApiException as e:
+    except papermerge_restapi_client.ApiException as e:
         print("Exception when calling AuthApi->logout: %s\n" % e)
 ```
 ### Parameters
@@ -208,12 +208,12 @@ Logs the user out of all sessions i.e. deletes all auth tokens for the user.  On
 
 * Api Key Authentication (Token Authentication):
 ```python
-import papermerge-restapi-client
-from papermerge-restapi-client.apis.tags import auth_api
+import papermerge_restapi_client
+from papermerge_restapi_client.apis.tags import auth_api
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = papermerge-restapi-client.Configuration(
+configuration = papermerge_restapi_client.Configuration(
     host = "http://localhost"
 )
 
@@ -228,7 +228,7 @@ configuration.api_key['Token Authentication'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Token Authentication'] = 'Bearer'
 # Enter a context with an instance of the API client
-with papermerge-restapi-client.ApiClient(configuration) as api_client:
+with papermerge_restapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = auth_api.AuthApi(api_client)
 
@@ -240,7 +240,7 @@ with papermerge-restapi-client.ApiClient(configuration) as api_client:
         api_response = api_instance.logout_all(
             query_params=query_params,
         )
-    except papermerge-restapi-client.ApiException as e:
+    except papermerge_restapi_client.ApiException as e:
         print("Exception when calling AuthApi->logout_all: %s\n" % e)
 ```
 ### Parameters

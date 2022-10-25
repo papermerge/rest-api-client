@@ -1,4 +1,4 @@
-# papermerge-restapi-client.model.type.Type
+# papermerge_restapi_client.model.type.Type
 
 The [type](https://jsonapi.org/format/#document-resource-object-identification) member is used to describe resource objects that share common attributes and relationships.
 

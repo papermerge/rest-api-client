@@ -1,4 +1,4 @@
-# papermerge-restapi-client.model.jsonapi.Jsonapi
+# papermerge_restapi_client.model.jsonapi.Jsonapi
 
 The server's implementation
 

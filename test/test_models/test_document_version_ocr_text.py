@@ -11,9 +11,9 @@
 
 import unittest
 
-import papermerge-restapi-client
-from papermerge-restapi-client.model.document_version_ocr_text import DocumentVersionOcrText
-from papermerge-restapi-client import configuration
+import papermerge_restapi_client
+from papermerge_restapi_client.model.document_version_ocr_text import DocumentVersionOcrText
+from papermerge_restapi_client import configuration
 
 
 class TestDocumentVersionOcrText(unittest.TestCase):

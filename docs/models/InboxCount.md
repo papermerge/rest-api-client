@@ -1,4 +1,4 @@
-# papermerge-restapi-client.model.inbox_count.InboxCount
+# papermerge_restapi_client.model.inbox_count.InboxCount
 
 ## Model Type Info
 Input Type | Accessed Type | Description | Notes

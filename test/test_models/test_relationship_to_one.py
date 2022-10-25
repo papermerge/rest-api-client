@@ -11,9 +11,9 @@
 
 import unittest
 
-import papermerge-restapi-client
-from papermerge-restapi-client.model.relationship_to_one import RelationshipToOne
-from papermerge-restapi-client import configuration
+import papermerge_restapi_client
+from papermerge_restapi_client.model.relationship_to_one import RelationshipToOne
+from papermerge_restapi_client import configuration
 
 
 class TestRelationshipToOne(unittest.TestCase):

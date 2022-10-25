@@ -1,5 +1,5 @@
 <a name="__pageTop"></a>
-# papermerge-restapi-client.apis.tags.groups_api.GroupsApi
+# papermerge_restapi_client.apis.tags.groups_api.GroupsApi
 
 All URIs are relative to *http://localhost*
 
@@ -23,13 +23,13 @@ Group endpoint
 
 * Api Key Authentication (Token Authentication):
 ```python
-import papermerge-restapi-client
-from papermerge-restapi-client.apis.tags import groups_api
-from papermerge-restapi-client.model.group import Group
+import papermerge_restapi_client
+from papermerge_restapi_client.apis.tags import groups_api
+from papermerge_restapi_client.model.group import Group
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = papermerge-restapi-client.Configuration(
+configuration = papermerge_restapi_client.Configuration(
     host = "http://localhost"
 )
 
@@ -44,7 +44,7 @@ configuration.api_key['Token Authentication'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Token Authentication'] = 'Bearer'
 # Enter a context with an instance of the API client
-with papermerge-restapi-client.ApiClient(configuration) as api_client:
+with papermerge_restapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = groups_api.GroupsApi(api_client)
 
@@ -75,7 +75,7 @@ with papermerge-restapi-client.ApiClient(configuration) as api_client:
             body=body,
         )
         pprint(api_response)
-    except papermerge-restapi-client.ApiException as e:
+    except papermerge_restapi_client.ApiException as e:
         print("Exception when calling GroupsApi->groups_create: %s\n" % e)
 ```
 ### Parameters
@@ -147,12 +147,12 @@ Group endpoint
 
 * Api Key Authentication (Token Authentication):
 ```python
-import papermerge-restapi-client
-from papermerge-restapi-client.apis.tags import groups_api
+import papermerge_restapi_client
+from papermerge_restapi_client.apis.tags import groups_api
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = papermerge-restapi-client.Configuration(
+configuration = papermerge_restapi_client.Configuration(
     host = "http://localhost"
 )
 
@@ -167,7 +167,7 @@ configuration.api_key['Token Authentication'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Token Authentication'] = 'Bearer'
 # Enter a context with an instance of the API client
-with papermerge-restapi-client.ApiClient(configuration) as api_client:
+with papermerge_restapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = groups_api.GroupsApi(api_client)
 
@@ -179,7 +179,7 @@ with papermerge-restapi-client.ApiClient(configuration) as api_client:
         api_response = api_instance.groups_destroy(
             path_params=path_params,
         )
-    except papermerge-restapi-client.ApiException as e:
+    except papermerge_restapi_client.ApiException as e:
         print("Exception when calling GroupsApi->groups_destroy: %s\n" % e)
 ```
 ### Parameters
@@ -237,13 +237,13 @@ Group endpoint
 
 * Api Key Authentication (Token Authentication):
 ```python
-import papermerge-restapi-client
-from papermerge-restapi-client.apis.tags import groups_api
-from papermerge-restapi-client.model.paginated_group_list import PaginatedGroupList
+import papermerge_restapi_client
+from papermerge_restapi_client.apis.tags import groups_api
+from papermerge_restapi_client.model.paginated_group_list import PaginatedGroupList
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = papermerge-restapi-client.Configuration(
+configuration = papermerge_restapi_client.Configuration(
     host = "http://localhost"
 )
 
@@ -258,7 +258,7 @@ configuration.api_key['Token Authentication'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Token Authentication'] = 'Bearer'
 # Enter a context with an instance of the API client
-with papermerge-restapi-client.ApiClient(configuration) as api_client:
+with papermerge_restapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = groups_api.GroupsApi(api_client)
 
@@ -274,7 +274,7 @@ with papermerge-restapi-client.ApiClient(configuration) as api_client:
             query_params=query_params,
         )
         pprint(api_response)
-    except papermerge-restapi-client.ApiException as e:
+    except papermerge_restapi_client.ApiException as e:
         print("Exception when calling GroupsApi->groups_list: %s\n" % e)
 ```
 ### Parameters
@@ -364,14 +364,14 @@ Group endpoint
 
 * Api Key Authentication (Token Authentication):
 ```python
-import papermerge-restapi-client
-from papermerge-restapi-client.apis.tags import groups_api
-from papermerge-restapi-client.model.group import Group
-from papermerge-restapi-client.model.patched_group import PatchedGroup
+import papermerge_restapi_client
+from papermerge_restapi_client.apis.tags import groups_api
+from papermerge_restapi_client.model.group import Group
+from papermerge_restapi_client.model.patched_group import PatchedGroup
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = papermerge-restapi-client.Configuration(
+configuration = papermerge_restapi_client.Configuration(
     host = "http://localhost"
 )
 
@@ -386,7 +386,7 @@ configuration.api_key['Token Authentication'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Token Authentication'] = 'Bearer'
 # Enter a context with an instance of the API client
-with papermerge-restapi-client.ApiClient(configuration) as api_client:
+with papermerge_restapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = groups_api.GroupsApi(api_client)
 
@@ -399,7 +399,7 @@ with papermerge-restapi-client.ApiClient(configuration) as api_client:
             path_params=path_params,
         )
         pprint(api_response)
-    except papermerge-restapi-client.ApiException as e:
+    except papermerge_restapi_client.ApiException as e:
         print("Exception when calling GroupsApi->groups_partial_update: %s\n" % e)
 
     # example passing only optional values
@@ -433,7 +433,7 @@ with papermerge-restapi-client.ApiClient(configuration) as api_client:
             body=body,
         )
         pprint(api_response)
-    except papermerge-restapi-client.ApiException as e:
+    except papermerge_restapi_client.ApiException as e:
         print("Exception when calling GroupsApi->groups_partial_update: %s\n" % e)
 ```
 ### Parameters
@@ -520,13 +520,13 @@ Group endpoint
 
 * Api Key Authentication (Token Authentication):
 ```python
-import papermerge-restapi-client
-from papermerge-restapi-client.apis.tags import groups_api
-from papermerge-restapi-client.model.group import Group
+import papermerge_restapi_client
+from papermerge_restapi_client.apis.tags import groups_api
+from papermerge_restapi_client.model.group import Group
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = papermerge-restapi-client.Configuration(
+configuration = papermerge_restapi_client.Configuration(
     host = "http://localhost"
 )
 
@@ -541,7 +541,7 @@ configuration.api_key['Token Authentication'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Token Authentication'] = 'Bearer'
 # Enter a context with an instance of the API client
-with papermerge-restapi-client.ApiClient(configuration) as api_client:
+with papermerge_restapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = groups_api.GroupsApi(api_client)
 
@@ -554,7 +554,7 @@ with papermerge-restapi-client.ApiClient(configuration) as api_client:
             path_params=path_params,
         )
         pprint(api_response)
-    except papermerge-restapi-client.ApiException as e:
+    except papermerge_restapi_client.ApiException as e:
         print("Exception when calling GroupsApi->groups_retrieve: %s\n" % e)
 ```
 ### Parameters

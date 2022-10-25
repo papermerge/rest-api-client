@@ -1,5 +1,5 @@
 <a name="__pageTop"></a>
-# papermerge-restapi-client.apis.tags.documents_api.DocumentsApi
+# papermerge_restapi_client.apis.tags.documents_api.DocumentsApi
 
 All URIs are relative to *http://localhost*
 
@@ -25,13 +25,13 @@ Retrieve OCRed text of the document  You can filter pages for which OCRed text i
 
 * Api Key Authentication (Token Authentication):
 ```python
-import papermerge-restapi-client
-from papermerge-restapi-client.apis.tags import documents_api
-from papermerge-restapi-client.model.document_version_ocr_text import DocumentVersionOcrText
+import papermerge_restapi_client
+from papermerge_restapi_client.apis.tags import documents_api
+from papermerge_restapi_client.model.document_version_ocr_text import DocumentVersionOcrText
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = papermerge-restapi-client.Configuration(
+configuration = papermerge_restapi_client.Configuration(
     host = "http://localhost"
 )
 
@@ -46,7 +46,7 @@ configuration.api_key['Token Authentication'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Token Authentication'] = 'Bearer'
 # Enter a context with an instance of the API client
-with papermerge-restapi-client.ApiClient(configuration) as api_client:
+with papermerge_restapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = documents_api.DocumentsApi(api_client)
 
@@ -62,7 +62,7 @@ with papermerge-restapi-client.ApiClient(configuration) as api_client:
             query_params=query_params,
         )
         pprint(api_response)
-    except papermerge-restapi-client.ApiException as e:
+    except papermerge_restapi_client.ApiException as e:
         print("Exception when calling DocumentsApi->document_ocr_text: %s\n" % e)
 
     # example passing only optional values
@@ -83,7 +83,7 @@ with papermerge-restapi-client.ApiClient(configuration) as api_client:
             query_params=query_params,
         )
         pprint(api_response)
-    except papermerge-restapi-client.ApiException as e:
+    except papermerge_restapi_client.ApiException as e:
         print("Exception when calling DocumentsApi->document_ocr_text: %s\n" % e)
 ```
 ### Parameters
@@ -182,12 +182,12 @@ Document details endpoint.
 
 * Api Key Authentication (Token Authentication):
 ```python
-import papermerge-restapi-client
-from papermerge-restapi-client.apis.tags import documents_api
+import papermerge_restapi_client
+from papermerge_restapi_client.apis.tags import documents_api
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = papermerge-restapi-client.Configuration(
+configuration = papermerge_restapi_client.Configuration(
     host = "http://localhost"
 )
 
@@ -202,7 +202,7 @@ configuration.api_key['Token Authentication'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Token Authentication'] = 'Bearer'
 # Enter a context with an instance of the API client
-with papermerge-restapi-client.ApiClient(configuration) as api_client:
+with papermerge_restapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = documents_api.DocumentsApi(api_client)
 
@@ -214,7 +214,7 @@ with papermerge-restapi-client.ApiClient(configuration) as api_client:
         api_response = api_instance.documents_destroy(
             path_params=path_params,
         )
-    except papermerge-restapi-client.ApiException as e:
+    except papermerge_restapi_client.ApiException as e:
         print("Exception when calling DocumentsApi->documents_destroy: %s\n" % e)
 ```
 ### Parameters
@@ -272,13 +272,13 @@ Document details endpoint.
 
 * Api Key Authentication (Token Authentication):
 ```python
-import papermerge-restapi-client
-from papermerge-restapi-client.apis.tags import documents_api
-from papermerge-restapi-client.model.paginated_document_details_list import PaginatedDocumentDetailsList
+import papermerge_restapi_client
+from papermerge_restapi_client.apis.tags import documents_api
+from papermerge_restapi_client.model.paginated_document_details_list import PaginatedDocumentDetailsList
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = papermerge-restapi-client.Configuration(
+configuration = papermerge_restapi_client.Configuration(
     host = "http://localhost"
 )
 
@@ -293,7 +293,7 @@ configuration.api_key['Token Authentication'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Token Authentication'] = 'Bearer'
 # Enter a context with an instance of the API client
-with papermerge-restapi-client.ApiClient(configuration) as api_client:
+with papermerge_restapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = documents_api.DocumentsApi(api_client)
 
@@ -309,7 +309,7 @@ with papermerge-restapi-client.ApiClient(configuration) as api_client:
             query_params=query_params,
         )
         pprint(api_response)
-    except papermerge-restapi-client.ApiException as e:
+    except papermerge_restapi_client.ApiException as e:
         print("Exception when calling DocumentsApi->documents_list: %s\n" % e)
 ```
 ### Parameters
@@ -399,13 +399,13 @@ Merge source document into destination  A new document version is created on the
 
 * Api Key Authentication (Token Authentication):
 ```python
-import papermerge-restapi-client
-from papermerge-restapi-client.apis.tags import documents_api
-from papermerge-restapi-client.model.documents_merge import DocumentsMerge
+import papermerge_restapi_client
+from papermerge_restapi_client.apis.tags import documents_api
+from papermerge_restapi_client.model.documents_merge import DocumentsMerge
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = papermerge-restapi-client.Configuration(
+configuration = papermerge_restapi_client.Configuration(
     host = "http://localhost"
 )
 
@@ -420,7 +420,7 @@ configuration.api_key['Token Authentication'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Token Authentication'] = 'Bearer'
 # Enter a context with an instance of the API client
-with papermerge-restapi-client.ApiClient(configuration) as api_client:
+with papermerge_restapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = documents_api.DocumentsApi(api_client)
 
@@ -434,7 +434,7 @@ with papermerge-restapi-client.ApiClient(configuration) as api_client:
             body=body,
         )
         pprint(api_response)
-    except papermerge-restapi-client.ApiException as e:
+    except papermerge_restapi_client.ApiException as e:
         print("Exception when calling DocumentsApi->documents_merge: %s\n" % e)
 ```
 ### Parameters
@@ -494,14 +494,14 @@ Document details endpoint.
 
 * Api Key Authentication (Token Authentication):
 ```python
-import papermerge-restapi-client
-from papermerge-restapi-client.apis.tags import documents_api
-from papermerge-restapi-client.model.document_details import DocumentDetails
-from papermerge-restapi-client.model.patched_document_details import PatchedDocumentDetails
+import papermerge_restapi_client
+from papermerge_restapi_client.apis.tags import documents_api
+from papermerge_restapi_client.model.document_details import DocumentDetails
+from papermerge_restapi_client.model.patched_document_details import PatchedDocumentDetails
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = papermerge-restapi-client.Configuration(
+configuration = papermerge_restapi_client.Configuration(
     host = "http://localhost"
 )
 
@@ -516,7 +516,7 @@ configuration.api_key['Token Authentication'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Token Authentication'] = 'Bearer'
 # Enter a context with an instance of the API client
-with papermerge-restapi-client.ApiClient(configuration) as api_client:
+with papermerge_restapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = documents_api.DocumentsApi(api_client)
 
@@ -529,7 +529,7 @@ with papermerge-restapi-client.ApiClient(configuration) as api_client:
             path_params=path_params,
         )
         pprint(api_response)
-    except papermerge-restapi-client.ApiException as e:
+    except papermerge_restapi_client.ApiException as e:
         print("Exception when calling DocumentsApi->documents_partial_update: %s\n" % e)
 
     # example passing only optional values
@@ -584,7 +584,7 @@ with papermerge-restapi-client.ApiClient(configuration) as api_client:
             body=body,
         )
         pprint(api_response)
-    except papermerge-restapi-client.ApiException as e:
+    except papermerge_restapi_client.ApiException as e:
         print("Exception when calling DocumentsApi->documents_partial_update: %s\n" % e)
 ```
 ### Parameters
@@ -671,13 +671,13 @@ Document details endpoint.
 
 * Api Key Authentication (Token Authentication):
 ```python
-import papermerge-restapi-client
-from papermerge-restapi-client.apis.tags import documents_api
-from papermerge-restapi-client.model.document_details import DocumentDetails
+import papermerge_restapi_client
+from papermerge_restapi_client.apis.tags import documents_api
+from papermerge_restapi_client.model.document_details import DocumentDetails
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = papermerge-restapi-client.Configuration(
+configuration = papermerge_restapi_client.Configuration(
     host = "http://localhost"
 )
 
@@ -692,7 +692,7 @@ configuration.api_key['Token Authentication'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Token Authentication'] = 'Bearer'
 # Enter a context with an instance of the API client
-with papermerge-restapi-client.ApiClient(configuration) as api_client:
+with papermerge_restapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = documents_api.DocumentsApi(api_client)
 
@@ -705,7 +705,7 @@ with papermerge-restapi-client.ApiClient(configuration) as api_client:
             path_params=path_params,
         )
         pprint(api_response)
-    except papermerge-restapi-client.ApiException as e:
+    except papermerge_restapi_client.ApiException as e:
         print("Exception when calling DocumentsApi->documents_retrieve: %s\n" % e)
 ```
 ### Parameters
@@ -770,12 +770,12 @@ Uploads a file for given document node. If last version of the document does not
 
 * Api Key Authentication (Token Authentication):
 ```python
-import papermerge-restapi-client
-from papermerge-restapi-client.apis.tags import documents_api
+import papermerge_restapi_client
+from papermerge_restapi_client.apis.tags import documents_api
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = papermerge-restapi-client.Configuration(
+configuration = papermerge_restapi_client.Configuration(
     host = "http://localhost"
 )
 
@@ -790,7 +790,7 @@ configuration.api_key['Token Authentication'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Token Authentication'] = 'Bearer'
 # Enter a context with an instance of the API client
-with papermerge-restapi-client.ApiClient(configuration) as api_client:
+with papermerge_restapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = documents_api.DocumentsApi(api_client)
 
@@ -806,7 +806,7 @@ with papermerge-restapi-client.ApiClient(configuration) as api_client:
             path_params=path_params,
             query_params=query_params,
         )
-    except papermerge-restapi-client.ApiException as e:
+    except papermerge_restapi_client.ApiException as e:
         print("Exception when calling DocumentsApi->upload_file: %s\n" % e)
 
     # example passing only optional values
@@ -822,7 +822,7 @@ with papermerge-restapi-client.ApiClient(configuration) as api_client:
             path_params=path_params,
             query_params=query_params,
         )
-    except papermerge-restapi-client.ApiException as e:
+    except papermerge_restapi_client.ApiException as e:
         print("Exception when calling DocumentsApi->upload_file: %s\n" % e)
 ```
 ### Parameters

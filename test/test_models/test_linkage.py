@@ -11,9 +11,9 @@
 
 import unittest
 
-import papermerge-restapi-client
-from papermerge-restapi-client.model.linkage import Linkage
-from papermerge-restapi-client import configuration
+import papermerge_restapi_client
+from papermerge_restapi_client.model.linkage import Linkage
+from papermerge_restapi_client import configuration
 
 
 class TestLinkage(unittest.TestCase):

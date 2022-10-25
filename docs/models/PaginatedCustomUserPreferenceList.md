@@ -1,4 +1,4 @@
-# papermerge-restapi-client.model.paginated_custom_user_preference_list.PaginatedCustomUserPreferenceList
+# papermerge_restapi_client.model.paginated_custom_user_preference_list.PaginatedCustomUserPreferenceList
 
 ## Model Type Info
 Input Type | Accessed Type | Description | Notes

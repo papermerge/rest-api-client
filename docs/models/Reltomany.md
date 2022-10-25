@@ -1,4 +1,4 @@
-# papermerge-restapi-client.model.reltomany.Reltomany
+# papermerge_restapi_client.model.reltomany.Reltomany
 
 a multiple 'to-many' relationship
 

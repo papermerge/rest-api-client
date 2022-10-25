@@ -1,4 +1,4 @@
-# papermerge-restapi-client.model.auth_token.AuthToken
+# papermerge_restapi_client.model.auth_token.AuthToken
 
 ## Model Type Info
 Input Type | Accessed Type | Description | Notes

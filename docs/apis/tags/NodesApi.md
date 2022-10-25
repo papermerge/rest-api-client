@@ -1,5 +1,5 @@
 <a name="__pageTop"></a>
-# papermerge-restapi-client.apis.tags.nodes_api.NodesApi
+# papermerge_restapi_client.apis.tags.nodes_api.NodesApi
 
 All URIs are relative to *http://localhost*
 
@@ -29,14 +29,14 @@ Appends given list of tag names to the node.  Retains all previously associated 
 
 * Api Key Authentication (Token Authentication):
 ```python
-import papermerge-restapi-client
-from papermerge-restapi-client.apis.tags import nodes_api
-from papermerge-restapi-client.model.patched_node_tags import PatchedNodeTags
-from papermerge-restapi-client.model.node_tags import NodeTags
+import papermerge_restapi_client
+from papermerge_restapi_client.apis.tags import nodes_api
+from papermerge_restapi_client.model.node_tags import NodeTags
+from papermerge_restapi_client.model.patched_node_tags import PatchedNodeTags
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = papermerge-restapi-client.Configuration(
+configuration = papermerge_restapi_client.Configuration(
     host = "http://localhost"
 )
 
@@ -51,7 +51,7 @@ configuration.api_key['Token Authentication'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Token Authentication'] = 'Bearer'
 # Enter a context with an instance of the API client
-with papermerge-restapi-client.ApiClient(configuration) as api_client:
+with papermerge_restapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = nodes_api.NodesApi(api_client)
 
@@ -64,7 +64,7 @@ with papermerge-restapi-client.ApiClient(configuration) as api_client:
             path_params=path_params,
         )
         pprint(api_response)
-    except papermerge-restapi-client.ApiException as e:
+    except papermerge_restapi_client.ApiException as e:
         print("Exception when calling NodesApi->node_append_tags: %s\n" % e)
 
     # example passing only optional values
@@ -82,7 +82,7 @@ with papermerge-restapi-client.ApiClient(configuration) as api_client:
             body=body,
         )
         pprint(api_response)
-    except papermerge-restapi-client.ApiException as e:
+    except papermerge_restapi_client.ApiException as e:
         print("Exception when calling NodesApi->node_append_tags: %s\n" % e)
 ```
 ### Parameters
@@ -157,13 +157,13 @@ Assigns given list of tag names to the node.  All tags not present in given list
 
 * Api Key Authentication (Token Authentication):
 ```python
-import papermerge-restapi-client
-from papermerge-restapi-client.apis.tags import nodes_api
-from papermerge-restapi-client.model.node_tags import NodeTags
+import papermerge_restapi_client
+from papermerge_restapi_client.apis.tags import nodes_api
+from papermerge_restapi_client.model.node_tags import NodeTags
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = papermerge-restapi-client.Configuration(
+configuration = papermerge_restapi_client.Configuration(
     host = "http://localhost"
 )
 
@@ -178,7 +178,7 @@ configuration.api_key['Token Authentication'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Token Authentication'] = 'Bearer'
 # Enter a context with an instance of the API client
-with papermerge-restapi-client.ApiClient(configuration) as api_client:
+with papermerge_restapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = nodes_api.NodesApi(api_client)
 
@@ -197,7 +197,7 @@ with papermerge-restapi-client.ApiClient(configuration) as api_client:
             body=body,
         )
         pprint(api_response)
-    except papermerge-restapi-client.ApiException as e:
+    except papermerge_restapi_client.ApiException as e:
         print("Exception when calling NodesApi->node_assign_tags: %s\n" % e)
 ```
 ### Parameters
@@ -272,12 +272,12 @@ Dissociate given tags the node.  Tags models are not deleted - just dissociated 
 
 * Api Key Authentication (Token Authentication):
 ```python
-import papermerge-restapi-client
-from papermerge-restapi-client.apis.tags import nodes_api
+import papermerge_restapi_client
+from papermerge_restapi_client.apis.tags import nodes_api
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = papermerge-restapi-client.Configuration(
+configuration = papermerge_restapi_client.Configuration(
     host = "http://localhost"
 )
 
@@ -292,7 +292,7 @@ configuration.api_key['Token Authentication'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Token Authentication'] = 'Bearer'
 # Enter a context with an instance of the API client
-with papermerge-restapi-client.ApiClient(configuration) as api_client:
+with papermerge_restapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = nodes_api.NodesApi(api_client)
 
@@ -304,7 +304,7 @@ with papermerge-restapi-client.ApiClient(configuration) as api_client:
         api_response = api_instance.node_dissociate_tags(
             path_params=path_params,
         )
-    except papermerge-restapi-client.ApiException as e:
+    except papermerge_restapi_client.ApiException as e:
         print("Exception when calling NodesApi->node_dissociate_tags: %s\n" % e)
 ```
 ### Parameters
@@ -362,13 +362,13 @@ Creates a node.  A node can be either a Folder or a Document. In order to create
 
 * Api Key Authentication (Token Authentication):
 ```python
-import papermerge-restapi-client
-from papermerge-restapi-client.apis.tags import nodes_api
-from papermerge-restapi-client.model.node import Node
+import papermerge_restapi_client
+from papermerge_restapi_client.apis.tags import nodes_api
+from papermerge_restapi_client.model.node import Node
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = papermerge-restapi-client.Configuration(
+configuration = papermerge_restapi_client.Configuration(
     host = "http://localhost"
 )
 
@@ -383,7 +383,7 @@ configuration.api_key['Token Authentication'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Token Authentication'] = 'Bearer'
 # Enter a context with an instance of the API client
-with papermerge-restapi-client.ApiClient(configuration) as api_client:
+with papermerge_restapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = nodes_api.NodesApi(api_client)
 
@@ -412,7 +412,7 @@ with papermerge-restapi-client.ApiClient(configuration) as api_client:
             body=body,
         )
         pprint(api_response)
-    except papermerge-restapi-client.ApiException as e:
+    except papermerge_restapi_client.ApiException as e:
         print("Exception when calling NodesApi->nodes_create: %s\n" % e)
 ```
 ### Parameters
@@ -472,12 +472,12 @@ Documents can be organized in folders. One folder can contain documents as well 
 
 * Api Key Authentication (Token Authentication):
 ```python
-import papermerge-restapi-client
-from papermerge-restapi-client.apis.tags import nodes_api
+import papermerge_restapi_client
+from papermerge_restapi_client.apis.tags import nodes_api
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = papermerge-restapi-client.Configuration(
+configuration = papermerge_restapi_client.Configuration(
     host = "http://localhost"
 )
 
@@ -492,7 +492,7 @@ configuration.api_key['Token Authentication'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Token Authentication'] = 'Bearer'
 # Enter a context with an instance of the API client
-with papermerge-restapi-client.ApiClient(configuration) as api_client:
+with papermerge_restapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = nodes_api.NodesApi(api_client)
 
@@ -504,7 +504,7 @@ with papermerge-restapi-client.ApiClient(configuration) as api_client:
         api_response = api_instance.nodes_destroy(
             path_params=path_params,
         )
-    except papermerge-restapi-client.ApiException as e:
+    except papermerge_restapi_client.ApiException as e:
         print("Exception when calling NodesApi->nodes_destroy: %s\n" % e)
 ```
 ### Parameters
@@ -562,13 +562,13 @@ Expects one or multiple of following HTTP GET parameters: * node_ids (required) 
 
 * Api Key Authentication (Token Authentication):
 ```python
-import papermerge-restapi-client
-from papermerge-restapi-client.apis.tags import nodes_api
-from papermerge-restapi-client.model.nodes_download import NodesDownload
+import papermerge_restapi_client
+from papermerge_restapi_client.apis.tags import nodes_api
+from papermerge_restapi_client.model.nodes_download import NodesDownload
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = papermerge-restapi-client.Configuration(
+configuration = papermerge_restapi_client.Configuration(
     host = "http://localhost"
 )
 
@@ -583,7 +583,7 @@ configuration.api_key['Token Authentication'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Token Authentication'] = 'Bearer'
 # Enter a context with an instance of the API client
-with papermerge-restapi-client.ApiClient(configuration) as api_client:
+with papermerge_restapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = nodes_api.NodesApi(api_client)
 
@@ -596,7 +596,7 @@ with papermerge-restapi-client.ApiClient(configuration) as api_client:
             query_params=query_params,
         )
         pprint(api_response)
-    except papermerge-restapi-client.ApiException as e:
+    except papermerge_restapi_client.ApiException as e:
         print("Exception when calling NodesApi->nodes_download_retrieve: %s\n" % e)
 ```
 ### Parameters
@@ -666,13 +666,13 @@ Type | Description  | Notes
 
 * Api Key Authentication (Token Authentication):
 ```python
-import papermerge-restapi-client
-from papermerge-restapi-client.apis.tags import nodes_api
-from papermerge-restapi-client.model.inbox_count import InboxCount
+import papermerge_restapi_client
+from papermerge_restapi_client.apis.tags import nodes_api
+from papermerge_restapi_client.model.inbox_count import InboxCount
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = papermerge-restapi-client.Configuration(
+configuration = papermerge_restapi_client.Configuration(
     host = "http://localhost"
 )
 
@@ -687,7 +687,7 @@ configuration.api_key['Token Authentication'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Token Authentication'] = 'Bearer'
 # Enter a context with an instance of the API client
-with papermerge-restapi-client.ApiClient(configuration) as api_client:
+with papermerge_restapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = nodes_api.NodesApi(api_client)
 
@@ -700,7 +700,7 @@ with papermerge-restapi-client.ApiClient(configuration) as api_client:
             query_params=query_params,
         )
         pprint(api_response)
-    except papermerge-restapi-client.ApiException as e:
+    except papermerge_restapi_client.ApiException as e:
         print("Exception when calling NodesApi->nodes_inboxcount_retrieve: %s\n" % e)
 ```
 ### Parameters
@@ -772,13 +772,13 @@ Documents can be organized in folders. One folder can contain documents as well 
 
 * Api Key Authentication (Token Authentication):
 ```python
-import papermerge-restapi-client
-from papermerge-restapi-client.apis.tags import nodes_api
-from papermerge-restapi-client.model.paginated_node_list import PaginatedNodeList
+import papermerge_restapi_client
+from papermerge_restapi_client.apis.tags import nodes_api
+from papermerge_restapi_client.model.paginated_node_list import PaginatedNodeList
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = papermerge-restapi-client.Configuration(
+configuration = papermerge_restapi_client.Configuration(
     host = "http://localhost"
 )
 
@@ -793,7 +793,7 @@ configuration.api_key['Token Authentication'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Token Authentication'] = 'Bearer'
 # Enter a context with an instance of the API client
-with papermerge-restapi-client.ApiClient(configuration) as api_client:
+with papermerge_restapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = nodes_api.NodesApi(api_client)
 
@@ -809,7 +809,7 @@ with papermerge-restapi-client.ApiClient(configuration) as api_client:
             query_params=query_params,
         )
         pprint(api_response)
-    except papermerge-restapi-client.ApiException as e:
+    except papermerge_restapi_client.ApiException as e:
         print("Exception when calling NodesApi->nodes_list: %s\n" % e)
 ```
 ### Parameters
@@ -897,13 +897,13 @@ Type | Description  | Notes
 
 * Api Key Authentication (Token Authentication):
 ```python
-import papermerge-restapi-client
-from papermerge-restapi-client.apis.tags import nodes_api
-from papermerge-restapi-client.model.node_move import NodeMove
+import papermerge_restapi_client
+from papermerge_restapi_client.apis.tags import nodes_api
+from papermerge_restapi_client.model.node_move import NodeMove
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = papermerge-restapi-client.Configuration(
+configuration = papermerge_restapi_client.Configuration(
     host = "http://localhost"
 )
 
@@ -918,7 +918,7 @@ configuration.api_key['Token Authentication'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Token Authentication'] = 'Bearer'
 # Enter a context with an instance of the API client
-with papermerge-restapi-client.ApiClient(configuration) as api_client:
+with papermerge_restapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = nodes_api.NodesApi(api_client)
 
@@ -939,7 +939,7 @@ with papermerge-restapi-client.ApiClient(configuration) as api_client:
             body=body,
         )
         pprint(api_response)
-    except papermerge-restapi-client.ApiException as e:
+    except papermerge_restapi_client.ApiException as e:
         print("Exception when calling NodesApi->nodes_move_create: %s\n" % e)
 
     # example passing only optional values
@@ -960,7 +960,7 @@ with papermerge-restapi-client.ApiClient(configuration) as api_client:
             body=body,
         )
         pprint(api_response)
-    except papermerge-restapi-client.ApiException as e:
+    except papermerge_restapi_client.ApiException as e:
         print("Exception when calling NodesApi->nodes_move_create: %s\n" % e)
 ```
 ### Parameters
@@ -1042,14 +1042,14 @@ Documents can be organized in folders. One folder can contain documents as well 
 
 * Api Key Authentication (Token Authentication):
 ```python
-import papermerge-restapi-client
-from papermerge-restapi-client.apis.tags import nodes_api
-from papermerge-restapi-client.model.node import Node
-from papermerge-restapi-client.model.patched_node import PatchedNode
+import papermerge_restapi_client
+from papermerge_restapi_client.apis.tags import nodes_api
+from papermerge_restapi_client.model.patched_node import PatchedNode
+from papermerge_restapi_client.model.node import Node
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = papermerge-restapi-client.Configuration(
+configuration = papermerge_restapi_client.Configuration(
     host = "http://localhost"
 )
 
@@ -1064,7 +1064,7 @@ configuration.api_key['Token Authentication'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Token Authentication'] = 'Bearer'
 # Enter a context with an instance of the API client
-with papermerge-restapi-client.ApiClient(configuration) as api_client:
+with papermerge_restapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = nodes_api.NodesApi(api_client)
 
@@ -1077,7 +1077,7 @@ with papermerge-restapi-client.ApiClient(configuration) as api_client:
             path_params=path_params,
         )
         pprint(api_response)
-    except papermerge-restapi-client.ApiException as e:
+    except papermerge_restapi_client.ApiException as e:
         print("Exception when calling NodesApi->nodes_partial_update: %s\n" % e)
 
     # example passing only optional values
@@ -1109,7 +1109,7 @@ with papermerge-restapi-client.ApiClient(configuration) as api_client:
             body=body,
         )
         pprint(api_response)
-    except papermerge-restapi-client.ApiException as e:
+    except papermerge_restapi_client.ApiException as e:
         print("Exception when calling NodesApi->nodes_partial_update: %s\n" % e)
 ```
 ### Parameters
@@ -1184,13 +1184,13 @@ Documents can be organized in folders. One folder can contain documents as well 
 
 * Api Key Authentication (Token Authentication):
 ```python
-import papermerge-restapi-client
-from papermerge-restapi-client.apis.tags import nodes_api
-from papermerge-restapi-client.model.node import Node
+import papermerge_restapi_client
+from papermerge_restapi_client.apis.tags import nodes_api
+from papermerge_restapi_client.model.node import Node
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = papermerge-restapi-client.Configuration(
+configuration = papermerge_restapi_client.Configuration(
     host = "http://localhost"
 )
 
@@ -1205,7 +1205,7 @@ configuration.api_key['Token Authentication'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Token Authentication'] = 'Bearer'
 # Enter a context with an instance of the API client
-with papermerge-restapi-client.ApiClient(configuration) as api_client:
+with papermerge_restapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = nodes_api.NodesApi(api_client)
 
@@ -1218,7 +1218,7 @@ with papermerge-restapi-client.ApiClient(configuration) as api_client:
             path_params=path_params,
         )
         pprint(api_response)
-    except papermerge-restapi-client.ApiException as e:
+    except papermerge_restapi_client.ApiException as e:
         print("Exception when calling NodesApi->retrieve_node: %s\n" % e)
 ```
 ### Parameters

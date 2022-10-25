@@ -1,5 +1,5 @@
 <a name="__pageTop"></a>
-# papermerge-restapi-client.apis.tags.pages_api.PagesApi
+# papermerge_restapi_client.apis.tags.pages_api.PagesApi
 
 All URIs are relative to *http://localhost*
 
@@ -25,13 +25,13 @@ Moves one or multiple pages from source document to target document.  Both sourc
 
 * Api Key Authentication (Token Authentication):
 ```python
-import papermerge-restapi-client
-from papermerge-restapi-client.apis.tags import pages_api
-from papermerge-restapi-client.model.pages_move_to_document import PagesMoveToDocument
+import papermerge_restapi_client
+from papermerge_restapi_client.apis.tags import pages_api
+from papermerge_restapi_client.model.pages_move_to_document import PagesMoveToDocument
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = papermerge-restapi-client.Configuration(
+configuration = papermerge_restapi_client.Configuration(
     host = "http://localhost"
 )
 
@@ -46,7 +46,7 @@ configuration.api_key['Token Authentication'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Token Authentication'] = 'Bearer'
 # Enter a context with an instance of the API client
-with papermerge-restapi-client.ApiClient(configuration) as api_client:
+with papermerge_restapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pages_api.PagesApi(api_client)
 
@@ -64,7 +64,7 @@ with papermerge-restapi-client.ApiClient(configuration) as api_client:
             body=body,
         )
         pprint(api_response)
-    except papermerge-restapi-client.ApiException as e:
+    except papermerge_restapi_client.ApiException as e:
         print("Exception when calling PagesApi->move_to_document: %s\n" % e)
 ```
 ### Parameters
@@ -136,13 +136,13 @@ Moves/extracts one or multiple pages into target folder.  This operation will cr
 
 * Api Key Authentication (Token Authentication):
 ```python
-import papermerge-restapi-client
-from papermerge-restapi-client.apis.tags import pages_api
-from papermerge-restapi-client.model.pages_move_to_folder import PagesMoveToFolder
+import papermerge_restapi_client
+from papermerge_restapi_client.apis.tags import pages_api
+from papermerge_restapi_client.model.pages_move_to_folder import PagesMoveToFolder
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = papermerge-restapi-client.Configuration(
+configuration = papermerge_restapi_client.Configuration(
     host = "http://localhost"
 )
 
@@ -157,7 +157,7 @@ configuration.api_key['Token Authentication'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Token Authentication'] = 'Bearer'
 # Enter a context with an instance of the API client
-with papermerge-restapi-client.ApiClient(configuration) as api_client:
+with papermerge_restapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pages_api.PagesApi(api_client)
 
@@ -175,7 +175,7 @@ with papermerge-restapi-client.ApiClient(configuration) as api_client:
             body=body,
         )
         pprint(api_response)
-    except papermerge-restapi-client.ApiException as e:
+    except papermerge_restapi_client.ApiException as e:
         print("Exception when calling PagesApi->move_to_folder: %s\n" % e)
 ```
 ### Parameters
@@ -245,12 +245,12 @@ Type | Description  | Notes
 
 * Api Key Authentication (Token Authentication):
 ```python
-import papermerge-restapi-client
-from papermerge-restapi-client.apis.tags import pages_api
+import papermerge_restapi_client
+from papermerge_restapi_client.apis.tags import pages_api
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = papermerge-restapi-client.Configuration(
+configuration = papermerge_restapi_client.Configuration(
     host = "http://localhost"
 )
 
@@ -265,7 +265,7 @@ configuration.api_key['Token Authentication'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Token Authentication'] = 'Bearer'
 # Enter a context with an instance of the API client
-with papermerge-restapi-client.ApiClient(configuration) as api_client:
+with papermerge_restapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pages_api.PagesApi(api_client)
 
@@ -277,7 +277,7 @@ with papermerge-restapi-client.ApiClient(configuration) as api_client:
         api_response = api_instance.multiple_pages_delete(
             query_params=query_params,
         )
-    except papermerge-restapi-client.ApiException as e:
+    except papermerge_restapi_client.ApiException as e:
         print("Exception when calling PagesApi->multiple_pages_delete: %s\n" % e)
 ```
 ### Parameters
@@ -336,13 +336,13 @@ Reorders pages within document.
 
 * Api Key Authentication (Token Authentication):
 ```python
-import papermerge-restapi-client
-from papermerge-restapi-client.apis.tags import pages_api
-from papermerge-restapi-client.model.pages_reorder import PagesReorder
+import papermerge_restapi_client
+from papermerge_restapi_client.apis.tags import pages_api
+from papermerge_restapi_client.model.pages_reorder import PagesReorder
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = papermerge-restapi-client.Configuration(
+configuration = papermerge_restapi_client.Configuration(
     host = "http://localhost"
 )
 
@@ -357,7 +357,7 @@ configuration.api_key['Token Authentication'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Token Authentication'] = 'Bearer'
 # Enter a context with an instance of the API client
-with papermerge-restapi-client.ApiClient(configuration) as api_client:
+with papermerge_restapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pages_api.PagesApi(api_client)
 
@@ -376,7 +376,7 @@ with papermerge-restapi-client.ApiClient(configuration) as api_client:
             body=body,
         )
         pprint(api_response)
-    except papermerge-restapi-client.ApiException as e:
+    except papermerge_restapi_client.ApiException as e:
         print("Exception when calling PagesApi->reorder: %s\n" % e)
 ```
 ### Parameters
@@ -436,13 +436,13 @@ Retrieves page resource
 
 * Api Key Authentication (Token Authentication):
 ```python
-import papermerge-restapi-client
-from papermerge-restapi-client.apis.tags import pages_api
-from papermerge-restapi-client.model.page import Page
+import papermerge_restapi_client
+from papermerge_restapi_client.apis.tags import pages_api
+from papermerge_restapi_client.model.page import Page
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = papermerge-restapi-client.Configuration(
+configuration = papermerge_restapi_client.Configuration(
     host = "http://localhost"
 )
 
@@ -457,7 +457,7 @@ configuration.api_key['Token Authentication'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Token Authentication'] = 'Bearer'
 # Enter a context with an instance of the API client
-with papermerge-restapi-client.ApiClient(configuration) as api_client:
+with papermerge_restapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pages_api.PagesApi(api_client)
 
@@ -473,7 +473,7 @@ with papermerge-restapi-client.ApiClient(configuration) as api_client:
             query_params=query_params,
         )
         pprint(api_response)
-    except papermerge-restapi-client.ApiException as e:
+    except papermerge_restapi_client.ApiException as e:
         print("Exception when calling PagesApi->retrieve: %s\n" % e)
 
     # example passing only optional values
@@ -489,7 +489,7 @@ with papermerge-restapi-client.ApiClient(configuration) as api_client:
             query_params=query_params,
         )
         pprint(api_response)
-    except papermerge-restapi-client.ApiException as e:
+    except papermerge_restapi_client.ApiException as e:
         print("Exception when calling PagesApi->retrieve: %s\n" % e)
 ```
 ### Parameters
@@ -588,13 +588,13 @@ Rortates one or multiple pages with given angle.
 
 * Api Key Authentication (Token Authentication):
 ```python
-import papermerge-restapi-client
-from papermerge-restapi-client.apis.tags import pages_api
-from papermerge-restapi-client.model.pages_rotate import PagesRotate
+import papermerge_restapi_client
+from papermerge_restapi_client.apis.tags import pages_api
+from papermerge_restapi_client.model.pages_rotate import PagesRotate
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = papermerge-restapi-client.Configuration(
+configuration = papermerge_restapi_client.Configuration(
     host = "http://localhost"
 )
 
@@ -609,7 +609,7 @@ configuration.api_key['Token Authentication'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Token Authentication'] = 'Bearer'
 # Enter a context with an instance of the API client
-with papermerge-restapi-client.ApiClient(configuration) as api_client:
+with papermerge_restapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pages_api.PagesApi(api_client)
 
@@ -627,7 +627,7 @@ with papermerge-restapi-client.ApiClient(configuration) as api_client:
             body=body,
         )
         pprint(api_response)
-    except papermerge-restapi-client.ApiException as e:
+    except papermerge_restapi_client.ApiException as e:
         print("Exception when calling PagesApi->rotate: %s\n" % e)
 ```
 ### Parameters
@@ -687,12 +687,12 @@ Deletes page resource
 
 * Api Key Authentication (Token Authentication):
 ```python
-import papermerge-restapi-client
-from papermerge-restapi-client.apis.tags import pages_api
+import papermerge_restapi_client
+from papermerge_restapi_client.apis.tags import pages_api
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = papermerge-restapi-client.Configuration(
+configuration = papermerge_restapi_client.Configuration(
     host = "http://localhost"
 )
 
@@ -707,7 +707,7 @@ configuration.api_key['Token Authentication'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Token Authentication'] = 'Bearer'
 # Enter a context with an instance of the API client
-with papermerge-restapi-client.ApiClient(configuration) as api_client:
+with papermerge_restapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = pages_api.PagesApi(api_client)
 
@@ -722,7 +722,7 @@ with papermerge-restapi-client.ApiClient(configuration) as api_client:
             path_params=path_params,
             query_params=query_params,
         )
-    except papermerge-restapi-client.ApiException as e:
+    except papermerge_restapi_client.ApiException as e:
         print("Exception when calling PagesApi->single_page_delete: %s\n" % e)
 
     # example passing only optional values
@@ -737,7 +737,7 @@ with papermerge-restapi-client.ApiClient(configuration) as api_client:
             path_params=path_params,
             query_params=query_params,
         )
-    except papermerge-restapi-client.ApiException as e:
+    except papermerge_restapi_client.ApiException as e:
         print("Exception when calling PagesApi->single_page_delete: %s\n" % e)
 ```
 ### Parameters

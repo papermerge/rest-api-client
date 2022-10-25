@@ -1,4 +1,4 @@
-# papermerge-restapi-client.model.paginated_folder_list.PaginatedFolderList
+# papermerge_restapi_client.model.paginated_folder_list.PaginatedFolderList
 
 ## Model Type Info
 Input Type | Accessed Type | Description | Notes

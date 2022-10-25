@@ -1,4 +1,4 @@
-# papermerge-restapi-client.model.patched_group.PatchedGroup
+# papermerge_restapi_client.model.patched_group.PatchedGroup
 
 ## Model Type Info
 Input Type | Accessed Type | Description | Notes

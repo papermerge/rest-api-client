@@ -11,9 +11,9 @@
 
 import unittest
 
-import papermerge-restapi-client
-from papermerge-restapi-client.model.archive_type_enum import ArchiveTypeEnum
-from papermerge-restapi-client import configuration
+import papermerge_restapi_client
+from papermerge_restapi_client.model.archive_type_enum import ArchiveTypeEnum
+from papermerge_restapi_client import configuration
 
 
 class TestArchiveTypeEnum(unittest.TestCase):

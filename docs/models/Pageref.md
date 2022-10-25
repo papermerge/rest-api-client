@@ -1,4 +1,4 @@
-# papermerge-restapi-client.model.pageref.Pageref
+# papermerge_restapi_client.model.pageref.Pageref
 
 ## Model Type Info
 Input Type | Accessed Type | Description | Notes

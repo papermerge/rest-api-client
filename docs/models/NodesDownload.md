@@ -1,4 +1,4 @@
-# papermerge-restapi-client.model.nodes_download.NodesDownload
+# papermerge_restapi_client.model.nodes_download.NodesDownload
 
 ## Model Type Info
 Input Type | Accessed Type | Description | Notes

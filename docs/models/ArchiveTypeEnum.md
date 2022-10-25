@@ -1,4 +1,4 @@
-# papermerge-restapi-client.model.archive_type_enum.ArchiveTypeEnum
+# papermerge_restapi_client.model.archive_type_enum.ArchiveTypeEnum
 
 ## Model Type Info
 Input Type | Accessed Type | Description | Notes

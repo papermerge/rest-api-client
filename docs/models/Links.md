@@ -1,4 +1,4 @@
-# papermerge-restapi-client.model.links.Links
+# papermerge_restapi_client.model.links.Links
 
 ## Model Type Info
 Input Type | Accessed Type | Description | Notes

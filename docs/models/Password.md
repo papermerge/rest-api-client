@@ -1,4 +1,4 @@
-# papermerge-restapi-client.model.password.Password
+# papermerge_restapi_client.model.password.Password
 
 ## Model Type Info
 Input Type | Accessed Type | Description | Notes

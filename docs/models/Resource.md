@@ -1,4 +1,4 @@
-# papermerge-restapi-client.model.resource.Resource
+# papermerge_restapi_client.model.resource.Resource
 
 ## Model Type Info
 Input Type | Accessed Type | Description | Notes

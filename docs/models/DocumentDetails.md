@@ -1,4 +1,4 @@
-# papermerge-restapi-client.model.document_details.DocumentDetails
+# papermerge_restapi_client.model.document_details.DocumentDetails
 
 ## Model Type Info
 Input Type | Accessed Type | Description | Notes

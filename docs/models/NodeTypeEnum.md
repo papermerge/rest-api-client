@@ -1,4 +1,4 @@
-# papermerge-restapi-client.model.node_type_enum.NodeTypeEnum
+# papermerge_restapi_client.model.node_type_enum.NodeTypeEnum
 
 ## Model Type Info
 Input Type | Accessed Type | Description | Notes

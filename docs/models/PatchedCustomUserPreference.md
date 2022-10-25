@@ -1,4 +1,4 @@
-# papermerge-restapi-client.model.patched_custom_user_preference.PatchedCustomUserPreference
+# papermerge_restapi_client.model.patched_custom_user_preference.PatchedCustomUserPreference
 
 ## Model Type Info
 Input Type | Accessed Type | Description | Notes

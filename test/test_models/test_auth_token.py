@@ -11,9 +11,9 @@
 
 import unittest
 
-import papermerge-restapi-client
-from papermerge-restapi-client.model.auth_token import AuthToken
-from papermerge-restapi-client import configuration
+import papermerge_restapi_client
+from papermerge_restapi_client.model.auth_token import AuthToken
+from papermerge_restapi_client import configuration
 
 
 class TestAuthToken(unittest.TestCase):
