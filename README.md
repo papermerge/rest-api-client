@@ -4,6 +4,8 @@ This project contains source code of automatically generated REST API clients fo
 
 REST API clients are generated based on [OpenAPI schema](https://github.com/papermerge/openapi-schema/blob/master/openapi-schema.yaml).
 
+REST API clients are generated using [OpenAPI generator](https://github.com/OpenAPITools/openapi-generator)
+
 ## Python Client
 
 Command used:
