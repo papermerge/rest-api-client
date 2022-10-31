@@ -14,7 +14,7 @@ openapi-generator-cli generate \
     -g python \
     -o generated-rest-api-client-python \
     --skip-validate-spec \
-    --additional-properties packageName=papermerge_restapi_client,projectName=papermerge-restapi-clientpackageVersion,packageVersion=1.0.1
+    --additional-properties packageName=papermerge_restapi_client,projectName=papermerge-restapi-client,packageVersion=1.0.1
 ```
 
 Find mode details about [openapi-cli python generator here](https://openapi-generator.tech/docs/generators/python)
