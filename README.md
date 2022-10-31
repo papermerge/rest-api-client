@@ -10,12 +10,14 @@ Command used:
 
 ```sh
 openapi-generator-cli generate \
-	-i https://raw.githubusercontent.com/papermerge/openapi-schema/master/openapi-schema.yaml \
-	-g python \
-	-o generated-rest-api-client-python \
-	--skip-validate-spec \
-	--additional-properties packageName=papermerge_restapi_client,projectName=papermerge-restapi-client
+    -i https://raw.githubusercontent.com/papermerge/openapi-schema/master/openapi-schema.yaml \
+    -g python \
+    -o generated-rest-api-client-python \
+    --skip-validate-spec \
+    --additional-properties packageName=papermerge_restapi_client,projectName=papermerge-restapi-clientpackageVersion,packageVersion=1.0.1
 ```
+
+Find mode details about [openapi-cli python generator here](https://openapi-generator.tech/docs/generators/python)
 
 
 ## TypeScript Client
@@ -24,9 +26,9 @@ Command used:
 
 ```sh
 openapi-generator-cli generate \
-	 -i https://raw.githubusercontent.com/papermerge/openapi-schema/master/openapi-schema.yaml \
-	 -g typescript-node \
-	 -o generated-rest-api-client-typescript-node \
-	 --skip-validate-spec \
-	 --additional-properties npmName=papermerge-restapi-client
+     -i https://raw.githubusercontent.com/papermerge/openapi-schema/master/openapi-schema.yaml \
+     -g typescript-node \
+     -o generated-rest-api-client-typescript-node \
+     --skip-validate-spec \
+     --additional-properties npmName=papermerge-restapi-client
 ```
