@@ -19,7 +19,8 @@ docs/apis/tags/TokensApi.md
 docs/apis/tags/UsersApi.md
 docs/apis/tags/VersionApi.md
 docs/models/ArchiveTypeEnum.md
-docs/models/AuthToken.md
+docs/models/AuthTokenRequest.md
+docs/models/AuthTokenResponse.md
 docs/models/CustomUserPreference.md
 docs/models/Datum.md
 docs/models/DocumentDetails.md
@@ -112,8 +113,10 @@ papermerge_restapi_client/exceptions.py
 papermerge_restapi_client/model/__init__.py
 papermerge_restapi_client/model/archive_type_enum.py
 papermerge_restapi_client/model/archive_type_enum.pyi
-papermerge_restapi_client/model/auth_token.py
-papermerge_restapi_client/model/auth_token.pyi
+papermerge_restapi_client/model/auth_token_request.py
+papermerge_restapi_client/model/auth_token_request.pyi
+papermerge_restapi_client/model/auth_token_response.py
+papermerge_restapi_client/model/auth_token_response.pyi
 papermerge_restapi_client/model/custom_user_preference.py
 papermerge_restapi_client/model/custom_user_preference.pyi
 papermerge_restapi_client/model/datum.py
@@ -257,4 +260,6 @@ setup.py
 test-requirements.txt
 test/__init__.py
 test/test_models/__init__.py
+test/test_models/test_auth_token_request.py
+test/test_models/test_auth_token_response.py
 tox.ini

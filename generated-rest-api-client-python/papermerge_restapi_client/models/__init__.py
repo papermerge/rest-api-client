@@ -12,7 +12,8 @@
 # sys.setrecursionlimit(n)
 
 from papermerge_restapi_client.model.archive_type_enum import ArchiveTypeEnum
-from papermerge_restapi_client.model.auth_token import AuthToken
+from papermerge_restapi_client.model.auth_token_request import AuthTokenRequest
+from papermerge_restapi_client.model.auth_token_response import AuthTokenResponse
 from papermerge_restapi_client.model.custom_user_preference import CustomUserPreference
 from papermerge_restapi_client.model.datum import Datum
 from papermerge_restapi_client.model.document_details import DocumentDetails

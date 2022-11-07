@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 # **auth_login_create**
 <a name="auth_login_create"></a>
-> AuthToken auth_login_create(auth_token)
+> AuthTokenResponse auth_login_create(auth_token_request)
 
 
 
@@ -23,7 +23,8 @@ Authenticates user with given username and password. Response will contain token
 ```python
 import papermerge_restapi_client
 from papermerge_restapi_client.apis.tags import auth_api
-from papermerge_restapi_client.model.auth_token import AuthToken
+from papermerge_restapi_client.model.auth_token_request import AuthTokenRequest
+from papermerge_restapi_client.model.auth_token_response import AuthTokenResponse
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
@@ -47,10 +48,9 @@ with papermerge_restapi_client.ApiClient(configuration) as api_client:
     api_instance = auth_api.AuthApi(api_client)
 
     # example passing only required values which don't have defaults set
-    body = AuthToken(
+    body = AuthTokenRequest(
         username="username_example",
         password="password_example",
-        token="token_example",
     )
     try:
         api_response = api_instance.auth_login_create(
@@ -76,7 +76,7 @@ skip_deserialization | bool | default is False | when True, headers and body wil
 # SchemaForRequestBodyApplicationJson
 Type | Description  | Notes
 ------------- | ------------- | -------------
-[**AuthToken**](../../models/AuthToken.md) |  | 
+[**AuthTokenRequest**](../../models/AuthTokenRequest.md) |  | 
 
 
 ### Return Types, Responses
@@ -96,7 +96,7 @@ headers | Unset | headers were not defined |
 # SchemaFor200ResponseBodyApplicationJson
 Type | Description  | Notes
 ------------- | ------------- | -------------
-[**AuthToken**](../../models/AuthToken.md) |  | 
+[**AuthTokenResponse**](../../models/AuthTokenResponse.md) |  | 
 
 
 ### Authorization
