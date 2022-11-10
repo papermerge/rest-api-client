@@ -25,9 +25,9 @@ import frozendict  # noqa: F401
 
 from papermerge_restapi_client import schemas  # noqa: F401
 
-from papermerge_restapi_client.model.user import User
+from papermerge_restapi_client.model.data_user import DataUser
 
-SchemaFor200ResponseBodyApplicationVndApijson = User
+SchemaFor200ResponseBodyApplicationVndApijson = DataUser
 _all_accept_content_types = (
     'application/vnd.api+json',
 )

@@ -34,398 +34,344 @@ class DocumentDetails(
 
 
     class MetaOapg:
+        required = {
+            "type",
+        }
         
         class properties:
+        
+            @staticmethod
+            def type() -> typing.Type['DocumentDetailsTypeEnum']:
+                return DocumentDetailsTypeEnum
+            id = schemas.UUIDSchema
             
             
-            class data(
+            class attributes(
                 schemas.DictSchema
             ):
             
             
                 class MetaOapg:
                     required = {
-                        "type",
+                        "title",
                     }
                     
                     class properties:
+                        id = schemas.UUIDSchema
                         
                         
-                        class type(
+                        class title(
+                            schemas.StrSchema
+                        ):
+                            pass
+                        
+                        
+                        class lang(
+                            schemas.StrSchema
+                        ):
+                            pass
+                        file_name = schemas.StrSchema
+                        ocr = schemas.BoolSchema
+                        
+                        
+                        class ocr_status(
                             schemas.EnumBase,
                             schemas.StrSchema
                         ):
                             
                             @schemas.classproperty
-                            def DOCUMENTS(cls):
-                                return cls("documents")
-                        id = schemas.UUIDSchema
+                            def UNKNOWN(cls):
+                                return cls("unknown")
+                            
+                            @schemas.classproperty
+                            def RECEIVED(cls):
+                                return cls("received")
+                            
+                            @schemas.classproperty
+                            def STARTED(cls):
+                                return cls("started")
+                            
+                            @schemas.classproperty
+                            def SUCCEEDED(cls):
+                                return cls("succeeded")
+                            
+                            @schemas.classproperty
+                            def FAILED(cls):
+                                return cls("failed")
                         
                         
-                        class attributes(
-                            schemas.DictSchema
-                        ):
-                        
-                        
-                            class MetaOapg:
-                                required = {
-                                    "title",
-                                }
-                                
-                                class properties:
-                                    id = schemas.UUIDSchema
-                                    
-                                    
-                                    class title(
-                                        schemas.StrSchema
-                                    ):
-                                        pass
-                                    
-                                    
-                                    class lang(
-                                        schemas.StrSchema
-                                    ):
-                                        pass
-                                    file_name = schemas.StrSchema
-                                    ocr = schemas.BoolSchema
-                                    
-                                    
-                                    class ocr_status(
-                                        schemas.EnumBase,
-                                        schemas.StrSchema
-                                    ):
-                                        
-                                        @schemas.classproperty
-                                        def UNKNOWN(cls):
-                                            return cls("unknown")
-                                        
-                                        @schemas.classproperty
-                                        def RECEIVED(cls):
-                                            return cls("received")
-                                        
-                                        @schemas.classproperty
-                                        def STARTED(cls):
-                                            return cls("started")
-                                        
-                                        @schemas.classproperty
-                                        def SUCCEEDED(cls):
-                                            return cls("succeeded")
-                                        
-                                        @schemas.classproperty
-                                        def FAILED(cls):
-                                            return cls("failed")
-                                    
-                                    
-                                    class versions(
-                                        schemas.ListSchema
-                                    ):
-                                    
-                                    
-                                        class MetaOapg:
-                                            
-                                            @staticmethod
-                                            def items() -> typing.Type['DocumentVersion']:
-                                                return DocumentVersion
-                                    
-                                        def __new__(
-                                            cls,
-                                            arg: typing.Union[typing.Tuple['DocumentVersion'], typing.List['DocumentVersion']],
-                                            _configuration: typing.Optional[schemas.Configuration] = None,
-                                        ) -> 'versions':
-                                            return super().__new__(
-                                                cls,
-                                                arg,
-                                                _configuration=_configuration,
-                                            )
-                                    
-                                        def __getitem__(self, i: int) -> 'DocumentVersion':
-                                            return super().__getitem__(i)
-                                    size = schemas.IntSchema
-                                    page_count = schemas.IntSchema
-                                    created_at = schemas.DateTimeSchema
-                                    updated_at = schemas.DateTimeSchema
-                                    __annotations__ = {
-                                        "id": id,
-                                        "title": title,
-                                        "lang": lang,
-                                        "file_name": file_name,
-                                        "ocr": ocr,
-                                        "ocr_status": ocr_status,
-                                        "versions": versions,
-                                        "size": size,
-                                        "page_count": page_count,
-                                        "created_at": created_at,
-                                        "updated_at": updated_at,
-                                    }
-                            
-                            title: MetaOapg.properties.title
-                            
-                            @typing.overload
-                            def __getitem__(self, name: typing_extensions.Literal["id"]) -> MetaOapg.properties.id: ...
-                            
-                            @typing.overload
-                            def __getitem__(self, name: typing_extensions.Literal["title"]) -> MetaOapg.properties.title: ...
-                            
-                            @typing.overload
-                            def __getitem__(self, name: typing_extensions.Literal["lang"]) -> MetaOapg.properties.lang: ...
-                            
-                            @typing.overload
-                            def __getitem__(self, name: typing_extensions.Literal["file_name"]) -> MetaOapg.properties.file_name: ...
-                            
-                            @typing.overload
-                            def __getitem__(self, name: typing_extensions.Literal["ocr"]) -> MetaOapg.properties.ocr: ...
-                            
-                            @typing.overload
-                            def __getitem__(self, name: typing_extensions.Literal["ocr_status"]) -> MetaOapg.properties.ocr_status: ...
-                            
-                            @typing.overload
-                            def __getitem__(self, name: typing_extensions.Literal["versions"]) -> MetaOapg.properties.versions: ...
-                            
-                            @typing.overload
-                            def __getitem__(self, name: typing_extensions.Literal["size"]) -> MetaOapg.properties.size: ...
-                            
-                            @typing.overload
-                            def __getitem__(self, name: typing_extensions.Literal["page_count"]) -> MetaOapg.properties.page_count: ...
-                            
-                            @typing.overload
-                            def __getitem__(self, name: typing_extensions.Literal["created_at"]) -> MetaOapg.properties.created_at: ...
-                            
-                            @typing.overload
-                            def __getitem__(self, name: typing_extensions.Literal["updated_at"]) -> MetaOapg.properties.updated_at: ...
-                            
-                            @typing.overload
-                            def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
-                            
-                            def __getitem__(self, name: typing.Union[typing_extensions.Literal["id", "title", "lang", "file_name", "ocr", "ocr_status", "versions", "size", "page_count", "created_at", "updated_at", ], str]):
-                                # dict_instance[name] accessor
-                                return super().__getitem__(name)
-                            
-                            
-                            @typing.overload
-                            def get_item_oapg(self, name: typing_extensions.Literal["id"]) -> typing.Union[MetaOapg.properties.id, schemas.Unset]: ...
-                            
-                            @typing.overload
-                            def get_item_oapg(self, name: typing_extensions.Literal["title"]) -> MetaOapg.properties.title: ...
-                            
-                            @typing.overload
-                            def get_item_oapg(self, name: typing_extensions.Literal["lang"]) -> typing.Union[MetaOapg.properties.lang, schemas.Unset]: ...
-                            
-                            @typing.overload
-                            def get_item_oapg(self, name: typing_extensions.Literal["file_name"]) -> typing.Union[MetaOapg.properties.file_name, schemas.Unset]: ...
-                            
-                            @typing.overload
-                            def get_item_oapg(self, name: typing_extensions.Literal["ocr"]) -> typing.Union[MetaOapg.properties.ocr, schemas.Unset]: ...
-                            
-                            @typing.overload
-                            def get_item_oapg(self, name: typing_extensions.Literal["ocr_status"]) -> typing.Union[MetaOapg.properties.ocr_status, schemas.Unset]: ...
-                            
-                            @typing.overload
-                            def get_item_oapg(self, name: typing_extensions.Literal["versions"]) -> typing.Union[MetaOapg.properties.versions, schemas.Unset]: ...
-                            
-                            @typing.overload
-                            def get_item_oapg(self, name: typing_extensions.Literal["size"]) -> typing.Union[MetaOapg.properties.size, schemas.Unset]: ...
-                            
-                            @typing.overload
-                            def get_item_oapg(self, name: typing_extensions.Literal["page_count"]) -> typing.Union[MetaOapg.properties.page_count, schemas.Unset]: ...
-                            
-                            @typing.overload
-                            def get_item_oapg(self, name: typing_extensions.Literal["created_at"]) -> typing.Union[MetaOapg.properties.created_at, schemas.Unset]: ...
-                            
-                            @typing.overload
-                            def get_item_oapg(self, name: typing_extensions.Literal["updated_at"]) -> typing.Union[MetaOapg.properties.updated_at, schemas.Unset]: ...
-                            
-                            @typing.overload
-                            def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
-                            
-                            def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["id", "title", "lang", "file_name", "ocr", "ocr_status", "versions", "size", "page_count", "created_at", "updated_at", ], str]):
-                                return super().get_item_oapg(name)
-                            
-                        
-                            def __new__(
-                                cls,
-                                *args: typing.Union[dict, frozendict.frozendict, ],
-                                title: typing.Union[MetaOapg.properties.title, str, ],
-                                id: typing.Union[MetaOapg.properties.id, str, uuid.UUID, schemas.Unset] = schemas.unset,
-                                lang: typing.Union[MetaOapg.properties.lang, str, schemas.Unset] = schemas.unset,
-                                file_name: typing.Union[MetaOapg.properties.file_name, str, schemas.Unset] = schemas.unset,
-                                ocr: typing.Union[MetaOapg.properties.ocr, bool, schemas.Unset] = schemas.unset,
-                                ocr_status: typing.Union[MetaOapg.properties.ocr_status, str, schemas.Unset] = schemas.unset,
-                                versions: typing.Union[MetaOapg.properties.versions, list, tuple, schemas.Unset] = schemas.unset,
-                                size: typing.Union[MetaOapg.properties.size, decimal.Decimal, int, schemas.Unset] = schemas.unset,
-                                page_count: typing.Union[MetaOapg.properties.page_count, decimal.Decimal, int, schemas.Unset] = schemas.unset,
-                                created_at: typing.Union[MetaOapg.properties.created_at, str, datetime, schemas.Unset] = schemas.unset,
-                                updated_at: typing.Union[MetaOapg.properties.updated_at, str, datetime, schemas.Unset] = schemas.unset,
-                                _configuration: typing.Optional[schemas.Configuration] = None,
-                                **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
-                            ) -> 'attributes':
-                                return super().__new__(
-                                    cls,
-                                    *args,
-                                    title=title,
-                                    id=id,
-                                    lang=lang,
-                                    file_name=file_name,
-                                    ocr=ocr,
-                                    ocr_status=ocr_status,
-                                    versions=versions,
-                                    size=size,
-                                    page_count=page_count,
-                                    created_at=created_at,
-                                    updated_at=updated_at,
-                                    _configuration=_configuration,
-                                    **kwargs,
-                                )
-                        
-                        
-                        class relationships(
-                            schemas.DictSchema
+                        class versions(
+                            schemas.ListSchema
                         ):
                         
                         
                             class MetaOapg:
                                 
-                                class properties:
-                                
-                                    @staticmethod
-                                    def parent() -> typing.Type['Reltoone']:
-                                        return Reltoone
-                                    __annotations__ = {
-                                        "parent": parent,
-                                    }
-                            
-                            @typing.overload
-                            def __getitem__(self, name: typing_extensions.Literal["parent"]) -> 'Reltoone': ...
-                            
-                            @typing.overload
-                            def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
-                            
-                            def __getitem__(self, name: typing.Union[typing_extensions.Literal["parent", ], str]):
-                                # dict_instance[name] accessor
-                                return super().__getitem__(name)
-                            
-                            
-                            @typing.overload
-                            def get_item_oapg(self, name: typing_extensions.Literal["parent"]) -> typing.Union['Reltoone', schemas.Unset]: ...
-                            
-                            @typing.overload
-                            def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
-                            
-                            def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["parent", ], str]):
-                                return super().get_item_oapg(name)
-                            
+                                @staticmethod
+                                def items() -> typing.Type['DocumentVersion']:
+                                    return DocumentVersion
                         
                             def __new__(
                                 cls,
-                                *args: typing.Union[dict, frozendict.frozendict, ],
-                                parent: typing.Union['Reltoone', schemas.Unset] = schemas.unset,
+                                arg: typing.Union[typing.Tuple['DocumentVersion'], typing.List['DocumentVersion']],
                                 _configuration: typing.Optional[schemas.Configuration] = None,
-                                **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
-                            ) -> 'relationships':
+                            ) -> 'versions':
                                 return super().__new__(
                                     cls,
-                                    *args,
-                                    parent=parent,
+                                    arg,
                                     _configuration=_configuration,
-                                    **kwargs,
                                 )
+                        
+                            def __getitem__(self, i: int) -> 'DocumentVersion':
+                                return super().__getitem__(i)
+                        size = schemas.IntSchema
+                        page_count = schemas.IntSchema
+                        created_at = schemas.DateTimeSchema
+                        updated_at = schemas.DateTimeSchema
                         __annotations__ = {
-                            "type": type,
                             "id": id,
-                            "attributes": attributes,
-                            "relationships": relationships,
+                            "title": title,
+                            "lang": lang,
+                            "file_name": file_name,
+                            "ocr": ocr,
+                            "ocr_status": ocr_status,
+                            "versions": versions,
+                            "size": size,
+                            "page_count": page_count,
+                            "created_at": created_at,
+                            "updated_at": updated_at,
                         }
-                    additional_properties = schemas.NotAnyTypeSchema
                 
-                type: MetaOapg.properties.type
-                
-                @typing.overload
-                def __getitem__(self, name: typing_extensions.Literal["type"]) -> MetaOapg.properties.type: ...
+                title: MetaOapg.properties.title
                 
                 @typing.overload
                 def __getitem__(self, name: typing_extensions.Literal["id"]) -> MetaOapg.properties.id: ...
                 
                 @typing.overload
-                def __getitem__(self, name: typing_extensions.Literal["attributes"]) -> MetaOapg.properties.attributes: ...
+                def __getitem__(self, name: typing_extensions.Literal["title"]) -> MetaOapg.properties.title: ...
                 
                 @typing.overload
-                def __getitem__(self, name: typing_extensions.Literal["relationships"]) -> MetaOapg.properties.relationships: ...
+                def __getitem__(self, name: typing_extensions.Literal["lang"]) -> MetaOapg.properties.lang: ...
                 
-                def __getitem__(self, name: typing.Union[typing_extensions.Literal["type"], typing_extensions.Literal["id"], typing_extensions.Literal["attributes"], typing_extensions.Literal["relationships"], ]):
+                @typing.overload
+                def __getitem__(self, name: typing_extensions.Literal["file_name"]) -> MetaOapg.properties.file_name: ...
+                
+                @typing.overload
+                def __getitem__(self, name: typing_extensions.Literal["ocr"]) -> MetaOapg.properties.ocr: ...
+                
+                @typing.overload
+                def __getitem__(self, name: typing_extensions.Literal["ocr_status"]) -> MetaOapg.properties.ocr_status: ...
+                
+                @typing.overload
+                def __getitem__(self, name: typing_extensions.Literal["versions"]) -> MetaOapg.properties.versions: ...
+                
+                @typing.overload
+                def __getitem__(self, name: typing_extensions.Literal["size"]) -> MetaOapg.properties.size: ...
+                
+                @typing.overload
+                def __getitem__(self, name: typing_extensions.Literal["page_count"]) -> MetaOapg.properties.page_count: ...
+                
+                @typing.overload
+                def __getitem__(self, name: typing_extensions.Literal["created_at"]) -> MetaOapg.properties.created_at: ...
+                
+                @typing.overload
+                def __getitem__(self, name: typing_extensions.Literal["updated_at"]) -> MetaOapg.properties.updated_at: ...
+                
+                @typing.overload
+                def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
+                
+                def __getitem__(self, name: typing.Union[typing_extensions.Literal["id", "title", "lang", "file_name", "ocr", "ocr_status", "versions", "size", "page_count", "created_at", "updated_at", ], str]):
                     # dict_instance[name] accessor
                     return super().__getitem__(name)
                 
-                @typing.overload
-                def get_item_oapg(self, name: typing_extensions.Literal["type"]) -> MetaOapg.properties.type: ...
                 
                 @typing.overload
                 def get_item_oapg(self, name: typing_extensions.Literal["id"]) -> typing.Union[MetaOapg.properties.id, schemas.Unset]: ...
                 
                 @typing.overload
-                def get_item_oapg(self, name: typing_extensions.Literal["attributes"]) -> typing.Union[MetaOapg.properties.attributes, schemas.Unset]: ...
+                def get_item_oapg(self, name: typing_extensions.Literal["title"]) -> MetaOapg.properties.title: ...
                 
                 @typing.overload
-                def get_item_oapg(self, name: typing_extensions.Literal["relationships"]) -> typing.Union[MetaOapg.properties.relationships, schemas.Unset]: ...
+                def get_item_oapg(self, name: typing_extensions.Literal["lang"]) -> typing.Union[MetaOapg.properties.lang, schemas.Unset]: ...
                 
-                def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["type"], typing_extensions.Literal["id"], typing_extensions.Literal["attributes"], typing_extensions.Literal["relationships"], ]):
+                @typing.overload
+                def get_item_oapg(self, name: typing_extensions.Literal["file_name"]) -> typing.Union[MetaOapg.properties.file_name, schemas.Unset]: ...
+                
+                @typing.overload
+                def get_item_oapg(self, name: typing_extensions.Literal["ocr"]) -> typing.Union[MetaOapg.properties.ocr, schemas.Unset]: ...
+                
+                @typing.overload
+                def get_item_oapg(self, name: typing_extensions.Literal["ocr_status"]) -> typing.Union[MetaOapg.properties.ocr_status, schemas.Unset]: ...
+                
+                @typing.overload
+                def get_item_oapg(self, name: typing_extensions.Literal["versions"]) -> typing.Union[MetaOapg.properties.versions, schemas.Unset]: ...
+                
+                @typing.overload
+                def get_item_oapg(self, name: typing_extensions.Literal["size"]) -> typing.Union[MetaOapg.properties.size, schemas.Unset]: ...
+                
+                @typing.overload
+                def get_item_oapg(self, name: typing_extensions.Literal["page_count"]) -> typing.Union[MetaOapg.properties.page_count, schemas.Unset]: ...
+                
+                @typing.overload
+                def get_item_oapg(self, name: typing_extensions.Literal["created_at"]) -> typing.Union[MetaOapg.properties.created_at, schemas.Unset]: ...
+                
+                @typing.overload
+                def get_item_oapg(self, name: typing_extensions.Literal["updated_at"]) -> typing.Union[MetaOapg.properties.updated_at, schemas.Unset]: ...
+                
+                @typing.overload
+                def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
+                
+                def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["id", "title", "lang", "file_name", "ocr", "ocr_status", "versions", "size", "page_count", "created_at", "updated_at", ], str]):
                     return super().get_item_oapg(name)
+                
             
                 def __new__(
                     cls,
                     *args: typing.Union[dict, frozendict.frozendict, ],
-                    type: typing.Union[MetaOapg.properties.type, str, ],
+                    title: typing.Union[MetaOapg.properties.title, str, ],
                     id: typing.Union[MetaOapg.properties.id, str, uuid.UUID, schemas.Unset] = schemas.unset,
-                    attributes: typing.Union[MetaOapg.properties.attributes, dict, frozendict.frozendict, schemas.Unset] = schemas.unset,
-                    relationships: typing.Union[MetaOapg.properties.relationships, dict, frozendict.frozendict, schemas.Unset] = schemas.unset,
+                    lang: typing.Union[MetaOapg.properties.lang, str, schemas.Unset] = schemas.unset,
+                    file_name: typing.Union[MetaOapg.properties.file_name, str, schemas.Unset] = schemas.unset,
+                    ocr: typing.Union[MetaOapg.properties.ocr, bool, schemas.Unset] = schemas.unset,
+                    ocr_status: typing.Union[MetaOapg.properties.ocr_status, str, schemas.Unset] = schemas.unset,
+                    versions: typing.Union[MetaOapg.properties.versions, list, tuple, schemas.Unset] = schemas.unset,
+                    size: typing.Union[MetaOapg.properties.size, decimal.Decimal, int, schemas.Unset] = schemas.unset,
+                    page_count: typing.Union[MetaOapg.properties.page_count, decimal.Decimal, int, schemas.Unset] = schemas.unset,
+                    created_at: typing.Union[MetaOapg.properties.created_at, str, datetime, schemas.Unset] = schemas.unset,
+                    updated_at: typing.Union[MetaOapg.properties.updated_at, str, datetime, schemas.Unset] = schemas.unset,
                     _configuration: typing.Optional[schemas.Configuration] = None,
-                ) -> 'data':
+                    **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
+                ) -> 'attributes':
                     return super().__new__(
                         cls,
                         *args,
-                        type=type,
+                        title=title,
                         id=id,
-                        attributes=attributes,
-                        relationships=relationships,
+                        lang=lang,
+                        file_name=file_name,
+                        ocr=ocr,
+                        ocr_status=ocr_status,
+                        versions=versions,
+                        size=size,
+                        page_count=page_count,
+                        created_at=created_at,
+                        updated_at=updated_at,
                         _configuration=_configuration,
+                        **kwargs,
+                    )
+            
+            
+            class relationships(
+                schemas.DictSchema
+            ):
+            
+            
+                class MetaOapg:
+                    
+                    class properties:
+                    
+                        @staticmethod
+                        def parent() -> typing.Type['Reltoone']:
+                            return Reltoone
+                        __annotations__ = {
+                            "parent": parent,
+                        }
+                
+                @typing.overload
+                def __getitem__(self, name: typing_extensions.Literal["parent"]) -> 'Reltoone': ...
+                
+                @typing.overload
+                def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
+                
+                def __getitem__(self, name: typing.Union[typing_extensions.Literal["parent", ], str]):
+                    # dict_instance[name] accessor
+                    return super().__getitem__(name)
+                
+                
+                @typing.overload
+                def get_item_oapg(self, name: typing_extensions.Literal["parent"]) -> typing.Union['Reltoone', schemas.Unset]: ...
+                
+                @typing.overload
+                def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
+                
+                def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["parent", ], str]):
+                    return super().get_item_oapg(name)
+                
+            
+                def __new__(
+                    cls,
+                    *args: typing.Union[dict, frozendict.frozendict, ],
+                    parent: typing.Union['Reltoone', schemas.Unset] = schemas.unset,
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                    **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
+                ) -> 'relationships':
+                    return super().__new__(
+                        cls,
+                        *args,
+                        parent=parent,
+                        _configuration=_configuration,
+                        **kwargs,
                     )
             __annotations__ = {
-                "data": data,
+                "type": type,
+                "id": id,
+                "attributes": attributes,
+                "relationships": relationships,
             }
+        additional_properties = schemas.NotAnyTypeSchema
+    
+    type: 'DocumentDetailsTypeEnum'
     
     @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["data"]) -> MetaOapg.properties.data: ...
+    def __getitem__(self, name: typing_extensions.Literal["type"]) -> 'DocumentDetailsTypeEnum': ...
     
     @typing.overload
-    def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
+    def __getitem__(self, name: typing_extensions.Literal["id"]) -> MetaOapg.properties.id: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["data", ], str]):
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["attributes"]) -> MetaOapg.properties.attributes: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["relationships"]) -> MetaOapg.properties.relationships: ...
+    
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["type"], typing_extensions.Literal["id"], typing_extensions.Literal["attributes"], typing_extensions.Literal["relationships"], ]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["type"]) -> 'DocumentDetailsTypeEnum': ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["data"]) -> typing.Union[MetaOapg.properties.data, schemas.Unset]: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["id"]) -> typing.Union[MetaOapg.properties.id, schemas.Unset]: ...
     
     @typing.overload
-    def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["attributes"]) -> typing.Union[MetaOapg.properties.attributes, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["data", ], str]):
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["relationships"]) -> typing.Union[MetaOapg.properties.relationships, schemas.Unset]: ...
+    
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["type"], typing_extensions.Literal["id"], typing_extensions.Literal["attributes"], typing_extensions.Literal["relationships"], ]):
         return super().get_item_oapg(name)
-    
 
     def __new__(
         cls,
         *args: typing.Union[dict, frozendict.frozendict, ],
-        data: typing.Union[MetaOapg.properties.data, dict, frozendict.frozendict, schemas.Unset] = schemas.unset,
+        type: 'DocumentDetailsTypeEnum',
+        id: typing.Union[MetaOapg.properties.id, str, uuid.UUID, schemas.Unset] = schemas.unset,
+        attributes: typing.Union[MetaOapg.properties.attributes, dict, frozendict.frozendict, schemas.Unset] = schemas.unset,
+        relationships: typing.Union[MetaOapg.properties.relationships, dict, frozendict.frozendict, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
-        **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'DocumentDetails':
         return super().__new__(
             cls,
             *args,
-            data=data,
+            type=type,
+            id=id,
+            attributes=attributes,
+            relationships=relationships,
             _configuration=_configuration,
-            **kwargs,
         )
 
+from papermerge_restapi_client.model.document_details_type_enum import DocumentDetailsTypeEnum
 from papermerge_restapi_client.model.document_version import DocumentVersion
 from papermerge_restapi_client.model.reltoone import Reltoone

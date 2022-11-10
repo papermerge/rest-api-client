@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 # **tokens_create**
 <a name="tokens_create"></a>
-> Token tokens_create()
+> Token tokens_create(token)
 
 
 
@@ -47,17 +47,15 @@ with papermerge_restapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tokens_api.TokensApi(api_client)
 
-    # example passing only optional values
+    # example passing only required values which don't have defaults set
     body = Token(
-        data=dict(
-            type="tokens",
-            id="id_example",
-            attributes=dict(
-                token="token_example",
-                digest="digest_example",
-                created="1970-01-01T00:00:00.00Z",
-                expiry="1970-01-01T00:00:00.00Z",
-            ),
+        type=TokenTypeEnum("tokens"),
+        id="id_example",
+        attributes=dict(
+            token="token_example",
+            digest="digest_example",
+            created="1970-01-01T00:00:00.00Z",
+            expiry="1970-01-01T00:00:00.00Z",
         ),
     )
     try:
@@ -72,7 +70,7 @@ with papermerge_restapi_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-body | typing.Union[SchemaForRequestBodyApplicationVndApijson, SchemaForRequestBodyApplicationJson, SchemaForRequestBodyMultipartFormData, Unset] | optional, default is unset |
+body | typing.Union[SchemaForRequestBodyApplicationVndApijson, SchemaForRequestBodyApplicationJson, SchemaForRequestBodyMultipartFormData] | required |
 content_type | str | optional, default is 'application/vnd.api+json' | Selects the schema and serialization of the request body
 accept_content_types | typing.Tuple[str] | default is ('application/vnd.api+json', ) | Tells the server the content type(s) that are accepted by the client
 stream | bool | default is False | if True then the response.content will be streamed and loaded from a file like object. When downloading a file, set this to True to force the code to deserialize the content to a FileSchema file

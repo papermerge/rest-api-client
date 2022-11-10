@@ -36,14 +36,14 @@ class NodeTypeEnum(
 
     class MetaOapg:
         enum_value_to_name = {
-            "document": "DOCUMENT",
-            "folder": "FOLDER",
+            "Document": "DOCUMENT",
+            "folders": "FOLDERS",
         }
     
     @schemas.classproperty
     def DOCUMENT(cls):
-        return cls("document")
+        return cls("Document")
     
     @schemas.classproperty
-    def FOLDER(cls):
-        return cls("folder")
+    def FOLDERS(cls):
+        return cls("folders")

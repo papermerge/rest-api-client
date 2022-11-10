@@ -25,14 +25,14 @@ import frozendict  # noqa: F401
 
 from papermerge_restapi_client import schemas  # noqa: F401
 
-from papermerge_restapi_client.model.user import User
+from papermerge_restapi_client.model.data_user import DataUser
 
 from . import path
 
 _auth = [
     'Token Authentication',
 ]
-SchemaFor200ResponseBodyApplicationVndApijson = User
+SchemaFor200ResponseBodyApplicationVndApijson = DataUser
 
 
 @dataclass

@@ -25,10 +25,60 @@ import frozendict  # noqa: F401
 
 from papermerge_restapi_client import schemas  # noqa: F401
 
-from papermerge_restapi_client.model.node import Node
+from papermerge_restapi_client.model.paginated_node_list import PaginatedNodeList
 
 from . import path
 
+# query params
+FilterSearchSchema = schemas.StrSchema
+PageNumberSchema = schemas.IntSchema
+PageSizeSchema = schemas.IntSchema
+SortSchema = schemas.StrSchema
+RequestRequiredQueryParams = typing_extensions.TypedDict(
+    'RequestRequiredQueryParams',
+    {
+    }
+)
+RequestOptionalQueryParams = typing_extensions.TypedDict(
+    'RequestOptionalQueryParams',
+    {
+        'filter[search]': typing.Union[FilterSearchSchema, str, ],
+        'page[number]': typing.Union[PageNumberSchema, decimal.Decimal, int, ],
+        'page[size]': typing.Union[PageSizeSchema, decimal.Decimal, int, ],
+        'sort': typing.Union[SortSchema, str, ],
+    },
+    total=False
+)
+
+
+class RequestQueryParams(RequestRequiredQueryParams, RequestOptionalQueryParams):
+    pass
+
+
+request_query_filter_search = api_client.QueryParameter(
+    name="filter[search]",
+    style=api_client.ParameterStyle.FORM,
+    schema=FilterSearchSchema,
+    explode=True,
+)
+request_query_page_number = api_client.QueryParameter(
+    name="page[number]",
+    style=api_client.ParameterStyle.FORM,
+    schema=PageNumberSchema,
+    explode=True,
+)
+request_query_page_size = api_client.QueryParameter(
+    name="page[size]",
+    style=api_client.ParameterStyle.FORM,
+    schema=PageSizeSchema,
+    explode=True,
+)
+request_query_sort = api_client.QueryParameter(
+    name="sort",
+    style=api_client.ParameterStyle.FORM,
+    schema=SortSchema,
+    explode=True,
+)
 # path params
 IdSchema = schemas.UUIDSchema
 RequestRequiredPathParams = typing_extensions.TypedDict(
@@ -58,7 +108,7 @@ request_path_id = api_client.PathParameter(
 _auth = [
     'Token Authentication',
 ]
-SchemaFor200ResponseBodyApplicationVndApijson = Node
+SchemaFor200ResponseBodyApplicationVndApijson = PaginatedNodeList
 
 
 @dataclass
@@ -87,8 +137,9 @@ _all_accept_content_types = (
 
 class BaseApi(api_client.Api):
 
-    def _retrieve_node_oapg(
+    def _node_retrieve_oapg(
         self: api_client.Api,
+        query_params: RequestQueryParams = frozendict.frozendict(),
         path_params: RequestPathParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
@@ -103,6 +154,7 @@ class BaseApi(api_client.Api):
             api_response.body and api_response.headers will not be deserialized into schema
             class instances
         """
+        self._verify_typed_dict_inputs_oapg(RequestQueryParams, query_params)
         self._verify_typed_dict_inputs_oapg(RequestPathParams, path_params)
         used_path = path.value
 
@@ -118,6 +170,22 @@ class BaseApi(api_client.Api):
 
         for k, v in _path_params.items():
             used_path = used_path.replace('{%s}' % k, v)
+
+        prefix_separator_iterator = None
+        for parameter in (
+            request_query_filter_search,
+            request_query_page_number,
+            request_query_page_size,
+            request_query_sort,
+        ):
+            parameter_data = query_params.get(parameter.name, schemas.unset)
+            if parameter_data is schemas.unset:
+                continue
+            if prefix_separator_iterator is None:
+                prefix_separator_iterator = parameter.get_prefix_separator_iterator()
+            serialized_data = parameter.serialize(parameter_data, prefix_separator_iterator)
+            for serialized_value in serialized_data.values():
+                used_path += serialized_value
 
         _headers = HTTPHeaderDict()
         # TODO add cookie handling
@@ -149,11 +217,12 @@ class BaseApi(api_client.Api):
         return api_response
 
 
-class RetrieveNode(BaseApi):
+class NodeRetrieve(BaseApi):
     # this class is used by api classes that refer to endpoints with operationId fn names
 
-    def retrieve_node(
+    def node_retrieve(
         self: BaseApi,
+        query_params: RequestQueryParams = frozendict.frozendict(),
         path_params: RequestPathParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
@@ -163,7 +232,8 @@ class RetrieveNode(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization
     ]:
-        return self._retrieve_node_oapg(
+        return self._node_retrieve_oapg(
+            query_params=query_params,
             path_params=path_params,
             accept_content_types=accept_content_types,
             stream=stream,
@@ -177,6 +247,7 @@ class ApiForget(BaseApi):
 
     def get(
         self: BaseApi,
+        query_params: RequestQueryParams = frozendict.frozendict(),
         path_params: RequestPathParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
@@ -186,7 +257,8 @@ class ApiForget(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization
     ]:
-        return self._retrieve_node_oapg(
+        return self._node_retrieve_oapg(
+            query_params=query_params,
             path_params=path_params,
             accept_content_types=accept_content_types,
             stream=stream,

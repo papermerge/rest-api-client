@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**node_append_tags**](#node_append_tags) | **patch** /api/nodes/{id}/tags/ | 
 [**node_assign_tags**](#node_assign_tags) | **post** /api/nodes/{id}/tags/ | 
 [**node_dissociate_tags**](#node_dissociate_tags) | **delete** /api/nodes/{id}/tags/ | 
+[**node_retrieve**](#node_retrieve) | **get** /api/nodes/{id}/ | 
 [**nodes_create**](#nodes_create) | **post** /api/nodes/ | 
 [**nodes_destroy**](#nodes_destroy) | **delete** /api/nodes/{id}/ | 
 [**nodes_download_retrieve**](#nodes_download_retrieve) | **get** /api/nodes/download/ | 
@@ -15,7 +16,6 @@ Method | HTTP request | Description
 [**nodes_list**](#nodes_list) | **get** /api/nodes/ | 
 [**nodes_move_create**](#nodes_move_create) | **post** /api/nodes/move/ | 
 [**nodes_partial_update**](#nodes_partial_update) | **patch** /api/nodes/{id}/ | 
-[**retrieve_node**](#retrieve_node) | **get** /api/nodes/{id}/ | 
 
 # **node_append_tags**
 <a name="node_append_tags"></a>
@@ -350,13 +350,13 @@ headers | Unset | headers were not defined |
 
 [[Back to top]](#__pageTop) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
 
-# **nodes_create**
-<a name="nodes_create"></a>
-> Node nodes_create()
+# **node_retrieve**
+<a name="node_retrieve"></a>
+> PaginatedNodeList node_retrieve(id)
 
 
 
-Creates a node.  A node can be either a Folder or a Document. In order to create a folder set required `type` attribute to `folders`. In order to create a document set `type` attribute to `documents`.  Created document won't have any file associated i.e. this REST API creates just document model in database.
+Documents can be organized in folders. One folder can contain documents as well as other folders. A node is a convinient abstraction of two concepts - 'folder' and 'document'. Each node has a type field with value either 'folders' or 'documents' depending on what kind of node it is.
 
 ### Example
 
@@ -364,7 +364,7 @@ Creates a node.  A node can be either a Folder or a Document. In order to create
 ```python
 import papermerge_restapi_client
 from papermerge_restapi_client.apis.tags import nodes_api
-from papermerge_restapi_client.model.node import Node
+from papermerge_restapi_client.model.paginated_node_list import PaginatedNodeList
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
@@ -387,10 +387,171 @@ with papermerge_restapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = nodes_api.NodesApi(api_client)
 
+    # example passing only required values which don't have defaults set
+    path_params = {
+        'id': "id_example",
+    }
+    query_params = {
+    }
+    try:
+        api_response = api_instance.node_retrieve(
+            path_params=path_params,
+            query_params=query_params,
+        )
+        pprint(api_response)
+    except papermerge_restapi_client.ApiException as e:
+        print("Exception when calling NodesApi->node_retrieve: %s\n" % e)
+
     # example passing only optional values
-    body = Node(
-        data=dict(
-            type="documents",
+    path_params = {
+        'id': "id_example",
+    }
+    query_params = {
+        'filter[search]': "filter[search]_example",
+        'page[number]': 1,
+        'page[size]': 1,
+        'sort': "sort_example",
+    }
+    try:
+        api_response = api_instance.node_retrieve(
+            path_params=path_params,
+            query_params=query_params,
+        )
+        pprint(api_response)
+    except papermerge_restapi_client.ApiException as e:
+        print("Exception when calling NodesApi->node_retrieve: %s\n" % e)
+```
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+query_params | RequestQueryParams | |
+path_params | RequestPathParams | |
+accept_content_types | typing.Tuple[str] | default is ('application/vnd.api+json', ) | Tells the server the content type(s) that are accepted by the client
+stream | bool | default is False | if True then the response.content will be streamed and loaded from a file like object. When downloading a file, set this to True to force the code to deserialize the content to a FileSchema file
+timeout | typing.Optional[typing.Union[int, typing.Tuple]] | default is None | the timeout used by the rest client
+skip_deserialization | bool | default is False | when True, headers and body will be unset and an instance of api_client.ApiResponseWithoutDeserialization will be returned
+
+### query_params
+#### RequestQueryParams
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+filter[search] | FilterSearchSchema | | optional
+page[number] | PageNumberSchema | | optional
+page[size] | PageSizeSchema | | optional
+sort | SortSchema | | optional
+
+
+# FilterSearchSchema
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+str,  | str,  |  | 
+
+# PageNumberSchema
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+decimal.Decimal, int,  | decimal.Decimal,  |  | 
+
+# PageSizeSchema
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+decimal.Decimal, int,  | decimal.Decimal,  |  | 
+
+# SortSchema
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+str,  | str,  |  | 
+
+### path_params
+#### RequestPathParams
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+id | IdSchema | | 
+
+# IdSchema
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+str, uuid.UUID,  | str,  |  | value must be a uuid
+
+### Return Types, Responses
+
+Code | Class | Description
+------------- | ------------- | -------------
+n/a | api_client.ApiResponseWithoutDeserialization | When skip_deserialization is True this response is returned
+200 | [ApiResponseFor200](#node_retrieve.ApiResponseFor200) | 
+
+#### node_retrieve.ApiResponseFor200
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | typing.Union[SchemaFor200ResponseBodyApplicationVndApijson, ] |  |
+headers | Unset | headers were not defined |
+
+# SchemaFor200ResponseBodyApplicationVndApijson
+Type | Description  | Notes
+------------- | ------------- | -------------
+[**PaginatedNodeList**](../../models/PaginatedNodeList.md) |  | 
+
+
+### Authorization
+
+[Token Authentication](../../../README.md#Token Authentication)
+
+[[Back to top]](#__pageTop) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
+
+# **nodes_create**
+<a name="nodes_create"></a>
+> DataNode nodes_create(data_node)
+
+
+
+Creates a node.  A node can be either a Folder or a Document. In order to create a folder set required `type` attribute to `folders`. In order to create a document set `type` attribute to `documents`.  Created document won't have any file associated i.e. this REST API creates just document model in database.
+
+### Example
+
+* Api Key Authentication (Token Authentication):
+```python
+import papermerge_restapi_client
+from papermerge_restapi_client.apis.tags import nodes_api
+from papermerge_restapi_client.model.data_node import DataNode
+from pprint import pprint
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = papermerge_restapi_client.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: Token Authentication
+configuration.api_key['Token Authentication'] = 'YOUR_API_KEY'
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Token Authentication'] = 'Bearer'
+# Enter a context with an instance of the API client
+with papermerge_restapi_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = nodes_api.NodesApi(api_client)
+
+    # example passing only required values which don't have defaults set
+    body = DataNode(
+        data=Node(
+            type=NodeTypeEnum("Document"),
             id="id_example",
             attributes=dict(
                 title="title_example",
@@ -419,7 +580,7 @@ with papermerge_restapi_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-body | typing.Union[SchemaForRequestBodyApplicationVndApijson, Unset] | optional, default is unset |
+body | typing.Union[SchemaForRequestBodyApplicationVndApijson] | required |
 content_type | str | optional, default is 'application/vnd.api+json' | Selects the schema and serialization of the request body
 accept_content_types | typing.Tuple[str] | default is ('application/vnd.api+json', ) | Tells the server the content type(s) that are accepted by the client
 stream | bool | default is False | if True then the response.content will be streamed and loaded from a file like object. When downloading a file, set this to True to force the code to deserialize the content to a FileSchema file
@@ -431,7 +592,7 @@ skip_deserialization | bool | default is False | when True, headers and body wil
 # SchemaForRequestBodyApplicationVndApijson
 Type | Description  | Notes
 ------------- | ------------- | -------------
-[**Node**](../../models/Node.md) |  | 
+[**DataNode**](../../models/DataNode.md) |  | 
 
 
 ### Return Types, Responses
@@ -451,7 +612,7 @@ headers | Unset | headers were not defined |
 # SchemaFor201ResponseBodyApplicationVndApijson
 Type | Description  | Notes
 ------------- | ------------- | -------------
-[**Node**](../../models/Node.md) |  | 
+[**DataNode**](../../models/DataNode.md) |  | 
 
 
 ### Authorization
@@ -1032,7 +1193,7 @@ Type | Description  | Notes
 
 # **nodes_partial_update**
 <a name="nodes_partial_update"></a>
-> Node nodes_partial_update(id)
+> Node nodes_partial_update(idpatched_node)
 
 
 
@@ -1072,33 +1233,19 @@ with papermerge_restapi_client.ApiClient(configuration) as api_client:
     path_params = {
         'id': "id_example",
     }
-    try:
-        api_response = api_instance.nodes_partial_update(
-            path_params=path_params,
-        )
-        pprint(api_response)
-    except papermerge_restapi_client.ApiException as e:
-        print("Exception when calling NodesApi->nodes_partial_update: %s\n" % e)
-
-    # example passing only optional values
-    path_params = {
-        'id': "id_example",
-    }
     body = PatchedNode(
-        data=dict(
-            type="documents",
-            id="id_example",
-            attributes=dict(
-                title="title_example",
-                created_at="1970-01-01T00:00:00.00Z",
-                updated_at="1970-01-01T00:00:00.00Z",
-            ),
-            relationships=dict(
-                parent=Reltoone(
-                    data=RelationshipToOne(
-                        type="type_example",
-                        id="id_example",
-                    ),
+        type=NodeTypeEnum("Document"),
+        id="id_example",
+        attributes=dict(
+            title="title_example",
+            created_at="1970-01-01T00:00:00.00Z",
+            updated_at="1970-01-01T00:00:00.00Z",
+        ),
+        relationships=dict(
+            parent=Reltoone(
+                data=RelationshipToOne(
+                    type="type_example",
+                    id="id_example",
                 ),
             ),
         ),
@@ -1116,7 +1263,7 @@ with papermerge_restapi_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-body | typing.Union[SchemaForRequestBodyApplicationVndApijson, Unset] | optional, default is unset |
+body | typing.Union[SchemaForRequestBodyApplicationVndApijson] | required |
 path_params | RequestPathParams | |
 content_type | str | optional, default is 'application/vnd.api+json' | Selects the schema and serialization of the request body
 accept_content_types | typing.Tuple[str] | default is ('application/vnd.api+json', ) | Tells the server the content type(s) that are accepted by the client
@@ -1154,105 +1301,6 @@ n/a | api_client.ApiResponseWithoutDeserialization | When skip_deserialization i
 200 | [ApiResponseFor200](#nodes_partial_update.ApiResponseFor200) | 
 
 #### nodes_partial_update.ApiResponseFor200
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-response | urllib3.HTTPResponse | Raw response |
-body | typing.Union[SchemaFor200ResponseBodyApplicationVndApijson, ] |  |
-headers | Unset | headers were not defined |
-
-# SchemaFor200ResponseBodyApplicationVndApijson
-Type | Description  | Notes
-------------- | ------------- | -------------
-[**Node**](../../models/Node.md) |  | 
-
-
-### Authorization
-
-[Token Authentication](../../../README.md#Token Authentication)
-
-[[Back to top]](#__pageTop) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
-
-# **retrieve_node**
-<a name="retrieve_node"></a>
-> Node retrieve_node(id)
-
-
-
-Documents can be organized in folders. One folder can contain documents as well as other folders. A node is a convinient abstraction of two concepts - 'folder' and 'document'. Each node has a type field with value either 'folders' or 'documents' depending on what kind of node it is.
-
-### Example
-
-* Api Key Authentication (Token Authentication):
-```python
-import papermerge_restapi_client
-from papermerge_restapi_client.apis.tags import nodes_api
-from papermerge_restapi_client.model.node import Node
-from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
-# See configuration.py for a list of all supported configuration parameters.
-configuration = papermerge_restapi_client.Configuration(
-    host = "http://localhost"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: Token Authentication
-configuration.api_key['Token Authentication'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Token Authentication'] = 'Bearer'
-# Enter a context with an instance of the API client
-with papermerge_restapi_client.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = nodes_api.NodesApi(api_client)
-
-    # example passing only required values which don't have defaults set
-    path_params = {
-        'id': "id_example",
-    }
-    try:
-        api_response = api_instance.retrieve_node(
-            path_params=path_params,
-        )
-        pprint(api_response)
-    except papermerge_restapi_client.ApiException as e:
-        print("Exception when calling NodesApi->retrieve_node: %s\n" % e)
-```
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-path_params | RequestPathParams | |
-accept_content_types | typing.Tuple[str] | default is ('application/vnd.api+json', ) | Tells the server the content type(s) that are accepted by the client
-stream | bool | default is False | if True then the response.content will be streamed and loaded from a file like object. When downloading a file, set this to True to force the code to deserialize the content to a FileSchema file
-timeout | typing.Optional[typing.Union[int, typing.Tuple]] | default is None | the timeout used by the rest client
-skip_deserialization | bool | default is False | when True, headers and body will be unset and an instance of api_client.ApiResponseWithoutDeserialization will be returned
-
-### path_params
-#### RequestPathParams
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-id | IdSchema | | 
-
-# IdSchema
-
-## Model Type Info
-Input Type | Accessed Type | Description | Notes
------------- | ------------- | ------------- | -------------
-str, uuid.UUID,  | str,  |  | value must be a uuid
-
-### Return Types, Responses
-
-Code | Class | Description
-------------- | ------------- | -------------
-n/a | api_client.ApiResponseWithoutDeserialization | When skip_deserialization is True this response is returned
-200 | [ApiResponseFor200](#retrieve_node.ApiResponseFor200) | 
-
-#### retrieve_node.ApiResponseFor200
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 response | urllib3.HTTPResponse | Raw response |

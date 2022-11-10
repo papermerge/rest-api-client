@@ -15,8 +15,12 @@ from papermerge_restapi_client.model.archive_type_enum import ArchiveTypeEnum
 from papermerge_restapi_client.model.auth_token_request import AuthTokenRequest
 from papermerge_restapi_client.model.auth_token_response import AuthTokenResponse
 from papermerge_restapi_client.model.custom_user_preference import CustomUserPreference
+from papermerge_restapi_client.model.data_group import DataGroup
+from papermerge_restapi_client.model.data_node import DataNode
+from papermerge_restapi_client.model.data_user import DataUser
 from papermerge_restapi_client.model.datum import Datum
 from papermerge_restapi_client.model.document_details import DocumentDetails
+from papermerge_restapi_client.model.document_details_type_enum import DocumentDetailsTypeEnum
 from papermerge_restapi_client.model.document_version import DocumentVersion
 from papermerge_restapi_client.model.document_version_ocr_text import DocumentVersionOcrText
 from papermerge_restapi_client.model.documents_merge import DocumentsMerge
@@ -24,7 +28,9 @@ from papermerge_restapi_client.model.error import Error
 from papermerge_restapi_client.model.errors import Errors
 from papermerge_restapi_client.model.failure import Failure
 from papermerge_restapi_client.model.folder import Folder
+from papermerge_restapi_client.model.folder_type_enum import FolderTypeEnum
 from papermerge_restapi_client.model.group import Group
+from papermerge_restapi_client.model.group_type_enum import GroupTypeEnum
 from papermerge_restapi_client.model.id import Id
 from papermerge_restapi_client.model.inbox_count import InboxCount
 from papermerge_restapi_client.model.include_version_enum import IncludeVersionEnum
@@ -44,6 +50,7 @@ from papermerge_restapi_client.model.onlymeta import Onlymeta
 from papermerge_restapi_client.model.page import Page
 from papermerge_restapi_client.model.page_reorder import PageReorder
 from papermerge_restapi_client.model.page_rotate import PageRotate
+from papermerge_restapi_client.model.page_type_enum import PageTypeEnum
 from papermerge_restapi_client.model.pageref import Pageref
 from papermerge_restapi_client.model.pages_move_to_document import PagesMoveToDocument
 from papermerge_restapi_client.model.pages_move_to_folder import PagesMoveToFolder
@@ -77,7 +84,10 @@ from papermerge_restapi_client.model.resource import Resource
 from papermerge_restapi_client.model.resource_identifier_object import ResourceIdentifierObject
 from papermerge_restapi_client.model.search_result import SearchResult
 from papermerge_restapi_client.model.tag import Tag
+from papermerge_restapi_client.model.tag_type_enum import TagTypeEnum
 from papermerge_restapi_client.model.token import Token
+from papermerge_restapi_client.model.token_type_enum import TokenTypeEnum
 from papermerge_restapi_client.model.type import Type
 from papermerge_restapi_client.model.user import User
+from papermerge_restapi_client.model.user_type_enum import UserTypeEnum
 from papermerge_restapi_client.model.version import Version

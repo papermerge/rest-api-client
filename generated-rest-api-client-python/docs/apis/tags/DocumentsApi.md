@@ -484,7 +484,7 @@ Type | Description  | Notes
 
 # **documents_partial_update**
 <a name="documents_partial_update"></a>
-> DocumentDetails documents_partial_update(id)
+> DocumentDetails documents_partial_update(idpatched_document_details)
 
 
 
@@ -524,56 +524,42 @@ with papermerge_restapi_client.ApiClient(configuration) as api_client:
     path_params = {
         'id': "id_example",
     }
-    try:
-        api_response = api_instance.documents_partial_update(
-            path_params=path_params,
-        )
-        pprint(api_response)
-    except papermerge_restapi_client.ApiException as e:
-        print("Exception when calling DocumentsApi->documents_partial_update: %s\n" % e)
-
-    # example passing only optional values
-    path_params = {
-        'id': "id_example",
-    }
     body = PatchedDocumentDetails(
-        data=dict(
-            type="documents",
+        type=DocumentDetailsTypeEnum("documents"),
+        id="id_example",
+        attributes=dict(
             id="id_example",
-            attributes=dict(
-                id="id_example",
-                title="title_example",
-                lang="lang_example",
-                file_name="file_name_example",
-                ocr=True,
-                ocr_status="unknown",
-                versions=[
-                    DocumentVersion(
-                        id="id_example",
-                        number=1,
-                        lang="lang_example",
-                        file_name="file_name_example",
-                        pages=[
-                            "pages_example"
-                        ],
-                        size=1,
-                        page_count=1,
-                        short_description="short_description_example",
-                        document="document_example",
-                        download_url="download_url_example",
-                    )
-                ],
-                size=1,
-                page_count=1,
-                created_at="1970-01-01T00:00:00.00Z",
-                updated_at="1970-01-01T00:00:00.00Z",
-            ),
-            relationships=dict(
-                parent=Reltoone(
-                    data=RelationshipToOne(
-                        type="type_example",
-                        id="id_example",
-                    ),
+            title="title_example",
+            lang="lang_example",
+            file_name="file_name_example",
+            ocr=True,
+            ocr_status="unknown",
+            versions=[
+                DocumentVersion(
+                    id="id_example",
+                    number=1,
+                    lang="lang_example",
+                    file_name="file_name_example",
+                    pages=[
+                        "pages_example"
+                    ],
+                    size=1,
+                    page_count=1,
+                    short_description="short_description_example",
+                    document="document_example",
+                    download_url="download_url_example",
+                )
+            ],
+            size=1,
+            page_count=1,
+            created_at="1970-01-01T00:00:00.00Z",
+            updated_at="1970-01-01T00:00:00.00Z",
+        ),
+        relationships=dict(
+            parent=Reltoone(
+                data=RelationshipToOne(
+                    type="type_example",
+                    id="id_example",
                 ),
             ),
         ),
@@ -591,7 +577,7 @@ with papermerge_restapi_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-body | typing.Union[SchemaForRequestBodyApplicationVndApijson, SchemaForRequestBodyApplicationJson, SchemaForRequestBodyMultipartFormData, Unset] | optional, default is unset |
+body | typing.Union[SchemaForRequestBodyApplicationVndApijson, SchemaForRequestBodyApplicationJson, SchemaForRequestBodyMultipartFormData] | required |
 path_params | RequestPathParams | |
 content_type | str | optional, default is 'application/vnd.api+json' | Selects the schema and serialization of the request body
 accept_content_types | typing.Tuple[str] | default is ('application/vnd.api+json', ) | Tells the server the content type(s) that are accepted by the client
@@ -760,7 +746,7 @@ Type | Description  | Notes
 
 # **upload_file**
 <a name="upload_file"></a>
-> DocumentDetails upload_file(document_idfile_name)
+> DocumentDetails upload_file(document_idfile_namedocument_details)
 
 
 
@@ -802,10 +788,51 @@ with papermerge_restapi_client.ApiClient(configuration) as api_client:
     }
     query_params = {
     }
+    body = DocumentDetails(
+        type=DocumentDetailsTypeEnum("documents"),
+        id="id_example",
+        attributes=dict(
+            id="id_example",
+            title="title_example",
+            lang="lang_example",
+            file_name="file_name_example",
+            ocr=True,
+            ocr_status="unknown",
+            versions=[
+                DocumentVersion(
+                    id="id_example",
+                    number=1,
+                    lang="lang_example",
+                    file_name="file_name_example",
+                    pages=[
+                        "pages_example"
+                    ],
+                    size=1,
+                    page_count=1,
+                    short_description="short_description_example",
+                    document="document_example",
+                    download_url="download_url_example",
+                )
+            ],
+            size=1,
+            page_count=1,
+            created_at="1970-01-01T00:00:00.00Z",
+            updated_at="1970-01-01T00:00:00.00Z",
+        ),
+        relationships=dict(
+            parent=Reltoone(
+                data=RelationshipToOne(
+                    type="type_example",
+                    id="id_example",
+                ),
+            ),
+        ),
+    )
     try:
         api_response = api_instance.upload_file(
             path_params=path_params,
             query_params=query_params,
+            body=body,
         )
         pprint(api_response)
     except papermerge_restapi_client.ApiException as e:
@@ -820,43 +847,41 @@ with papermerge_restapi_client.ApiClient(configuration) as api_client:
         'format': "json",
     }
     body = DocumentDetails(
-        data=dict(
-            type="documents",
+        type=DocumentDetailsTypeEnum("documents"),
+        id="id_example",
+        attributes=dict(
             id="id_example",
-            attributes=dict(
-                id="id_example",
-                title="title_example",
-                lang="lang_example",
-                file_name="file_name_example",
-                ocr=True,
-                ocr_status="unknown",
-                versions=[
-                    DocumentVersion(
-                        id="id_example",
-                        number=1,
-                        lang="lang_example",
-                        file_name="file_name_example",
-                        pages=[
-                            "pages_example"
-                        ],
-                        size=1,
-                        page_count=1,
-                        short_description="short_description_example",
-                        document="document_example",
-                        download_url="download_url_example",
-                    )
-                ],
-                size=1,
-                page_count=1,
-                created_at="1970-01-01T00:00:00.00Z",
-                updated_at="1970-01-01T00:00:00.00Z",
-            ),
-            relationships=dict(
-                parent=Reltoone(
-                    data=RelationshipToOne(
-                        type="type_example",
-                        id="id_example",
-                    ),
+            title="title_example",
+            lang="lang_example",
+            file_name="file_name_example",
+            ocr=True,
+            ocr_status="unknown",
+            versions=[
+                DocumentVersion(
+                    id="id_example",
+                    number=1,
+                    lang="lang_example",
+                    file_name="file_name_example",
+                    pages=[
+                        "pages_example"
+                    ],
+                    size=1,
+                    page_count=1,
+                    short_description="short_description_example",
+                    document="document_example",
+                    download_url="download_url_example",
+                )
+            ],
+            size=1,
+            page_count=1,
+            created_at="1970-01-01T00:00:00.00Z",
+            updated_at="1970-01-01T00:00:00.00Z",
+        ),
+        relationships=dict(
+            parent=Reltoone(
+                data=RelationshipToOne(
+                    type="type_example",
+                    id="id_example",
                 ),
             ),
         ),
@@ -875,7 +900,7 @@ with papermerge_restapi_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-body | typing.Union[SchemaForRequestBody, Unset] | optional, default is unset |
+body | typing.Union[SchemaForRequestBody] | required |
 query_params | RequestQueryParams | |
 path_params | RequestPathParams | |
 content_type | str | optional, default is '*/*' | Selects the schema and serialization of the request body

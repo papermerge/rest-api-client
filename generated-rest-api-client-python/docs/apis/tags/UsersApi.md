@@ -128,7 +128,7 @@ Type | Description  | Notes
 
 # **users_create**
 <a name="users_create"></a>
-> User users_create()
+> User users_create(user)
 
 
 
@@ -163,49 +163,47 @@ with papermerge_restapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = users_api.UsersApi(api_client)
 
-    # example passing only optional values
+    # example passing only required values which don't have defaults set
     body = User(
-        data=dict(
-            type="users",
-            id="id_example",
-            attributes=dict(
-                username="A",
-                first_name="first_name_example",
-                last_name="last_name_example",
-                email="email_example",
-                is_active=True,
-                is_staff=True,
-                is_superuser=True,
-                date_joined="1970-01-01T00:00:00.00Z",
-                user_permissions=[
-                    Permission(
-                        id=1,
-                        name="name_example",
-                        codename="codename_example",
-                        content_type=1,
-                    )
-                ],
-                perm_codenames=[
-                    "perm_codenames_example"
-                ],
+        type=UserTypeEnum("users"),
+        id="id_example",
+        attributes=dict(
+            username="A",
+            first_name="first_name_example",
+            last_name="last_name_example",
+            email="email_example",
+            is_active=True,
+            is_staff=True,
+            is_superuser=True,
+            date_joined="1970-01-01T00:00:00.00Z",
+            user_permissions=[
+                Permission(
+                    id=1,
+                    name="name_example",
+                    codename="codename_example",
+                    content_type=1,
+                )
+            ],
+            perm_codenames=[
+                "perm_codenames_example"
+            ],
+        ),
+        relationships=dict(
+            inbox_folder=Reltoone(
+                data=RelationshipToOne(
+                    type="type_example",
+                    id="id_example",
+                ),
             ),
-            relationships=dict(
-                inbox_folder=Reltoone(
-                    data=RelationshipToOne(
+            home_folder=Reltoone(),
+            groups=Reltomany(
+                data=RelationshipToMany([
+                    Linkage(
                         type="type_example",
                         id="id_example",
-                    ),
-                ),
-                home_folder=Reltoone(),
-                groups=Reltomany(
-                    data=RelationshipToMany([
-                        Linkage(
-                            type="type_example",
-                            id="id_example",
-                            meta=Meta(),
-                        )
-                    ]),
-                ),
+                        meta=Meta(),
+                    )
+                ]),
             ),
         ),
     )
@@ -221,7 +219,7 @@ with papermerge_restapi_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-body | typing.Union[SchemaForRequestBodyApplicationVndApijson, Unset] | optional, default is unset |
+body | typing.Union[SchemaForRequestBodyApplicationVndApijson] | required |
 content_type | str | optional, default is 'application/vnd.api+json' | Selects the schema and serialization of the request body
 accept_content_types | typing.Tuple[str] | default is ('application/vnd.api+json', ) | Tells the server the content type(s) that are accepted by the client
 stream | bool | default is False | if True then the response.content will be streamed and loaded from a file like object. When downloading a file, set this to True to force the code to deserialize the content to a FileSchema file
@@ -481,7 +479,7 @@ Type | Description  | Notes
 
 # **users_me_retrieve**
 <a name="users_me_retrieve"></a>
-> User users_me_retrieve()
+> DataUser users_me_retrieve()
 
 
 
@@ -493,7 +491,7 @@ Retrieves current user details.  Detailed information includes, among others, in
 ```python
 import papermerge_restapi_client
 from papermerge_restapi_client.apis.tags import users_api
-from papermerge_restapi_client.model.user import User
+from papermerge_restapi_client.model.data_user import DataUser
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
@@ -543,7 +541,7 @@ headers | Unset | headers were not defined |
 # SchemaFor200ResponseBodyApplicationVndApijson
 Type | Description  | Notes
 ------------- | ------------- | -------------
-[**User**](../../models/User.md) |  | 
+[**DataUser**](../../models/DataUser.md) |  | 
 
 
 ### Authorization
@@ -554,7 +552,7 @@ Type | Description  | Notes
 
 # **users_partial_update**
 <a name="users_partial_update"></a>
-> User users_partial_update(id)
+> User users_partial_update(idpatched_user)
 
 
 
@@ -594,60 +592,46 @@ with papermerge_restapi_client.ApiClient(configuration) as api_client:
     path_params = {
         'id': "id_example",
     }
-    try:
-        api_response = api_instance.users_partial_update(
-            path_params=path_params,
-        )
-        pprint(api_response)
-    except papermerge_restapi_client.ApiException as e:
-        print("Exception when calling UsersApi->users_partial_update: %s\n" % e)
-
-    # example passing only optional values
-    path_params = {
-        'id': "id_example",
-    }
     body = PatchedUser(
-        data=dict(
-            type="users",
-            id="id_example",
-            attributes=dict(
-                username="A",
-                first_name="first_name_example",
-                last_name="last_name_example",
-                email="email_example",
-                is_active=True,
-                is_staff=True,
-                is_superuser=True,
-                date_joined="1970-01-01T00:00:00.00Z",
-                user_permissions=[
-                    Permission(
-                        id=1,
-                        name="name_example",
-                        codename="codename_example",
-                        content_type=1,
-                    )
-                ],
-                perm_codenames=[
-                    "perm_codenames_example"
-                ],
+        type=UserTypeEnum("users"),
+        id="id_example",
+        attributes=dict(
+            username="A",
+            first_name="first_name_example",
+            last_name="last_name_example",
+            email="email_example",
+            is_active=True,
+            is_staff=True,
+            is_superuser=True,
+            date_joined="1970-01-01T00:00:00.00Z",
+            user_permissions=[
+                Permission(
+                    id=1,
+                    name="name_example",
+                    codename="codename_example",
+                    content_type=1,
+                )
+            ],
+            perm_codenames=[
+                "perm_codenames_example"
+            ],
+        ),
+        relationships=dict(
+            inbox_folder=Reltoone(
+                data=RelationshipToOne(
+                    type="type_example",
+                    id="id_example",
+                ),
             ),
-            relationships=dict(
-                inbox_folder=Reltoone(
-                    data=RelationshipToOne(
+            home_folder=Reltoone(),
+            groups=Reltomany(
+                data=RelationshipToMany([
+                    Linkage(
                         type="type_example",
                         id="id_example",
-                    ),
-                ),
-                home_folder=Reltoone(),
-                groups=Reltomany(
-                    data=RelationshipToMany([
-                        Linkage(
-                            type="type_example",
-                            id="id_example",
-                            meta=Meta(),
-                        )
-                    ]),
-                ),
+                        meta=Meta(),
+                    )
+                ]),
             ),
         ),
     )
@@ -664,7 +648,7 @@ with papermerge_restapi_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-body | typing.Union[SchemaForRequestBodyApplicationVndApijson, Unset] | optional, default is unset |
+body | typing.Union[SchemaForRequestBodyApplicationVndApijson] | required |
 path_params | RequestPathParams | |
 content_type | str | optional, default is 'application/vnd.api+json' | Selects the schema and serialization of the request body
 accept_content_types | typing.Tuple[str] | default is ('application/vnd.api+json', ) | Tells the server the content type(s) that are accepted by the client

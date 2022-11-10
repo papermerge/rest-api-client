@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 # **folders_create**
 <a name="folders_create"></a>
-> Folder folders_create()
+> Folder folders_create(folder)
 
 
 
@@ -48,24 +48,22 @@ with papermerge_restapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = folders_api.FoldersApi(api_client)
 
-    # example passing only optional values
+    # example passing only required values which don't have defaults set
     body = Folder(
-        data=dict(
-            type="folders",
+        type=FolderTypeEnum("folders"),
+        id="id_example",
+        attributes=dict(
             id="id_example",
-            attributes=dict(
-                id="id_example",
-                title="title_example",
-                tags="tags_example",
-                created_at="1970-01-01T00:00:00.00Z",
-                updated_at="1970-01-01T00:00:00.00Z",
-            ),
-            relationships=dict(
-                parent=Reltoone(
-                    data=RelationshipToOne(
-                        type="type_example",
-                        id="id_example",
-                    ),
+            title="title_example",
+            tags="tags_example",
+            created_at="1970-01-01T00:00:00.00Z",
+            updated_at="1970-01-01T00:00:00.00Z",
+        ),
+        relationships=dict(
+            parent=Reltoone(
+                data=RelationshipToOne(
+                    type="type_example",
+                    id="id_example",
                 ),
             ),
         ),
@@ -82,7 +80,7 @@ with papermerge_restapi_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-body | typing.Union[SchemaForRequestBodyApplicationVndApijson, SchemaForRequestBodyApplicationJson, SchemaForRequestBodyMultipartFormData, Unset] | optional, default is unset |
+body | typing.Union[SchemaForRequestBodyApplicationVndApijson, SchemaForRequestBodyApplicationJson, SchemaForRequestBodyMultipartFormData] | required |
 content_type | str | optional, default is 'application/vnd.api+json' | Selects the schema and serialization of the request body
 accept_content_types | typing.Tuple[str] | default is ('application/vnd.api+json', ) | Tells the server the content type(s) that are accepted by the client
 stream | bool | default is False | if True then the response.content will be streamed and loaded from a file like object. When downloading a file, set this to True to force the code to deserialize the content to a FileSchema file
@@ -354,7 +352,7 @@ Type | Description  | Notes
 
 # **folders_partial_update**
 <a name="folders_partial_update"></a>
-> Folder folders_partial_update(id)
+> Folder folders_partial_update(idpatched_folder)
 
 
 
@@ -394,35 +392,21 @@ with papermerge_restapi_client.ApiClient(configuration) as api_client:
     path_params = {
         'id': "id_example",
     }
-    try:
-        api_response = api_instance.folders_partial_update(
-            path_params=path_params,
-        )
-        pprint(api_response)
-    except papermerge_restapi_client.ApiException as e:
-        print("Exception when calling FoldersApi->folders_partial_update: %s\n" % e)
-
-    # example passing only optional values
-    path_params = {
-        'id': "id_example",
-    }
     body = PatchedFolder(
-        data=dict(
-            type="folders",
+        type=FolderTypeEnum("folders"),
+        id="id_example",
+        attributes=dict(
             id="id_example",
-            attributes=dict(
-                id="id_example",
-                title="title_example",
-                tags="tags_example",
-                created_at="1970-01-01T00:00:00.00Z",
-                updated_at="1970-01-01T00:00:00.00Z",
-            ),
-            relationships=dict(
-                parent=Reltoone(
-                    data=RelationshipToOne(
-                        type="type_example",
-                        id="id_example",
-                    ),
+            title="title_example",
+            tags="tags_example",
+            created_at="1970-01-01T00:00:00.00Z",
+            updated_at="1970-01-01T00:00:00.00Z",
+        ),
+        relationships=dict(
+            parent=Reltoone(
+                data=RelationshipToOne(
+                    type="type_example",
+                    id="id_example",
                 ),
             ),
         ),
@@ -440,7 +424,7 @@ with papermerge_restapi_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-body | typing.Union[SchemaForRequestBodyApplicationVndApijson, SchemaForRequestBodyApplicationJson, SchemaForRequestBodyMultipartFormData, Unset] | optional, default is unset |
+body | typing.Union[SchemaForRequestBodyApplicationVndApijson, SchemaForRequestBodyApplicationJson, SchemaForRequestBodyMultipartFormData] | required |
 path_params | RequestPathParams | |
 content_type | str | optional, default is 'application/vnd.api+json' | Selects the schema and serialization of the request body
 accept_content_types | typing.Tuple[str] | default is ('application/vnd.api+json', ) | Tells the server the content type(s) that are accepted by the client

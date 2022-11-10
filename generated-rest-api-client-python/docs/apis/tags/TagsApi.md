@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 # **tags_create**
 <a name="tags_create"></a>
-> Tag tags_create()
+> Tag tags_create(tag)
 
 
 
@@ -48,22 +48,44 @@ with papermerge_restapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tags_api.TagsApi(api_client)
 
+    # example passing only required values which don't have defaults set
+    query_params = {
+    }
+    body = Tag(
+        type=TagTypeEnum("tags"),
+        id="id_example",
+        attributes=dict(
+            id="id_example",
+            name="name_example",
+            bg_color="bg_color_example",
+            fg_color="fg_color_example",
+            description="description_example",
+            pinned=True,
+        ),
+    )
+    try:
+        api_response = api_instance.tags_create(
+            query_params=query_params,
+            body=body,
+        )
+        pprint(api_response)
+    except papermerge_restapi_client.ApiException as e:
+        print("Exception when calling TagsApi->tags_create: %s\n" % e)
+
     # example passing only optional values
     query_params = {
         'format': "json",
     }
     body = Tag(
-        data=dict(
-            type="tags",
+        type=TagTypeEnum("tags"),
+        id="id_example",
+        attributes=dict(
             id="id_example",
-            attributes=dict(
-                id="id_example",
-                name="name_example",
-                bg_color="bg_color_example",
-                fg_color="fg_color_example",
-                description="description_example",
-                pinned=True,
-            ),
+            name="name_example",
+            bg_color="bg_color_example",
+            fg_color="fg_color_example",
+            description="description_example",
+            pinned=True,
         ),
     )
     try:
@@ -79,7 +101,7 @@ with papermerge_restapi_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-body | typing.Union[SchemaForRequestBodyApplicationVndApijson, SchemaForRequestBodyApplicationJson, SchemaForRequestBodyMultipartFormData, Unset] | optional, default is unset |
+body | typing.Union[SchemaForRequestBodyApplicationVndApijson, SchemaForRequestBodyApplicationJson, SchemaForRequestBodyMultipartFormData] | required |
 query_params | RequestQueryParams | |
 content_type | str | optional, default is 'application/vnd.api+json' | Selects the schema and serialization of the request body
 accept_content_types | typing.Tuple[str] | default is ('application/vnd.api+json', 'application/json', ) | Tells the server the content type(s) that are accepted by the client
@@ -422,7 +444,7 @@ Type | Description  | Notes
 
 # **tags_partial_update**
 <a name="tags_partial_update"></a>
-> Tag tags_partial_update(id)
+> Tag tags_partial_update(idpatched_tag)
 
 
 
@@ -464,10 +486,23 @@ with papermerge_restapi_client.ApiClient(configuration) as api_client:
     }
     query_params = {
     }
+    body = PatchedTag(
+        type=TagTypeEnum("tags"),
+        id="id_example",
+        attributes=dict(
+            id="id_example",
+            name="name_example",
+            bg_color="bg_color_example",
+            fg_color="fg_color_example",
+            description="description_example",
+            pinned=True,
+        ),
+    )
     try:
         api_response = api_instance.tags_partial_update(
             path_params=path_params,
             query_params=query_params,
+            body=body,
         )
         pprint(api_response)
     except papermerge_restapi_client.ApiException as e:
@@ -481,17 +516,15 @@ with papermerge_restapi_client.ApiClient(configuration) as api_client:
         'format': "json",
     }
     body = PatchedTag(
-        data=dict(
-            type="tags",
+        type=TagTypeEnum("tags"),
+        id="id_example",
+        attributes=dict(
             id="id_example",
-            attributes=dict(
-                id="id_example",
-                name="name_example",
-                bg_color="bg_color_example",
-                fg_color="fg_color_example",
-                description="description_example",
-                pinned=True,
-            ),
+            name="name_example",
+            bg_color="bg_color_example",
+            fg_color="fg_color_example",
+            description="description_example",
+            pinned=True,
         ),
     )
     try:
@@ -508,7 +541,7 @@ with papermerge_restapi_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-body | typing.Union[SchemaForRequestBodyApplicationVndApijson, SchemaForRequestBodyApplicationJson, SchemaForRequestBodyMultipartFormData, Unset] | optional, default is unset |
+body | typing.Union[SchemaForRequestBodyApplicationVndApijson, SchemaForRequestBodyApplicationJson, SchemaForRequestBodyMultipartFormData] | required |
 query_params | RequestQueryParams | |
 path_params | RequestPathParams | |
 content_type | str | optional, default is 'application/vnd.api+json' | Selects the schema and serialization of the request body

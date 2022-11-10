@@ -403,7 +403,7 @@ conf = papermerge_restapi_client.Configuration(
                "OS: {env}\n"\
                "Python Version: {pyversion}\n"\
                "Version of the API: 2.1.0b12\n"\
-               "SDK Package Version: 1.0.2".\
+               "SDK Package Version: 1.0.4".\
                format(env=sys.platform, pyversion=sys.version)
 
     def get_host_settings(self):

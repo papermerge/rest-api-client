@@ -25,24 +25,25 @@ import frozendict  # noqa: F401
 
 from papermerge_restapi_client import schemas  # noqa: F401
 
-from papermerge_restapi_client.model.node import Node
+from papermerge_restapi_client.model.data_node import DataNode
 
 from . import path
 
 # body param
-SchemaForRequestBodyApplicationVndApijson = Node
+SchemaForRequestBodyApplicationVndApijson = DataNode
 
 
-request_body_node = api_client.RequestBody(
+request_body_data_node = api_client.RequestBody(
     content={
         'application/vnd.api+json': api_client.MediaType(
             schema=SchemaForRequestBodyApplicationVndApijson),
     },
+    required=True,
 )
 _auth = [
     'Token Authentication',
 ]
-SchemaFor201ResponseBodyApplicationVndApijson = Node
+SchemaFor201ResponseBodyApplicationVndApijson = DataNode
 
 
 @dataclass
@@ -73,7 +74,7 @@ class BaseApi(api_client.Api):
 
     def _nodes_create_oapg(
         self: api_client.Api,
-        body: typing.Union[SchemaForRequestBodyApplicationVndApijson, schemas.Unset] = schemas.unset,
+        body: typing.Union[SchemaForRequestBodyApplicationVndApijson, ],
         content_type: str = 'application/vnd.api+json',
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
@@ -96,15 +97,17 @@ class BaseApi(api_client.Api):
             for accept_content_type in accept_content_types:
                 _headers.add('Accept', accept_content_type)
 
+        if body is schemas.unset:
+            raise exceptions.ApiValueError(
+                'The required body parameter has an invalid value of: unset. Set a valid value instead')
         _fields = None
         _body = None
-        if body is not schemas.unset:
-            serialized_data = request_body_node.serialize(body, content_type)
-            _headers.add('Content-Type', content_type)
-            if 'fields' in serialized_data:
-                _fields = serialized_data['fields']
-            elif 'body' in serialized_data:
-                _body = serialized_data['body']
+        serialized_data = request_body_data_node.serialize(body, content_type)
+        _headers.add('Content-Type', content_type)
+        if 'fields' in serialized_data:
+            _fields = serialized_data['fields']
+        elif 'body' in serialized_data:
+            _body = serialized_data['body']
         response = self.api_client.call_api(
             resource_path=used_path,
             method='post'.upper(),
@@ -136,7 +139,7 @@ class NodesCreate(BaseApi):
 
     def nodes_create(
         self: BaseApi,
-        body: typing.Union[SchemaForRequestBodyApplicationVndApijson, schemas.Unset] = schemas.unset,
+        body: typing.Union[SchemaForRequestBodyApplicationVndApijson, ],
         content_type: str = 'application/vnd.api+json',
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
@@ -161,7 +164,7 @@ class ApiForpost(BaseApi):
 
     def post(
         self: BaseApi,
-        body: typing.Union[SchemaForRequestBodyApplicationVndApijson, schemas.Unset] = schemas.unset,
+        body: typing.Union[SchemaForRequestBodyApplicationVndApijson, ],
         content_type: str = 'application/vnd.api+json',
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,

@@ -31,7 +31,7 @@ class TestApiGroupsId(ApiTestMixin, unittest.TestCase):
     def tearDown(self):
         pass
 
-    response_status = 200
+    response_status = 201
 
 
 

@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 # **groups_create**
 <a name="groups_create"></a>
-> Group groups_create()
+> Group groups_create(group)
 
 
 
@@ -48,25 +48,23 @@ with papermerge_restapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = groups_api.GroupsApi(api_client)
 
-    # example passing only optional values
+    # example passing only required values which don't have defaults set
     body = Group(
-        data=dict(
-            type="groups",
-            id="id_example",
-            attributes=dict(
-                id=1,
-                name="name_example",
-            ),
-            relationships=dict(
-                permissions=Reltomany(
-                    data=RelationshipToMany([
-                        Linkage(
-                            type="type_example",
-                            id="id_example",
-                            meta=Meta(),
-                        )
-                    ]),
-                ),
+        type=GroupTypeEnum("groups"),
+        id="id_example",
+        attributes=dict(
+            id=1,
+            name="name_example",
+        ),
+        relationships=dict(
+            permissions=Reltomany(
+                data=RelationshipToMany([
+                    Linkage(
+                        type="type_example",
+                        id="id_example",
+                        meta=Meta(),
+                    )
+                ]),
             ),
         ),
     )
@@ -82,7 +80,7 @@ with papermerge_restapi_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-body | typing.Union[SchemaForRequestBodyApplicationVndApijson, SchemaForRequestBodyApplicationJson, SchemaForRequestBodyMultipartFormData, Unset] | optional, default is unset |
+body | typing.Union[SchemaForRequestBodyApplicationVndApijson, SchemaForRequestBodyApplicationJson, SchemaForRequestBodyMultipartFormData] | required |
 content_type | str | optional, default is 'application/vnd.api+json' | Selects the schema and serialization of the request body
 accept_content_types | typing.Tuple[str] | default is ('application/vnd.api+json', ) | Tells the server the content type(s) that are accepted by the client
 stream | bool | default is False | if True then the response.content will be streamed and loaded from a file like object. When downloading a file, set this to True to force the code to deserialize the content to a FileSchema file
@@ -354,7 +352,7 @@ Type | Description  | Notes
 
 # **groups_partial_update**
 <a name="groups_partial_update"></a>
-> Group groups_partial_update(id)
+> Group groups_partial_update(idpatched_group)
 
 
 
@@ -394,36 +392,22 @@ with papermerge_restapi_client.ApiClient(configuration) as api_client:
     path_params = {
         'id': 1,
     }
-    try:
-        api_response = api_instance.groups_partial_update(
-            path_params=path_params,
-        )
-        pprint(api_response)
-    except papermerge_restapi_client.ApiException as e:
-        print("Exception when calling GroupsApi->groups_partial_update: %s\n" % e)
-
-    # example passing only optional values
-    path_params = {
-        'id': 1,
-    }
     body = PatchedGroup(
-        data=dict(
-            type="groups",
-            id="id_example",
-            attributes=dict(
-                id=1,
-                name="name_example",
-            ),
-            relationships=dict(
-                permissions=Reltomany(
-                    data=RelationshipToMany([
-                        Linkage(
-                            type="type_example",
-                            id="id_example",
-                            meta=Meta(),
-                        )
-                    ]),
-                ),
+        type=GroupTypeEnum("groups"),
+        id="id_example",
+        attributes=dict(
+            id=1,
+            name="name_example",
+        ),
+        relationships=dict(
+            permissions=Reltomany(
+                data=RelationshipToMany([
+                    Linkage(
+                        type="type_example",
+                        id="id_example",
+                        meta=Meta(),
+                    )
+                ]),
             ),
         ),
     )
@@ -440,7 +424,7 @@ with papermerge_restapi_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-body | typing.Union[SchemaForRequestBodyApplicationVndApijson, SchemaForRequestBodyApplicationJson, SchemaForRequestBodyMultipartFormData, Unset] | optional, default is unset |
+body | typing.Union[SchemaForRequestBodyApplicationVndApijson, SchemaForRequestBodyApplicationJson, SchemaForRequestBodyMultipartFormData] | required |
 path_params | RequestPathParams | |
 content_type | str | optional, default is 'application/vnd.api+json' | Selects the schema and serialization of the request body
 accept_content_types | typing.Tuple[str] | default is ('application/vnd.api+json', ) | Tells the server the content type(s) that are accepted by the client
@@ -510,7 +494,7 @@ Type | Description  | Notes
 
 # **groups_retrieve**
 <a name="groups_retrieve"></a>
-> Group groups_retrieve(id)
+> DataGroup groups_retrieve(id)
 
 
 
@@ -522,7 +506,7 @@ Group endpoint
 ```python
 import papermerge_restapi_client
 from papermerge_restapi_client.apis.tags import groups_api
-from papermerge_restapi_client.model.group import Group
+from papermerge_restapi_client.model.data_group import DataGroup
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
@@ -586,19 +570,19 @@ decimal.Decimal, int,  | decimal.Decimal,  |  |
 Code | Class | Description
 ------------- | ------------- | -------------
 n/a | api_client.ApiResponseWithoutDeserialization | When skip_deserialization is True this response is returned
-200 | [ApiResponseFor200](#groups_retrieve.ApiResponseFor200) | 
+201 | [ApiResponseFor201](#groups_retrieve.ApiResponseFor201) | 
 
-#### groups_retrieve.ApiResponseFor200
+#### groups_retrieve.ApiResponseFor201
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 response | urllib3.HTTPResponse | Raw response |
-body | typing.Union[SchemaFor200ResponseBodyApplicationVndApijson, ] |  |
+body | typing.Union[SchemaFor201ResponseBodyApplicationVndApijson, ] |  |
 headers | Unset | headers were not defined |
 
-# SchemaFor200ResponseBodyApplicationVndApijson
+# SchemaFor201ResponseBodyApplicationVndApijson
 Type | Description  | Notes
 ------------- | ------------- | -------------
-[**Group**](../../models/Group.md) |  | 
+[**DataGroup**](../../models/DataGroup.md) |  | 
 
 
 ### Authorization

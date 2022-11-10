@@ -39,7 +39,7 @@ class BaseApi(api_client.Api):
 
     def _users_create_oapg(
         self: api_client.Api,
-        body: typing.Union[SchemaForRequestBodyApplicationVndApijson, schemas.Unset] = schemas.unset,
+        body: typing.Union[SchemaForRequestBodyApplicationVndApijson, ],
         content_type: str = 'application/vnd.api+json',
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
@@ -62,15 +62,17 @@ class BaseApi(api_client.Api):
             for accept_content_type in accept_content_types:
                 _headers.add('Accept', accept_content_type)
 
+        if body is schemas.unset:
+            raise exceptions.ApiValueError(
+                'The required body parameter has an invalid value of: unset. Set a valid value instead')
         _fields = None
         _body = None
-        if body is not schemas.unset:
-            serialized_data = request_body_user.serialize(body, content_type)
-            _headers.add('Content-Type', content_type)
-            if 'fields' in serialized_data:
-                _fields = serialized_data['fields']
-            elif 'body' in serialized_data:
-                _body = serialized_data['body']
+        serialized_data = request_body_user.serialize(body, content_type)
+        _headers.add('Content-Type', content_type)
+        if 'fields' in serialized_data:
+            _fields = serialized_data['fields']
+        elif 'body' in serialized_data:
+            _body = serialized_data['body']
         response = self.api_client.call_api(
             resource_path=used_path,
             method='post'.upper(),
@@ -102,7 +104,7 @@ class UsersCreate(BaseApi):
 
     def users_create(
         self: BaseApi,
-        body: typing.Union[SchemaForRequestBodyApplicationVndApijson, schemas.Unset] = schemas.unset,
+        body: typing.Union[SchemaForRequestBodyApplicationVndApijson, ],
         content_type: str = 'application/vnd.api+json',
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
@@ -127,7 +129,7 @@ class ApiForpost(BaseApi):
 
     def post(
         self: BaseApi,
-        body: typing.Union[SchemaForRequestBodyApplicationVndApijson, schemas.Unset] = schemas.unset,
+        body: typing.Union[SchemaForRequestBodyApplicationVndApijson, ],
         content_type: str = 'application/vnd.api+json',
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,

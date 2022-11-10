@@ -25,7 +25,7 @@ import frozendict  # noqa: F401
 
 from papermerge_restapi_client import schemas  # noqa: F401
 
-from papermerge_restapi_client.model.group import Group
+from papermerge_restapi_client.model.data_group import DataGroup
 
 from . import path
 
@@ -58,27 +58,27 @@ request_path_id = api_client.PathParameter(
 _auth = [
     'Token Authentication',
 ]
-SchemaFor200ResponseBodyApplicationVndApijson = Group
+SchemaFor201ResponseBodyApplicationVndApijson = DataGroup
 
 
 @dataclass
-class ApiResponseFor200(api_client.ApiResponse):
+class ApiResponseFor201(api_client.ApiResponse):
     response: urllib3.HTTPResponse
     body: typing.Union[
-        SchemaFor200ResponseBodyApplicationVndApijson,
+        SchemaFor201ResponseBodyApplicationVndApijson,
     ]
     headers: schemas.Unset = schemas.unset
 
 
-_response_for_200 = api_client.OpenApiResponse(
-    response_cls=ApiResponseFor200,
+_response_for_201 = api_client.OpenApiResponse(
+    response_cls=ApiResponseFor201,
     content={
         'application/vnd.api+json': api_client.MediaType(
-            schema=SchemaFor200ResponseBodyApplicationVndApijson),
+            schema=SchemaFor201ResponseBodyApplicationVndApijson),
     },
 )
 _status_code_to_response = {
-    '200': _response_for_200,
+    '201': _response_for_201,
 }
 _all_accept_content_types = (
     'application/vnd.api+json',
@@ -95,7 +95,7 @@ class BaseApi(api_client.Api):
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
         skip_deserialization: bool = False,
     ) -> typing.Union[
-        ApiResponseFor200,
+        ApiResponseFor201,
         api_client.ApiResponseWithoutDeserialization
     ]:
         """
@@ -160,7 +160,7 @@ class GroupsRetrieve(BaseApi):
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
         skip_deserialization: bool = False,
     ) -> typing.Union[
-        ApiResponseFor200,
+        ApiResponseFor201,
         api_client.ApiResponseWithoutDeserialization
     ]:
         return self._groups_retrieve_oapg(
@@ -183,7 +183,7 @@ class ApiForget(BaseApi):
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
         skip_deserialization: bool = False,
     ) -> typing.Union[
-        ApiResponseFor200,
+        ApiResponseFor201,
         api_client.ApiResponseWithoutDeserialization
     ]:
         return self._groups_retrieve_oapg(

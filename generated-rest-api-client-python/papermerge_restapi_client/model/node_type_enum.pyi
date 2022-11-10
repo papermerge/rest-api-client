@@ -35,8 +35,8 @@ class NodeTypeEnum(
     
     @schemas.classproperty
     def DOCUMENT(cls):
-        return cls("document")
+        return cls("Document")
     
     @schemas.classproperty
-    def FOLDER(cls):
-        return cls("folder")
+    def FOLDERS(cls):
+        return cls("folders")

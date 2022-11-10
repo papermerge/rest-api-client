@@ -25,11 +25,11 @@ import frozendict  # noqa: F401
 
 from papermerge_restapi_client import schemas  # noqa: F401
 
-from papermerge_restapi_client.model.group import Group
+from papermerge_restapi_client.model.data_group import DataGroup
 
 # path params
 IdSchema = schemas.IntSchema
-SchemaFor200ResponseBodyApplicationVndApijson = Group
+SchemaFor201ResponseBodyApplicationVndApijson = DataGroup
 _all_accept_content_types = (
     'application/vnd.api+json',
 )
@@ -45,7 +45,7 @@ class BaseApi(api_client.Api):
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
         skip_deserialization: bool = False,
     ) -> typing.Union[
-        ApiResponseFor200,
+        ApiResponseFor201,
         api_client.ApiResponseWithoutDeserialization
     ]:
         """
@@ -110,7 +110,7 @@ class GroupsRetrieve(BaseApi):
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
         skip_deserialization: bool = False,
     ) -> typing.Union[
-        ApiResponseFor200,
+        ApiResponseFor201,
         api_client.ApiResponseWithoutDeserialization
     ]:
         return self._groups_retrieve_oapg(
@@ -133,7 +133,7 @@ class ApiForget(BaseApi):
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
         skip_deserialization: bool = False,
     ) -> typing.Union[
-        ApiResponseFor200,
+        ApiResponseFor201,
         api_client.ApiResponseWithoutDeserialization
     ]:
         return self._groups_retrieve_oapg(
