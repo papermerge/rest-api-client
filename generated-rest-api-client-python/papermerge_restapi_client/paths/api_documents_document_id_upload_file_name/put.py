@@ -130,15 +130,14 @@ request_path_file_name = api_client.PathParameter(
     required=True,
 )
 # body param
-SchemaForRequestBody = DocumentDetails
+SchemaForRequestBody = schemas.BinarySchema
 
 
-request_body_document_details = api_client.RequestBody(
+request_body_body = api_client.RequestBody(
     content={
         '*/*': api_client.MediaType(
             schema=SchemaForRequestBody),
     },
-    required=True,
 )
 _auth = [
     'Token Authentication',
@@ -179,7 +178,7 @@ class BaseApi(api_client.Api):
 
     def _upload_file_oapg(
         self: api_client.Api,
-        body: typing.Union[SchemaForRequestBody, ],
+        body: typing.Union[SchemaForRequestBody, bytes, io.FileIO, io.BufferedReader, schemas.Unset] = schemas.unset,
         query_params: RequestQueryParams = frozendict.frozendict(),
         path_params: RequestPathParams = frozendict.frozendict(),
         content_type: str = '*/*',
@@ -233,17 +232,15 @@ class BaseApi(api_client.Api):
             for accept_content_type in accept_content_types:
                 _headers.add('Accept', accept_content_type)
 
-        if body is schemas.unset:
-            raise exceptions.ApiValueError(
-                'The required body parameter has an invalid value of: unset. Set a valid value instead')
         _fields = None
         _body = None
-        serialized_data = request_body_document_details.serialize(body, content_type)
-        _headers.add('Content-Type', content_type)
-        if 'fields' in serialized_data:
-            _fields = serialized_data['fields']
-        elif 'body' in serialized_data:
-            _body = serialized_data['body']
+        if body is not schemas.unset:
+            serialized_data = request_body_body.serialize(body, content_type)
+            _headers.add('Content-Type', content_type)
+            if 'fields' in serialized_data:
+                _fields = serialized_data['fields']
+            elif 'body' in serialized_data:
+                _body = serialized_data['body']
         response = self.api_client.call_api(
             resource_path=used_path,
             method='put'.upper(),
@@ -275,7 +272,7 @@ class UploadFile(BaseApi):
 
     def upload_file(
         self: BaseApi,
-        body: typing.Union[SchemaForRequestBody, ],
+        body: typing.Union[SchemaForRequestBody, bytes, io.FileIO, io.BufferedReader, schemas.Unset] = schemas.unset,
         query_params: RequestQueryParams = frozendict.frozendict(),
         path_params: RequestPathParams = frozendict.frozendict(),
         content_type: str = '*/*',
@@ -304,7 +301,7 @@ class ApiForput(BaseApi):
 
     def put(
         self: BaseApi,
-        body: typing.Union[SchemaForRequestBody, ],
+        body: typing.Union[SchemaForRequestBody, bytes, io.FileIO, io.BufferedReader, schemas.Unset] = schemas.unset,
         query_params: RequestQueryParams = frozendict.frozendict(),
         path_params: RequestPathParams = frozendict.frozendict(),
         content_type: str = '*/*',

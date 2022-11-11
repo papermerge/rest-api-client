@@ -746,7 +746,7 @@ Type | Description  | Notes
 
 # **upload_file**
 <a name="upload_file"></a>
-> DocumentDetails upload_file(document_idfile_namedocument_details)
+> DocumentDetails upload_file(document_idfile_name)
 
 
 
@@ -788,51 +788,10 @@ with papermerge_restapi_client.ApiClient(configuration) as api_client:
     }
     query_params = {
     }
-    body = DocumentDetails(
-        type=DocumentDetailsTypeEnum("documents"),
-        id="id_example",
-        attributes=dict(
-            id="id_example",
-            title="title_example",
-            lang="lang_example",
-            file_name="file_name_example",
-            ocr=True,
-            ocr_status="unknown",
-            versions=[
-                DocumentVersion(
-                    id="id_example",
-                    number=1,
-                    lang="lang_example",
-                    file_name="file_name_example",
-                    pages=[
-                        "pages_example"
-                    ],
-                    size=1,
-                    page_count=1,
-                    short_description="short_description_example",
-                    document="document_example",
-                    download_url="download_url_example",
-                )
-            ],
-            size=1,
-            page_count=1,
-            created_at="1970-01-01T00:00:00.00Z",
-            updated_at="1970-01-01T00:00:00.00Z",
-        ),
-        relationships=dict(
-            parent=Reltoone(
-                data=RelationshipToOne(
-                    type="type_example",
-                    id="id_example",
-                ),
-            ),
-        ),
-    )
     try:
         api_response = api_instance.upload_file(
             path_params=path_params,
             query_params=query_params,
-            body=body,
         )
         pprint(api_response)
     except papermerge_restapi_client.ApiException as e:
@@ -846,46 +805,7 @@ with papermerge_restapi_client.ApiClient(configuration) as api_client:
     query_params = {
         'format': "json",
     }
-    body = DocumentDetails(
-        type=DocumentDetailsTypeEnum("documents"),
-        id="id_example",
-        attributes=dict(
-            id="id_example",
-            title="title_example",
-            lang="lang_example",
-            file_name="file_name_example",
-            ocr=True,
-            ocr_status="unknown",
-            versions=[
-                DocumentVersion(
-                    id="id_example",
-                    number=1,
-                    lang="lang_example",
-                    file_name="file_name_example",
-                    pages=[
-                        "pages_example"
-                    ],
-                    size=1,
-                    page_count=1,
-                    short_description="short_description_example",
-                    document="document_example",
-                    download_url="download_url_example",
-                )
-            ],
-            size=1,
-            page_count=1,
-            created_at="1970-01-01T00:00:00.00Z",
-            updated_at="1970-01-01T00:00:00.00Z",
-        ),
-        relationships=dict(
-            parent=Reltoone(
-                data=RelationshipToOne(
-                    type="type_example",
-                    id="id_example",
-                ),
-            ),
-        ),
-    )
+    body = open('/path/to/file', 'rb')
     try:
         api_response = api_instance.upload_file(
             path_params=path_params,
@@ -900,7 +820,7 @@ with papermerge_restapi_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-body | typing.Union[SchemaForRequestBody] | required |
+body | typing.Union[SchemaForRequestBody, Unset] | optional, default is unset |
 query_params | RequestQueryParams | |
 path_params | RequestPathParams | |
 content_type | str | optional, default is '*/*' | Selects the schema and serialization of the request body
@@ -912,10 +832,11 @@ skip_deserialization | bool | default is False | when True, headers and body wil
 ### body
 
 # SchemaForRequestBody
-Type | Description  | Notes
-------------- | ------------- | -------------
-[**DocumentDetails**](../../models/DocumentDetails.md) |  | 
 
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+bytes, io.FileIO, io.BufferedReader,  | bytes, FileIO,  |  | 
 
 ### query_params
 #### RequestQueryParams
