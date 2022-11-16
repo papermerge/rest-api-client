@@ -1,0 +1,25 @@
+name: Generate Python Client
+
+on:
+  workflow_dispatch:
+
+jobs:
+  generate-client:
+    runs-on: ubuntu-latest
+    outputs:
+      old-version: ${{ steps.step-version-bump.outputs.OLD_VERSION }}
+      new-version: ${{ steps.step-version-bump.outputs.NEW_VERSION }}
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Extract current version
+        id: step-extract-version
+        uses: papermerge/banger@master
+        with:
+          files_list: "generated-rest-api-client-python/setup.py"
+
+      - name: Install openapi-generator
+        run: npm install @openapitools/openapi-generator-cli
