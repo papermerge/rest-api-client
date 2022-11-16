@@ -21,10 +21,8 @@ jobs:
         with:
           files_list: "generated-rest-api-client-python/setup.py"
 
-      - name: Install openapi-generator
+      - name: Install openapi-generator and run it
         run: npm install @openapitools/openapi-generator-cli
-
-      - name: Run generate command
         run: openapi-generator-cli generate \
           -i https://raw.githubusercontent.com/papermerge/openapi-schema/master/openapi-schema.yaml \
           -g python \
