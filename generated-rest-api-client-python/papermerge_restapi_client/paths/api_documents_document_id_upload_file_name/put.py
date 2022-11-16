@@ -25,55 +25,35 @@ import frozendict  # noqa: F401
 
 from papermerge_restapi_client import schemas  # noqa: F401
 
-from papermerge_restapi_client.model.document_details import DocumentDetails
+from papermerge_restapi_client.model.data_document_details import DataDocumentDetails
 
 from . import path
 
-# query params
-
-
-class FormatSchema(
-    schemas.EnumBase,
-    schemas.StrSchema
-):
-
-
-    class MetaOapg:
-        enum_value_to_name = {
-            "json": "JSON",
-            "vnd.api+json": "VND_APIJSON",
-        }
-    
-    @schemas.classproperty
-    def JSON(cls):
-        return cls("json")
-    
-    @schemas.classproperty
-    def VND_APIJSON(cls):
-        return cls("vnd.api+json")
-RequestRequiredQueryParams = typing_extensions.TypedDict(
-    'RequestRequiredQueryParams',
+# header params
+ContentDispositionSchema = schemas.StrSchema
+RequestRequiredHeaderParams = typing_extensions.TypedDict(
+    'RequestRequiredHeaderParams',
     {
+        'Content-Disposition': typing.Union[ContentDispositionSchema, str, ],
     }
 )
-RequestOptionalQueryParams = typing_extensions.TypedDict(
-    'RequestOptionalQueryParams',
+RequestOptionalHeaderParams = typing_extensions.TypedDict(
+    'RequestOptionalHeaderParams',
     {
-        'format': typing.Union[FormatSchema, str, ],
     },
     total=False
 )
 
 
-class RequestQueryParams(RequestRequiredQueryParams, RequestOptionalQueryParams):
+class RequestHeaderParams(RequestRequiredHeaderParams, RequestOptionalHeaderParams):
     pass
 
 
-request_query_format = api_client.QueryParameter(
-    name="format",
-    style=api_client.ParameterStyle.FORM,
-    schema=FormatSchema,
-    explode=True,
+request_header_content_disposition = api_client.HeaderParameter(
+    name="Content-Disposition",
+    style=api_client.ParameterStyle.SIMPLE,
+    schema=ContentDispositionSchema,
+    required=True,
 )
 # path params
 
@@ -130,20 +110,19 @@ request_path_file_name = api_client.PathParameter(
     required=True,
 )
 # body param
-SchemaForRequestBody = schemas.BinarySchema
+SchemaForRequestBodyApplicationOctetStream = schemas.BinarySchema
 
 
 request_body_body = api_client.RequestBody(
     content={
-        '*/*': api_client.MediaType(
-            schema=SchemaForRequestBody),
+        'application/octet-stream': api_client.MediaType(
+            schema=SchemaForRequestBodyApplicationOctetStream),
     },
 )
 _auth = [
     'Token Authentication',
 ]
-SchemaFor201ResponseBodyApplicationVndApijson = DocumentDetails
-SchemaFor201ResponseBodyApplicationJson = DocumentDetails
+SchemaFor201ResponseBodyApplicationVndApijson = DataDocumentDetails
 
 
 @dataclass
@@ -151,7 +130,6 @@ class ApiResponseFor201(api_client.ApiResponse):
     response: urllib3.HTTPResponse
     body: typing.Union[
         SchemaFor201ResponseBodyApplicationVndApijson,
-        SchemaFor201ResponseBodyApplicationJson,
     ]
     headers: schemas.Unset = schemas.unset
 
@@ -161,8 +139,6 @@ _response_for_201 = api_client.OpenApiResponse(
     content={
         'application/vnd.api+json': api_client.MediaType(
             schema=SchemaFor201ResponseBodyApplicationVndApijson),
-        'application/json': api_client.MediaType(
-            schema=SchemaFor201ResponseBodyApplicationJson),
     },
 )
 _status_code_to_response = {
@@ -170,7 +146,6 @@ _status_code_to_response = {
 }
 _all_accept_content_types = (
     'application/vnd.api+json',
-    'application/json',
 )
 
 
@@ -178,10 +153,10 @@ class BaseApi(api_client.Api):
 
     def _upload_file_oapg(
         self: api_client.Api,
-        body: typing.Union[SchemaForRequestBody, bytes, io.FileIO, io.BufferedReader, schemas.Unset] = schemas.unset,
-        query_params: RequestQueryParams = frozendict.frozendict(),
+        body: typing.Union[SchemaForRequestBodyApplicationOctetStream, bytes, io.FileIO, io.BufferedReader, schemas.Unset] = schemas.unset,
+        header_params: RequestHeaderParams = frozendict.frozendict(),
         path_params: RequestPathParams = frozendict.frozendict(),
-        content_type: str = '*/*',
+        content_type: str = 'application/octet-stream',
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
@@ -195,7 +170,7 @@ class BaseApi(api_client.Api):
             api_response.body and api_response.headers will not be deserialized into schema
             class instances
         """
-        self._verify_typed_dict_inputs_oapg(RequestQueryParams, query_params)
+        self._verify_typed_dict_inputs_oapg(RequestHeaderParams, header_params)
         self._verify_typed_dict_inputs_oapg(RequestPathParams, path_params)
         used_path = path.value
 
@@ -213,20 +188,15 @@ class BaseApi(api_client.Api):
         for k, v in _path_params.items():
             used_path = used_path.replace('{%s}' % k, v)
 
-        prefix_separator_iterator = None
+        _headers = HTTPHeaderDict()
         for parameter in (
-            request_query_format,
+            request_header_content_disposition,
         ):
-            parameter_data = query_params.get(parameter.name, schemas.unset)
+            parameter_data = header_params.get(parameter.name, schemas.unset)
             if parameter_data is schemas.unset:
                 continue
-            if prefix_separator_iterator is None:
-                prefix_separator_iterator = parameter.get_prefix_separator_iterator()
-            serialized_data = parameter.serialize(parameter_data, prefix_separator_iterator)
-            for serialized_value in serialized_data.values():
-                used_path += serialized_value
-
-        _headers = HTTPHeaderDict()
+            serialized_data = parameter.serialize(parameter_data)
+            _headers.extend(serialized_data)
         # TODO add cookie handling
         if accept_content_types:
             for accept_content_type in accept_content_types:
@@ -272,10 +242,10 @@ class UploadFile(BaseApi):
 
     def upload_file(
         self: BaseApi,
-        body: typing.Union[SchemaForRequestBody, bytes, io.FileIO, io.BufferedReader, schemas.Unset] = schemas.unset,
-        query_params: RequestQueryParams = frozendict.frozendict(),
+        body: typing.Union[SchemaForRequestBodyApplicationOctetStream, bytes, io.FileIO, io.BufferedReader, schemas.Unset] = schemas.unset,
+        header_params: RequestHeaderParams = frozendict.frozendict(),
         path_params: RequestPathParams = frozendict.frozendict(),
-        content_type: str = '*/*',
+        content_type: str = 'application/octet-stream',
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
@@ -286,7 +256,7 @@ class UploadFile(BaseApi):
     ]:
         return self._upload_file_oapg(
             body=body,
-            query_params=query_params,
+            header_params=header_params,
             path_params=path_params,
             content_type=content_type,
             accept_content_types=accept_content_types,
@@ -301,10 +271,10 @@ class ApiForput(BaseApi):
 
     def put(
         self: BaseApi,
-        body: typing.Union[SchemaForRequestBody, bytes, io.FileIO, io.BufferedReader, schemas.Unset] = schemas.unset,
-        query_params: RequestQueryParams = frozendict.frozendict(),
+        body: typing.Union[SchemaForRequestBodyApplicationOctetStream, bytes, io.FileIO, io.BufferedReader, schemas.Unset] = schemas.unset,
+        header_params: RequestHeaderParams = frozendict.frozendict(),
         path_params: RequestPathParams = frozendict.frozendict(),
-        content_type: str = '*/*',
+        content_type: str = 'application/octet-stream',
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
@@ -315,7 +285,7 @@ class ApiForput(BaseApi):
     ]:
         return self._upload_file_oapg(
             body=body,
-            query_params=query_params,
+            header_params=header_params,
             path_params=path_params,
             content_type=content_type,
             accept_content_types=accept_content_types,

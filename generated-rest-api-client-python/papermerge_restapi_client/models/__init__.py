@@ -15,6 +15,7 @@ from papermerge_restapi_client.model.archive_type_enum import ArchiveTypeEnum
 from papermerge_restapi_client.model.auth_token_request import AuthTokenRequest
 from papermerge_restapi_client.model.auth_token_response import AuthTokenResponse
 from papermerge_restapi_client.model.custom_user_preference import CustomUserPreference
+from papermerge_restapi_client.model.data_document_details import DataDocumentDetails
 from papermerge_restapi_client.model.data_group import DataGroup
 from papermerge_restapi_client.model.data_node import DataNode
 from papermerge_restapi_client.model.data_user import DataUser

@@ -26,12 +26,9 @@ Key | Input Type | Accessed Type | Description | Notes
 **title** | str,  | str,  |  | 
 **id** | str, uuid.UUID,  | str,  |  | [optional] value must be a uuid
 **lang** | str,  | str,  |  | [optional] 
-**file_name** | str,  | str,  |  | [optional] 
 **ocr** | bool,  | BoolClass,  |  | [optional] 
 **ocr_status** | str,  | str,  |  | [optional] must be one of ["unknown", "received", "started", "succeeded", "failed", ] 
 **[versions](#versions)** | list, tuple,  | tuple,  |  | [optional] 
-**size** | decimal.Decimal, int,  | decimal.Decimal,  |  | [optional] 
-**page_count** | decimal.Decimal, int,  | decimal.Decimal,  |  | [optional] 
 **created_at** | str, datetime,  | str,  |  | [optional] value must conform to RFC-3339 date-time
 **updated_at** | str, datetime,  | str,  |  | [optional] value must conform to RFC-3339 date-time
 **any_string_name** | dict, frozendict.frozendict, str, date, datetime, int, float, bool, decimal.Decimal, None, list, tuple, bytes, io.FileIO, io.BufferedReader | frozendict.frozendict, str, BoolClass, decimal.Decimal, NoneClass, tuple, bytes, FileIO | any string name can be used but the value must be the correct type | [optional]

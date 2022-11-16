@@ -22,6 +22,7 @@ docs/models/ArchiveTypeEnum.md
 docs/models/AuthTokenRequest.md
 docs/models/AuthTokenResponse.md
 docs/models/CustomUserPreference.md
+docs/models/DataDocumentDetails.md
 docs/models/DataGroup.md
 docs/models/DataNode.md
 docs/models/DataUser.md
@@ -129,6 +130,8 @@ papermerge_restapi_client/model/auth_token_response.py
 papermerge_restapi_client/model/auth_token_response.pyi
 papermerge_restapi_client/model/custom_user_preference.py
 papermerge_restapi_client/model/custom_user_preference.pyi
+papermerge_restapi_client/model/data_document_details.py
+papermerge_restapi_client/model/data_document_details.pyi
 papermerge_restapi_client/model/data_group.py
 papermerge_restapi_client/model/data_group.pyi
 papermerge_restapi_client/model/data_node.py
@@ -290,4 +293,5 @@ setup.py
 test-requirements.txt
 test/__init__.py
 test/test_models/__init__.py
+test/test_models/test_data_document_details.py
 tox.ini

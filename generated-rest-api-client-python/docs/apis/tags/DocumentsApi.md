@@ -531,7 +531,6 @@ with papermerge_restapi_client.ApiClient(configuration) as api_client:
             id="id_example",
             title="title_example",
             lang="lang_example",
-            file_name="file_name_example",
             ocr=True,
             ocr_status="unknown",
             versions=[
@@ -550,8 +549,6 @@ with papermerge_restapi_client.ApiClient(configuration) as api_client:
                     download_url="download_url_example",
                 )
             ],
-            size=1,
-            page_count=1,
             created_at="1970-01-01T00:00:00.00Z",
             updated_at="1970-01-01T00:00:00.00Z",
         ),
@@ -746,7 +743,7 @@ Type | Description  | Notes
 
 # **upload_file**
 <a name="upload_file"></a>
-> DocumentDetails upload_file(document_idfile_name)
+> DataDocumentDetails upload_file(content_dispositiondocument_idfile_name)
 
 
 
@@ -758,7 +755,7 @@ Uploads a file for given document node. If last version of the document does not
 ```python
 import papermerge_restapi_client
 from papermerge_restapi_client.apis.tags import documents_api
-from papermerge_restapi_client.model.document_details import DocumentDetails
+from papermerge_restapi_client.model.data_document_details import DataDocumentDetails
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
@@ -786,12 +783,13 @@ with papermerge_restapi_client.ApiClient(configuration) as api_client:
         'document_id': "d",
         'file_name': "k",
     }
-    query_params = {
+    header_params = {
+        'Content-Disposition': "attachment; filename=mydoc_1.pdf",
     }
     try:
         api_response = api_instance.upload_file(
             path_params=path_params,
-            query_params=query_params,
+            header_params=header_params,
         )
         pprint(api_response)
     except papermerge_restapi_client.ApiException as e:
@@ -802,14 +800,14 @@ with papermerge_restapi_client.ApiClient(configuration) as api_client:
         'document_id': "d",
         'file_name': "k",
     }
-    query_params = {
-        'format': "json",
+    header_params = {
+        'Content-Disposition': "attachment; filename=mydoc_1.pdf",
     }
     body = open('/path/to/file', 'rb')
     try:
         api_response = api_instance.upload_file(
             path_params=path_params,
-            query_params=query_params,
+            header_params=header_params,
             body=body,
         )
         pprint(api_response)
@@ -820,38 +818,37 @@ with papermerge_restapi_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-body | typing.Union[SchemaForRequestBody, Unset] | optional, default is unset |
-query_params | RequestQueryParams | |
+body | typing.Union[SchemaForRequestBodyApplicationOctetStream, Unset] | optional, default is unset |
+header_params | RequestHeaderParams | |
 path_params | RequestPathParams | |
-content_type | str | optional, default is '*/*' | Selects the schema and serialization of the request body
-accept_content_types | typing.Tuple[str] | default is ('application/vnd.api+json', 'application/json', ) | Tells the server the content type(s) that are accepted by the client
+content_type | str | optional, default is 'application/octet-stream' | Selects the schema and serialization of the request body
+accept_content_types | typing.Tuple[str] | default is ('application/vnd.api+json', ) | Tells the server the content type(s) that are accepted by the client
 stream | bool | default is False | if True then the response.content will be streamed and loaded from a file like object. When downloading a file, set this to True to force the code to deserialize the content to a FileSchema file
 timeout | typing.Optional[typing.Union[int, typing.Tuple]] | default is None | the timeout used by the rest client
 skip_deserialization | bool | default is False | when True, headers and body will be unset and an instance of api_client.ApiResponseWithoutDeserialization will be returned
 
 ### body
 
-# SchemaForRequestBody
+# SchemaForRequestBodyApplicationOctetStream
 
 ## Model Type Info
 Input Type | Accessed Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 bytes, io.FileIO, io.BufferedReader,  | bytes, FileIO,  |  | 
 
-### query_params
-#### RequestQueryParams
+### header_params
+#### RequestHeaderParams
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-format | FormatSchema | | optional
+Content-Disposition | ContentDispositionSchema | | 
 
-
-# FormatSchema
+# ContentDispositionSchema
 
 ## Model Type Info
 Input Type | Accessed Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-str,  | str,  |  | must be one of ["json", "vnd.api+json", ] 
+str,  | str,  |  | 
 
 ### path_params
 #### RequestPathParams
@@ -886,19 +883,13 @@ n/a | api_client.ApiResponseWithoutDeserialization | When skip_deserialization i
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 response | urllib3.HTTPResponse | Raw response |
-body | typing.Union[SchemaFor201ResponseBodyApplicationVndApijson, SchemaFor201ResponseBodyApplicationJson, ] |  |
+body | typing.Union[SchemaFor201ResponseBodyApplicationVndApijson, ] |  |
 headers | Unset | headers were not defined |
 
 # SchemaFor201ResponseBodyApplicationVndApijson
 Type | Description  | Notes
 ------------- | ------------- | -------------
-[**DocumentDetails**](../../models/DocumentDetails.md) |  | 
-
-
-# SchemaFor201ResponseBodyApplicationJson
-Type | Description  | Notes
-------------- | ------------- | -------------
-[**DocumentDetails**](../../models/DocumentDetails.md) |  | 
+[**DataDocumentDetails**](../../models/DataDocumentDetails.md) |  | 
 
 
 ### Authorization
