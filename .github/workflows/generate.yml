@@ -30,4 +30,4 @@ jobs:
           -g python \
           -o generated-rest-api-client-python \
           --skip-validate-spec \
-          --additional-properties packageName=papermerge_restapi_client,projectName=papermerge-restapi-client,packageVersion= ${{steps.step-extract-version.outputs.NEW_VERSION}}
+          --additional-properties packageName=papermerge_restapi_client,projectName=papermerge-restapi-client,packageVersion=${{steps.step-extract-version.outputs.NEW_VERSION}}
