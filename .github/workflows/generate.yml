@@ -23,3 +23,11 @@ jobs:
 
       - name: Install openapi-generator
         run: npm install @openapitools/openapi-generator-cli
+
+      - name: Run generate command
+        run: openapi-generator-cli generate \
+          -i https://raw.githubusercontent.com/papermerge/openapi-schema/master/openapi-schema.yaml \
+          -g python \
+          -o generated-rest-api-client-python \
+          --skip-validate-spec \
+          --additional-properties packageName=papermerge_restapi_client,projectName=papermerge-restapi-client,packageVersion= ${{steps.step-extract-version.outputs.NEW_VERSION}}
