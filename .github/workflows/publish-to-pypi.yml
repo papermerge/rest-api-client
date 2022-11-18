@@ -21,6 +21,5 @@ jobs:
       env:
         PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}
       run: |
-        cd generated-rest-api-client-python
         python setup sdist
         twine upload sdist
