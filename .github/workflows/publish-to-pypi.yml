@@ -19,9 +19,9 @@ jobs:
         python -m pip install --upgrade pip twine
     - name: Publish package
       env:
-        PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}
+        PYPI_PASSWORD: ${{ secrets.PYPI_TOKEN }}
         PYPI_USERNAME: __token__
       run: |
         cd generated-rest-api-client-python
         python setup.py sdist
-        twine upload -u __token__ dist/*
+        twine upload -u __token__ -p ${{ secrets.PYPI_TOKEN }} dist/*
