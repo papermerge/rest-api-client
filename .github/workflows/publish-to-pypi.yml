@@ -20,6 +20,7 @@ jobs:
     - name: Publish package
       env:
         PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}
+        PYPI_USERNAME: __token__
       run: |
         cd generated-rest-api-client-python
         python setup.py sdist
