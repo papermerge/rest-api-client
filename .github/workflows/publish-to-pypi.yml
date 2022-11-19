@@ -24,4 +24,4 @@ jobs:
       run: |
         cd generated-rest-api-client-python
         python setup.py sdist
-        twine upload dist/*
+        twine upload -u __token__ dist/*
