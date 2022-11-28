@@ -32,6 +32,9 @@ jobs:
           --skip-validate-spec \
           --additional-properties packageName=papermerge_restapi_client,projectName=papermerge-restapi-client,packageVersion=${{steps.step-extract-version.outputs.NEW_VERSION}}
 
+      - name: Show git status
+        run: git status
+
       - name: Commit files
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
