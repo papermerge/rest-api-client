@@ -32,14 +32,17 @@ jobs:
           --skip-validate-spec \
           --additional-properties packageName=papermerge_restapi_client,projectName=papermerge-restapi-client,packageVersion=${{steps.step-extract-version.outputs.NEW_VERSION}}
 
-      - name: Show git status
+      - name: Show git status before commit/add
         run: git status
 
       - name: Commit files
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git commit -m "generated ${{steps.step-extract-version.outputs.OLD_VERSION}} -> ${{steps.step-extract-version.outputs.NEW_VERSION}}" -a
+          git commit -a -m "generated ${{steps.step-extract-version.outputs.OLD_VERSION}} -> ${{steps.step-extract-version.outputs.NEW_VERSION}}" -a
+
+      - name: Show git status after commit/add
+        run: git status
 
       - name: Push changes
         uses: ad-m/github-push-action@master
