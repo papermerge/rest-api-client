@@ -39,7 +39,8 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git commit -a -m "generated ${{steps.step-extract-version.outputs.OLD_VERSION}} -> ${{steps.step-extract-version.outputs.NEW_VERSION}}" -a
+          git commit add generated-rest-api-client-python
+          git commit -a -m "generated ${{steps.step-extract-version.outputs.OLD_VERSION}} -> ${{steps.step-extract-version.outputs.NEW_VERSION}}"
 
       - name: Show git status after commit/add
         run: git status
