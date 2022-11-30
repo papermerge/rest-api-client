@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 # **preferences_bulk_create**
 <a name="preferences_bulk_create"></a>
-> CustomUserPreference preferences_bulk_create(custom_user_preference)
+> CustomUserPreference preferences_bulk_create()
 
 
 
@@ -48,45 +48,21 @@ with papermerge_restapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = preferences_api.PreferencesApi(api_client)
 
-    # example passing only required values which don't have defaults set
-    query_params = {
-    }
-    body = CustomUserPreference(
-        section="section_example",
-        name="name_example",
-        identifier="identifier_example",
-        default="default_example",
-        value="value_example",
-        verbose_name="verbose_name_example",
-        help_text="help_text_example",
-        additional_data="additional_data_example",
-        field="field_example",
-        id="id_example",
-    )
-    try:
-        api_response = api_instance.preferences_bulk_create(
-            query_params=query_params,
-            body=body,
-        )
-        pprint(api_response)
-    except papermerge_restapi_client.ApiException as e:
-        print("Exception when calling PreferencesApi->preferences_bulk_create: %s\n" % e)
-
     # example passing only optional values
     query_params = {
         'format': "json",
     }
     body = CustomUserPreference(
-        section="section_example",
-        name="name_example",
-        identifier="identifier_example",
-        default="default_example",
-        value="value_example",
-        verbose_name="verbose_name_example",
-        help_text="help_text_example",
-        additional_data="additional_data_example",
-        field="field_example",
         id="id_example",
+        type="type_example",
+        attributes=dict(
+            section="section_example",
+            identifier="identifier_example",
+            default="default_example",
+            help_text="help_text_example",
+            value="value_example",
+            name="name_example",
+        ),
     )
     try:
         api_response = api_instance.preferences_bulk_create(
@@ -101,7 +77,7 @@ with papermerge_restapi_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-body | typing.Union[SchemaForRequestBodyApplicationVndApijson, SchemaForRequestBodyApplicationJson, SchemaForRequestBodyMultipartFormData] | required |
+body | typing.Union[SchemaForRequestBodyApplicationVndApijson, SchemaForRequestBodyApplicationJson, SchemaForRequestBodyMultipartFormData, Unset] | optional, default is unset |
 query_params | RequestQueryParams | |
 content_type | str | optional, default is 'application/vnd.api+json' | Selects the schema and serialization of the request body
 accept_content_types | typing.Tuple[str] | default is ('application/vnd.api+json', 'application/json', ) | Tells the server the content type(s) that are accepted by the client
@@ -379,16 +355,16 @@ with papermerge_restapi_client.ApiClient(configuration) as api_client:
         'format': "json",
     }
     body = PatchedCustomUserPreference(
-        section="section_example",
-        name="name_example",
-        identifier="identifier_example",
-        default="default_example",
-        value="value_example",
-        verbose_name="verbose_name_example",
-        help_text="help_text_example",
-        additional_data="additional_data_example",
-        field="field_example",
         id="id_example",
+        type="type_example",
+        attributes=dict(
+            section="section_example",
+            identifier="identifier_example",
+            default="default_example",
+            help_text="help_text_example",
+            value="value_example",
+            name="name_example",
+        ),
     )
     try:
         api_response = api_instance.preferences_partial_update(
@@ -636,7 +612,7 @@ Type | Description  | Notes
 
 # **preferences_update**
 <a name="preferences_update"></a>
-> CustomUserPreference preferences_update(idcustom_user_preference)
+> CustomUserPreference preferences_update(id)
 
 
 
@@ -677,23 +653,10 @@ with papermerge_restapi_client.ApiClient(configuration) as api_client:
     }
     query_params = {
     }
-    body = CustomUserPreference(
-        section="section_example",
-        name="name_example",
-        identifier="identifier_example",
-        default="default_example",
-        value="value_example",
-        verbose_name="verbose_name_example",
-        help_text="help_text_example",
-        additional_data="additional_data_example",
-        field="field_example",
-        id="id_example",
-    )
     try:
         api_response = api_instance.preferences_update(
             path_params=path_params,
             query_params=query_params,
-            body=body,
         )
         pprint(api_response)
     except papermerge_restapi_client.ApiException as e:
@@ -707,16 +670,16 @@ with papermerge_restapi_client.ApiClient(configuration) as api_client:
         'format': "json",
     }
     body = CustomUserPreference(
-        section="section_example",
-        name="name_example",
-        identifier="identifier_example",
-        default="default_example",
-        value="value_example",
-        verbose_name="verbose_name_example",
-        help_text="help_text_example",
-        additional_data="additional_data_example",
-        field="field_example",
         id="id_example",
+        type="type_example",
+        attributes=dict(
+            section="section_example",
+            identifier="identifier_example",
+            default="default_example",
+            help_text="help_text_example",
+            value="value_example",
+            name="name_example",
+        ),
     )
     try:
         api_response = api_instance.preferences_update(
@@ -732,7 +695,7 @@ with papermerge_restapi_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-body | typing.Union[SchemaForRequestBodyApplicationVndApijson, SchemaForRequestBodyApplicationJson, SchemaForRequestBodyMultipartFormData] | required |
+body | typing.Union[SchemaForRequestBodyApplicationVndApijson, SchemaForRequestBodyApplicationJson, SchemaForRequestBodyMultipartFormData, Unset] | optional, default is unset |
 query_params | RequestQueryParams | |
 path_params | RequestPathParams | |
 content_type | str | optional, default is 'application/vnd.api+json' | Selects the schema and serialization of the request body

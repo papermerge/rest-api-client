@@ -90,7 +90,6 @@ request_body_custom_user_preference = api_client.RequestBody(
         'multipart/form-data': api_client.MediaType(
             schema=SchemaForRequestBodyMultipartFormData),
     },
-    required=True,
 )
 _auth = [
     'Token Authentication',
@@ -131,7 +130,7 @@ class BaseApi(api_client.Api):
 
     def _preferences_bulk_create_oapg(
         self: api_client.Api,
-        body: typing.Union[SchemaForRequestBodyApplicationVndApijson, SchemaForRequestBodyApplicationJson, SchemaForRequestBodyMultipartFormData, ],
+        body: typing.Union[SchemaForRequestBodyApplicationVndApijson, SchemaForRequestBodyApplicationJson, SchemaForRequestBodyMultipartFormData, schemas.Unset] = schemas.unset,
         query_params: RequestQueryParams = frozendict.frozendict(),
         content_type: str = 'application/vnd.api+json',
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
@@ -169,17 +168,15 @@ class BaseApi(api_client.Api):
             for accept_content_type in accept_content_types:
                 _headers.add('Accept', accept_content_type)
 
-        if body is schemas.unset:
-            raise exceptions.ApiValueError(
-                'The required body parameter has an invalid value of: unset. Set a valid value instead')
         _fields = None
         _body = None
-        serialized_data = request_body_custom_user_preference.serialize(body, content_type)
-        _headers.add('Content-Type', content_type)
-        if 'fields' in serialized_data:
-            _fields = serialized_data['fields']
-        elif 'body' in serialized_data:
-            _body = serialized_data['body']
+        if body is not schemas.unset:
+            serialized_data = request_body_custom_user_preference.serialize(body, content_type)
+            _headers.add('Content-Type', content_type)
+            if 'fields' in serialized_data:
+                _fields = serialized_data['fields']
+            elif 'body' in serialized_data:
+                _body = serialized_data['body']
         response = self.api_client.call_api(
             resource_path=used_path,
             method='post'.upper(),
@@ -211,7 +208,7 @@ class PreferencesBulkCreate(BaseApi):
 
     def preferences_bulk_create(
         self: BaseApi,
-        body: typing.Union[SchemaForRequestBodyApplicationVndApijson, SchemaForRequestBodyApplicationJson, SchemaForRequestBodyMultipartFormData, ],
+        body: typing.Union[SchemaForRequestBodyApplicationVndApijson, SchemaForRequestBodyApplicationJson, SchemaForRequestBodyMultipartFormData, schemas.Unset] = schemas.unset,
         query_params: RequestQueryParams = frozendict.frozendict(),
         content_type: str = 'application/vnd.api+json',
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
@@ -238,7 +235,7 @@ class ApiForpost(BaseApi):
 
     def post(
         self: BaseApi,
-        body: typing.Union[SchemaForRequestBodyApplicationVndApijson, SchemaForRequestBodyApplicationJson, SchemaForRequestBodyMultipartFormData, ],
+        body: typing.Union[SchemaForRequestBodyApplicationVndApijson, SchemaForRequestBodyApplicationJson, SchemaForRequestBodyMultipartFormData, schemas.Unset] = schemas.unset,
         query_params: RequestQueryParams = frozendict.frozendict(),
         content_type: str = 'application/vnd.api+json',
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
