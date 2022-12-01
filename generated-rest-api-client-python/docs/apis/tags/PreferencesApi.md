@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 # **preferences_bulk_create**
 <a name="preferences_bulk_create"></a>
-> CustomUserPreference preferences_bulk_create()
+> {str: (bool, date, datetime, dict, float, int, list, str, none_type)} preferences_bulk_create()
 
 
 
@@ -25,7 +25,6 @@ Update multiple preferences at once  this is a long method because we ensure eve
 ```python
 import papermerge_restapi_client
 from papermerge_restapi_client.apis.tags import preferences_api
-from papermerge_restapi_client.model.custom_user_preference import CustomUserPreference
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
@@ -52,17 +51,12 @@ with papermerge_restapi_client.ApiClient(configuration) as api_client:
     query_params = {
         'format': "json",
     }
-    body = CustomUserPreference(
-        id="id_example",
-        type="type_example",
-        attributes=dict(
-            section="section_example",
-            identifier="identifier_example",
-            default="default_example",
-            help_text="help_text_example",
-            value="value_example",
-            name="name_example",
-        ),
+    body = dict(
+        ocr__language="ocr__language_example",
+        ocr__trigger="auto",
+        localization__data_format="localization__data_format_example",
+        localization__time_format="localization__time_format_example",
+        localization__timezone="localization__timezone_example",
     )
     try:
         api_response = api_instance.preferences_bulk_create(
@@ -77,7 +71,7 @@ with papermerge_restapi_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-body | typing.Union[SchemaForRequestBodyApplicationVndApijson, SchemaForRequestBodyApplicationJson, SchemaForRequestBodyMultipartFormData, Unset] | optional, default is unset |
+body | typing.Union[SchemaForRequestBodyApplicationVndApijson, SchemaForRequestBodyApplicationJson, Unset] | optional, default is unset |
 query_params | RequestQueryParams | |
 content_type | str | optional, default is 'application/vnd.api+json' | Selects the schema and serialization of the request body
 accept_content_types | typing.Tuple[str] | default is ('application/vnd.api+json', 'application/json', ) | Tells the server the content type(s) that are accepted by the client
@@ -88,22 +82,38 @@ skip_deserialization | bool | default is False | when True, headers and body wil
 ### body
 
 # SchemaForRequestBodyApplicationVndApijson
-Type | Description  | Notes
-------------- | ------------- | -------------
-[**CustomUserPreference**](../../models/CustomUserPreference.md) |  | 
 
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+dict, frozendict.frozendict,  | frozendict.frozendict,  |  | 
+
+### Dictionary Keys
+Key | Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | ------------- | -------------
+**ocr__language** | str,  | str,  |  | [optional] 
+**ocr__trigger** | str,  | str,  |  | [optional] must be one of ["auto", "manual", ] 
+**localization__data_format** | str,  | str,  |  | [optional] 
+**localization__time_format** | str,  | str,  |  | [optional] 
+**localization__timezone** | str,  | str,  |  | [optional] 
+**any_string_name** | dict, frozendict.frozendict, str, date, datetime, int, float, bool, decimal.Decimal, None, list, tuple, bytes, io.FileIO, io.BufferedReader | frozendict.frozendict, str, BoolClass, decimal.Decimal, NoneClass, tuple, bytes, FileIO | any string name can be used but the value must be the correct type | [optional]
 
 # SchemaForRequestBodyApplicationJson
-Type | Description  | Notes
-------------- | ------------- | -------------
-[**CustomUserPreference**](../../models/CustomUserPreference.md) |  | 
 
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+dict, frozendict.frozendict,  | frozendict.frozendict,  |  | 
 
-# SchemaForRequestBodyMultipartFormData
-Type | Description  | Notes
-------------- | ------------- | -------------
-[**CustomUserPreference**](../../models/CustomUserPreference.md) |  | 
-
+### Dictionary Keys
+Key | Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | ------------- | -------------
+**ocr__language** | str,  | str,  |  | [optional] 
+**ocr__trigger** | str,  | str,  |  | [optional] must be one of ["auto", "manual", ] 
+**localization__data_format** | str,  | str,  |  | [optional] 
+**localization__time_format** | str,  | str,  |  | [optional] 
+**localization__timezone** | str,  | str,  |  | [optional] 
+**any_string_name** | dict, frozendict.frozendict, str, date, datetime, int, float, bool, decimal.Decimal, None, list, tuple, bytes, io.FileIO, io.BufferedReader | frozendict.frozendict, str, BoolClass, decimal.Decimal, NoneClass, tuple, bytes, FileIO | any string name can be used but the value must be the correct type | [optional]
 
 ### query_params
 #### RequestQueryParams
@@ -135,16 +145,150 @@ body | typing.Union[SchemaFor200ResponseBodyApplicationVndApijson, SchemaFor200R
 headers | Unset | headers were not defined |
 
 # SchemaFor200ResponseBodyApplicationVndApijson
-Type | Description  | Notes
-------------- | ------------- | -------------
-[**CustomUserPreference**](../../models/CustomUserPreference.md) |  | 
 
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+dict, frozendict.frozendict,  | frozendict.frozendict,  |  | 
+
+### Dictionary Keys
+Key | Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | ------------- | -------------
+**[data](#data)** | list, tuple,  | tuple,  |  | [optional] 
+**any_string_name** | dict, frozendict.frozendict, str, date, datetime, int, float, bool, decimal.Decimal, None, list, tuple, bytes, io.FileIO, io.BufferedReader | frozendict.frozendict, str, BoolClass, decimal.Decimal, NoneClass, tuple, bytes, FileIO | any string name can be used but the value must be the correct type | [optional]
+
+# data
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+list, tuple,  | tuple,  |  | 
+
+### Tuple Items
+Class Name | Input Type | Accessed Type | Description | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+[items](#items) | dict, frozendict.frozendict,  | frozendict.frozendict,  |  | 
+
+# items
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+dict, frozendict.frozendict,  | frozendict.frozendict,  |  | 
+
+### Dictionary Keys
+Key | Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | ------------- | -------------
+**[additional_data](#additional_data)** | dict, frozendict.frozendict,  | frozendict.frozendict,  |  | [optional] 
+**default** | str,  | str,  |  | [optional] 
+**[field](#field)** | dict, frozendict.frozendict,  | frozendict.frozendict,  |  | [optional] 
+**help_text** | str,  | str,  |  | [optional] 
+**id** | str,  | str,  |  | [optional] 
+**identifier** | str,  | str,  |  | [optional] 
+**name** | str,  | str,  |  | [optional] 
+**section** | str,  | str,  |  | [optional] 
+**value** | str,  | str,  |  | [optional] 
+**any_string_name** | dict, frozendict.frozendict, str, date, datetime, int, float, bool, decimal.Decimal, None, list, tuple, bytes, io.FileIO, io.BufferedReader | frozendict.frozendict, str, BoolClass, decimal.Decimal, NoneClass, tuple, bytes, FileIO | any string name can be used but the value must be the correct type | [optional]
+
+# additional_data
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+dict, frozendict.frozendict,  | frozendict.frozendict,  |  | 
+
+### Dictionary Keys
+Key | Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | ------------- | -------------
+**choices** |  |  |  | [optional] 
+**any_string_name** | dict, frozendict.frozendict, str, date, datetime, int, float, bool, decimal.Decimal, None, list, tuple, bytes, io.FileIO, io.BufferedReader | frozendict.frozendict, str, BoolClass, decimal.Decimal, NoneClass, tuple, bytes, FileIO | any string name can be used but the value must be the correct type | [optional]
+
+# field
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+dict, frozendict.frozendict,  | frozendict.frozendict,  |  | 
+
+### Dictionary Keys
+Key | Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | ------------- | -------------
+**class** | str,  | str,  |  | [optional] 
+**input_type** | str,  | str,  |  | [optional] 
+**any_string_name** | dict, frozendict.frozendict, str, date, datetime, int, float, bool, decimal.Decimal, None, list, tuple, bytes, io.FileIO, io.BufferedReader | frozendict.frozendict, str, BoolClass, decimal.Decimal, NoneClass, tuple, bytes, FileIO | any string name can be used but the value must be the correct type | [optional]
 
 # SchemaFor200ResponseBodyApplicationJson
-Type | Description  | Notes
-------------- | ------------- | -------------
-[**CustomUserPreference**](../../models/CustomUserPreference.md) |  | 
 
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+dict, frozendict.frozendict,  | frozendict.frozendict,  |  | 
+
+### Dictionary Keys
+Key | Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | ------------- | -------------
+**[data](#data)** | list, tuple,  | tuple,  |  | [optional] 
+**any_string_name** | dict, frozendict.frozendict, str, date, datetime, int, float, bool, decimal.Decimal, None, list, tuple, bytes, io.FileIO, io.BufferedReader | frozendict.frozendict, str, BoolClass, decimal.Decimal, NoneClass, tuple, bytes, FileIO | any string name can be used but the value must be the correct type | [optional]
+
+# data
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+list, tuple,  | tuple,  |  | 
+
+### Tuple Items
+Class Name | Input Type | Accessed Type | Description | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+[items](#items) | dict, frozendict.frozendict,  | frozendict.frozendict,  |  | 
+
+# items
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+dict, frozendict.frozendict,  | frozendict.frozendict,  |  | 
+
+### Dictionary Keys
+Key | Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | ------------- | -------------
+**[additional_data](#additional_data)** | dict, frozendict.frozendict,  | frozendict.frozendict,  |  | [optional] 
+**default** | str,  | str,  |  | [optional] 
+**[field](#field)** | dict, frozendict.frozendict,  | frozendict.frozendict,  |  | [optional] 
+**help_text** | str,  | str,  |  | [optional] 
+**id** | str,  | str,  |  | [optional] 
+**identifier** | str,  | str,  |  | [optional] 
+**name** | str,  | str,  |  | [optional] 
+**section** | str,  | str,  |  | [optional] 
+**value** | str,  | str,  |  | [optional] 
+**any_string_name** | dict, frozendict.frozendict, str, date, datetime, int, float, bool, decimal.Decimal, None, list, tuple, bytes, io.FileIO, io.BufferedReader | frozendict.frozendict, str, BoolClass, decimal.Decimal, NoneClass, tuple, bytes, FileIO | any string name can be used but the value must be the correct type | [optional]
+
+# additional_data
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+dict, frozendict.frozendict,  | frozendict.frozendict,  |  | 
+
+### Dictionary Keys
+Key | Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | ------------- | -------------
+**choices** |  |  |  | [optional] 
+**any_string_name** | dict, frozendict.frozendict, str, date, datetime, int, float, bool, decimal.Decimal, None, list, tuple, bytes, io.FileIO, io.BufferedReader | frozendict.frozendict, str, BoolClass, decimal.Decimal, NoneClass, tuple, bytes, FileIO | any string name can be used but the value must be the correct type | [optional]
+
+# field
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+dict, frozendict.frozendict,  | frozendict.frozendict,  |  | 
+
+### Dictionary Keys
+Key | Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | ------------- | -------------
+**class** | str,  | str,  |  | [optional] 
+**input_type** | str,  | str,  |  | [optional] 
+**any_string_name** | dict, frozendict.frozendict, str, date, datetime, int, float, bool, decimal.Decimal, None, list, tuple, bytes, io.FileIO, io.BufferedReader | frozendict.frozendict, str, BoolClass, decimal.Decimal, NoneClass, tuple, bytes, FileIO | any string name can be used but the value must be the correct type | [optional]
 
 ### Authorization
 
