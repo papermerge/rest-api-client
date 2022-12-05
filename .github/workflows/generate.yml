@@ -2,6 +2,8 @@ name: Generate Python Client
 
 on:
   workflow_dispatch:
+  # https://github.com/orgs/community/discussions/26323
+  repository_dispatch:
 
 jobs:
   generate-client:
@@ -49,3 +51,11 @@ jobs:
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+
+
+  publish:
+    name: Publish to Pypi
+    needs: [ "generate-client" ]
+    uses: ./.github/workflows/publish-to-pypi.yml
+    secrets:
+      PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}
