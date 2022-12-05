@@ -1,8 +1,11 @@
-name: Publish
+name: Publish to PYPI
 
 on:
   workflow_dispatch:
-
+  workflow_call:
+    secrets:
+      PYPI_TOKEN:
+        required: true
 
 jobs:
   publish-to-pypi:
@@ -10,6 +13,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+      with:
+        ref: master
+
     - name: Set up Python
       uses: actions/setup-python@v3
       with:
