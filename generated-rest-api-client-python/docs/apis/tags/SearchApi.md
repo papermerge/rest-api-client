@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 # **search**
 <a name="search"></a>
-> SearchResult search(q)
+> [{str: (bool, date, datetime, dict, float, int, list, str, none_type)}] search()
 
 
 
@@ -21,7 +21,6 @@ Performs full text search on the documents and folders.  Folders are matched by 
 ```python
 import papermerge_restapi_client
 from papermerge_restapi_client.apis.tags import search_api
-from papermerge_restapi_client.model.search_result import SearchResult
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
@@ -44,23 +43,11 @@ with papermerge_restapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = search_api.SearchApi(api_client)
 
-    # example passing only required values which don't have defaults set
-    query_params = {
-        'q': "q_example",
-    }
-    try:
-        api_response = api_instance.search(
-            query_params=query_params,
-        )
-        pprint(api_response)
-    except papermerge_restapi_client.ApiException as e:
-        print("Exception when calling SearchApi->search: %s\n" % e)
-
     # example passing only optional values
     query_params = {
         'q': "q_example",
         'tags': "tags_example",
-        'tags_op': "tags_op_example",
+        'tags_op': "all",
     }
     try:
         api_response = api_instance.search(
@@ -85,7 +72,7 @@ skip_deserialization | bool | default is False | when True, headers and body wil
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-q | QSchema | | 
+q | QSchema | | optional
 tags | TagsSchema | | optional
 tags_op | TagsOpSchema | | optional
 
@@ -109,7 +96,7 @@ str,  | str,  |  |
 ## Model Type Info
 Input Type | Accessed Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-str,  | str,  |  | 
+str,  | str,  |  | must be one of ["all", "any", ] if omitted the server will use the default value of "all"
 
 ### Return Types, Responses
 
@@ -126,10 +113,60 @@ body | typing.Union[SchemaFor200ResponseBodyApplicationJson, ] |  |
 headers | Unset | headers were not defined |
 
 # SchemaFor200ResponseBodyApplicationJson
-Type | Description  | Notes
-------------- | ------------- | -------------
-[**SearchResult**](../../models/SearchResult.md) |  | 
 
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+list, tuple,  | tuple,  |  | 
+
+### Tuple Items
+Class Name | Input Type | Accessed Type | Description | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+[items](#items) | dict, frozendict.frozendict,  | frozendict.frozendict,  |  | 
+
+# items
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+dict, frozendict.frozendict,  | frozendict.frozendict,  |  | 
+
+### Dictionary Keys
+Key | Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | ------------- | -------------
+**id** | str, uuid.UUID,  | str,  |  | [optional] value must be a uuid
+**text** | None, str,  | NoneClass, str,  |  | [optional] 
+**title** | str,  | str,  |  | [optional] 
+**[tags](#tags)** | list, tuple,  | tuple,  |  | [optional] 
+**[breadcrumb](#breadcrumb)** | list, tuple,  | tuple,  |  | [optional] 
+**node_type** | str,  | str,  |  | [optional] 
+**highlight** | None, str,  | NoneClass, str,  |  | [optional] 
+**user_id** | None, str, uuid.UUID,  | NoneClass, str,  |  | [optional] value must be a uuid
+**any_string_name** | dict, frozendict.frozendict, str, date, datetime, int, float, bool, decimal.Decimal, None, list, tuple, bytes, io.FileIO, io.BufferedReader | frozendict.frozendict, str, BoolClass, decimal.Decimal, NoneClass, tuple, bytes, FileIO | any string name can be used but the value must be the correct type | [optional]
+
+# tags
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+list, tuple,  | tuple,  |  | 
+
+### Tuple Items
+Class Name | Input Type | Accessed Type | Description | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+items | str,  | str,  |  | 
+
+# breadcrumb
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+list, tuple,  | tuple,  |  | 
+
+### Tuple Items
+Class Name | Input Type | Accessed Type | Description | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+items | str,  | str,  |  | 
 
 ### Authorization
 

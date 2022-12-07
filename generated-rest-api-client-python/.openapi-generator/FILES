@@ -90,7 +90,6 @@ docs/models/Reltomany.md
 docs/models/Reltoone.md
 docs/models/Resource.md
 docs/models/ResourceIdentifierObject.md
-docs/models/SearchResult.md
 docs/models/Tag.md
 docs/models/TagTypeEnum.md
 docs/models/Token.md
@@ -266,8 +265,6 @@ papermerge_restapi_client/model/resource.py
 papermerge_restapi_client/model/resource.pyi
 papermerge_restapi_client/model/resource_identifier_object.py
 papermerge_restapi_client/model/resource_identifier_object.pyi
-papermerge_restapi_client/model/search_result.py
-papermerge_restapi_client/model/search_result.pyi
 papermerge_restapi_client/model/tag.py
 papermerge_restapi_client/model/tag.pyi
 papermerge_restapi_client/model/tag_type_enum.py

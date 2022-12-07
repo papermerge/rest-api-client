@@ -25,23 +25,41 @@ import frozendict  # noqa: F401
 
 from papermerge_restapi_client import schemas  # noqa: F401
 
-from papermerge_restapi_client.model.search_result import SearchResult
-
 from . import path
 
 # query params
 QSchema = schemas.StrSchema
 TagsSchema = schemas.StrSchema
-TagsOpSchema = schemas.StrSchema
+
+
+class TagsOpSchema(
+    schemas.EnumBase,
+    schemas.StrSchema
+):
+
+
+    class MetaOapg:
+        enum_value_to_name = {
+            "all": "ALL",
+            "any": "ANY",
+        }
+    
+    @schemas.classproperty
+    def ALL(cls):
+        return cls("all")
+    
+    @schemas.classproperty
+    def ANY(cls):
+        return cls("any")
 RequestRequiredQueryParams = typing_extensions.TypedDict(
     'RequestRequiredQueryParams',
     {
-        'q': typing.Union[QSchema, str, ],
     }
 )
 RequestOptionalQueryParams = typing_extensions.TypedDict(
     'RequestOptionalQueryParams',
     {
+        'q': typing.Union[QSchema, str, ],
         'tags': typing.Union[TagsSchema, str, ],
         'tags_op': typing.Union[TagsOpSchema, str, ],
     },
@@ -57,7 +75,6 @@ request_query_q = api_client.QueryParameter(
     name="q",
     style=api_client.ParameterStyle.FORM,
     schema=QSchema,
-    required=True,
     explode=True,
 )
 request_query_tags = api_client.QueryParameter(
@@ -75,7 +92,254 @@ request_query_tags_op = api_client.QueryParameter(
 _auth = [
     'Token Authentication',
 ]
-SchemaFor200ResponseBodyApplicationJson = SearchResult
+
+
+class SchemaFor200ResponseBodyApplicationJson(
+    schemas.ListSchema
+):
+
+
+    class MetaOapg:
+        
+        
+        class items(
+            schemas.DictSchema
+        ):
+        
+        
+            class MetaOapg:
+                
+                class properties:
+                    id = schemas.UUIDSchema
+                    
+                    
+                    class text(
+                        schemas.StrBase,
+                        schemas.NoneBase,
+                        schemas.Schema,
+                        schemas.NoneStrMixin
+                    ):
+                    
+                    
+                        def __new__(
+                            cls,
+                            *args: typing.Union[None, str, ],
+                            _configuration: typing.Optional[schemas.Configuration] = None,
+                        ) -> 'text':
+                            return super().__new__(
+                                cls,
+                                *args,
+                                _configuration=_configuration,
+                            )
+                    title = schemas.StrSchema
+                    
+                    
+                    class tags(
+                        schemas.ListSchema
+                    ):
+                    
+                    
+                        class MetaOapg:
+                            items = schemas.StrSchema
+                    
+                        def __new__(
+                            cls,
+                            arg: typing.Union[typing.Tuple[typing.Union[MetaOapg.items, str, ]], typing.List[typing.Union[MetaOapg.items, str, ]]],
+                            _configuration: typing.Optional[schemas.Configuration] = None,
+                        ) -> 'tags':
+                            return super().__new__(
+                                cls,
+                                arg,
+                                _configuration=_configuration,
+                            )
+                    
+                        def __getitem__(self, i: int) -> MetaOapg.items:
+                            return super().__getitem__(i)
+                    
+                    
+                    class breadcrumb(
+                        schemas.ListSchema
+                    ):
+                    
+                    
+                        class MetaOapg:
+                            items = schemas.StrSchema
+                    
+                        def __new__(
+                            cls,
+                            arg: typing.Union[typing.Tuple[typing.Union[MetaOapg.items, str, ]], typing.List[typing.Union[MetaOapg.items, str, ]]],
+                            _configuration: typing.Optional[schemas.Configuration] = None,
+                        ) -> 'breadcrumb':
+                            return super().__new__(
+                                cls,
+                                arg,
+                                _configuration=_configuration,
+                            )
+                    
+                        def __getitem__(self, i: int) -> MetaOapg.items:
+                            return super().__getitem__(i)
+                    node_type = schemas.StrSchema
+                    
+                    
+                    class highlight(
+                        schemas.StrBase,
+                        schemas.NoneBase,
+                        schemas.Schema,
+                        schemas.NoneStrMixin
+                    ):
+                    
+                    
+                        def __new__(
+                            cls,
+                            *args: typing.Union[None, str, ],
+                            _configuration: typing.Optional[schemas.Configuration] = None,
+                        ) -> 'highlight':
+                            return super().__new__(
+                                cls,
+                                *args,
+                                _configuration=_configuration,
+                            )
+                    
+                    
+                    class user_id(
+                        schemas.UUIDBase,
+                        schemas.StrBase,
+                        schemas.NoneBase,
+                        schemas.Schema,
+                        schemas.NoneStrMixin
+                    ):
+                    
+                    
+                        class MetaOapg:
+                            format = 'uuid'
+                    
+                    
+                        def __new__(
+                            cls,
+                            *args: typing.Union[None, str, uuid.UUID, ],
+                            _configuration: typing.Optional[schemas.Configuration] = None,
+                        ) -> 'user_id':
+                            return super().__new__(
+                                cls,
+                                *args,
+                                _configuration=_configuration,
+                            )
+                    __annotations__ = {
+                        "id": id,
+                        "text": text,
+                        "title": title,
+                        "tags": tags,
+                        "breadcrumb": breadcrumb,
+                        "node_type": node_type,
+                        "highlight": highlight,
+                        "user_id": user_id,
+                    }
+            
+            @typing.overload
+            def __getitem__(self, name: typing_extensions.Literal["id"]) -> MetaOapg.properties.id: ...
+            
+            @typing.overload
+            def __getitem__(self, name: typing_extensions.Literal["text"]) -> MetaOapg.properties.text: ...
+            
+            @typing.overload
+            def __getitem__(self, name: typing_extensions.Literal["title"]) -> MetaOapg.properties.title: ...
+            
+            @typing.overload
+            def __getitem__(self, name: typing_extensions.Literal["tags"]) -> MetaOapg.properties.tags: ...
+            
+            @typing.overload
+            def __getitem__(self, name: typing_extensions.Literal["breadcrumb"]) -> MetaOapg.properties.breadcrumb: ...
+            
+            @typing.overload
+            def __getitem__(self, name: typing_extensions.Literal["node_type"]) -> MetaOapg.properties.node_type: ...
+            
+            @typing.overload
+            def __getitem__(self, name: typing_extensions.Literal["highlight"]) -> MetaOapg.properties.highlight: ...
+            
+            @typing.overload
+            def __getitem__(self, name: typing_extensions.Literal["user_id"]) -> MetaOapg.properties.user_id: ...
+            
+            @typing.overload
+            def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
+            
+            def __getitem__(self, name: typing.Union[typing_extensions.Literal["id", "text", "title", "tags", "breadcrumb", "node_type", "highlight", "user_id", ], str]):
+                # dict_instance[name] accessor
+                return super().__getitem__(name)
+            
+            
+            @typing.overload
+            def get_item_oapg(self, name: typing_extensions.Literal["id"]) -> typing.Union[MetaOapg.properties.id, schemas.Unset]: ...
+            
+            @typing.overload
+            def get_item_oapg(self, name: typing_extensions.Literal["text"]) -> typing.Union[MetaOapg.properties.text, schemas.Unset]: ...
+            
+            @typing.overload
+            def get_item_oapg(self, name: typing_extensions.Literal["title"]) -> typing.Union[MetaOapg.properties.title, schemas.Unset]: ...
+            
+            @typing.overload
+            def get_item_oapg(self, name: typing_extensions.Literal["tags"]) -> typing.Union[MetaOapg.properties.tags, schemas.Unset]: ...
+            
+            @typing.overload
+            def get_item_oapg(self, name: typing_extensions.Literal["breadcrumb"]) -> typing.Union[MetaOapg.properties.breadcrumb, schemas.Unset]: ...
+            
+            @typing.overload
+            def get_item_oapg(self, name: typing_extensions.Literal["node_type"]) -> typing.Union[MetaOapg.properties.node_type, schemas.Unset]: ...
+            
+            @typing.overload
+            def get_item_oapg(self, name: typing_extensions.Literal["highlight"]) -> typing.Union[MetaOapg.properties.highlight, schemas.Unset]: ...
+            
+            @typing.overload
+            def get_item_oapg(self, name: typing_extensions.Literal["user_id"]) -> typing.Union[MetaOapg.properties.user_id, schemas.Unset]: ...
+            
+            @typing.overload
+            def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
+            
+            def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["id", "text", "title", "tags", "breadcrumb", "node_type", "highlight", "user_id", ], str]):
+                return super().get_item_oapg(name)
+            
+        
+            def __new__(
+                cls,
+                *args: typing.Union[dict, frozendict.frozendict, ],
+                id: typing.Union[MetaOapg.properties.id, str, uuid.UUID, schemas.Unset] = schemas.unset,
+                text: typing.Union[MetaOapg.properties.text, None, str, schemas.Unset] = schemas.unset,
+                title: typing.Union[MetaOapg.properties.title, str, schemas.Unset] = schemas.unset,
+                tags: typing.Union[MetaOapg.properties.tags, list, tuple, schemas.Unset] = schemas.unset,
+                breadcrumb: typing.Union[MetaOapg.properties.breadcrumb, list, tuple, schemas.Unset] = schemas.unset,
+                node_type: typing.Union[MetaOapg.properties.node_type, str, schemas.Unset] = schemas.unset,
+                highlight: typing.Union[MetaOapg.properties.highlight, None, str, schemas.Unset] = schemas.unset,
+                user_id: typing.Union[MetaOapg.properties.user_id, None, str, uuid.UUID, schemas.Unset] = schemas.unset,
+                _configuration: typing.Optional[schemas.Configuration] = None,
+                **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
+            ) -> 'items':
+                return super().__new__(
+                    cls,
+                    *args,
+                    id=id,
+                    text=text,
+                    title=title,
+                    tags=tags,
+                    breadcrumb=breadcrumb,
+                    node_type=node_type,
+                    highlight=highlight,
+                    user_id=user_id,
+                    _configuration=_configuration,
+                    **kwargs,
+                )
+
+    def __new__(
+        cls,
+        arg: typing.Union[typing.Tuple[typing.Union[MetaOapg.items, dict, frozendict.frozendict, ]], typing.List[typing.Union[MetaOapg.items, dict, frozendict.frozendict, ]]],
+        _configuration: typing.Optional[schemas.Configuration] = None,
+    ) -> 'SchemaFor200ResponseBodyApplicationJson':
+        return super().__new__(
+            cls,
+            arg,
+            _configuration=_configuration,
+        )
+
+    def __getitem__(self, i: int) -> MetaOapg.items:
+        return super().__getitem__(i)
 
 
 @dataclass

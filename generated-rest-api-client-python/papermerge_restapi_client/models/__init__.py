@@ -83,7 +83,6 @@ from papermerge_restapi_client.model.reltomany import Reltomany
 from papermerge_restapi_client.model.reltoone import Reltoone
 from papermerge_restapi_client.model.resource import Resource
 from papermerge_restapi_client.model.resource_identifier_object import ResourceIdentifierObject
-from papermerge_restapi_client.model.search_result import SearchResult
 from papermerge_restapi_client.model.tag import Tag
 from papermerge_restapi_client.model.tag_type_enum import TagTypeEnum
 from papermerge_restapi_client.model.token import Token
