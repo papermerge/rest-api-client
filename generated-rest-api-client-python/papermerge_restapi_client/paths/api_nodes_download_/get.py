@@ -25,11 +25,41 @@ import frozendict  # noqa: F401
 
 from papermerge_restapi_client import schemas  # noqa: F401
 
-from papermerge_restapi_client.model.nodes_download import NodesDownload
-
 from . import path
 
 # query params
+
+
+class ArchiveTypeSchema(
+    schemas.EnumBase,
+    schemas.StrSchema
+):
+
+
+    class MetaOapg:
+        min_length = 1
+        enum_value_to_name = {
+            "targz": "TARGZ",
+            "zip": "ZIP",
+        }
+    
+    @schemas.classproperty
+    def TARGZ(cls):
+        return cls("targz")
+    
+    @schemas.classproperty
+    def ZIP(cls):
+        return cls("zip")
+
+
+class FileNameSchema(
+    schemas.StrSchema
+):
+
+
+    class MetaOapg:
+        max_length = 32
+        min_length = 1
 
 
 class FormatSchema(
@@ -51,15 +81,64 @@ class FormatSchema(
     @schemas.classproperty
     def VND_APIJSON(cls):
         return cls("vnd.api+json")
+
+
+class IncludeVersionSchema(
+    schemas.EnumBase,
+    schemas.StrSchema
+):
+
+
+    class MetaOapg:
+        min_length = 1
+        enum_value_to_name = {
+            "only_original": "ORIGINAL",
+            "only_last": "LAST",
+        }
+    
+    @schemas.classproperty
+    def ORIGINAL(cls):
+        return cls("only_original")
+    
+    @schemas.classproperty
+    def LAST(cls):
+        return cls("only_last")
+
+
+class NodeIdsSchema(
+    schemas.ListSchema
+):
+
+
+    class MetaOapg:
+        items = schemas.UUIDSchema
+
+    def __new__(
+        cls,
+        arg: typing.Union[typing.Tuple[typing.Union[MetaOapg.items, str, uuid.UUID, ]], typing.List[typing.Union[MetaOapg.items, str, uuid.UUID, ]]],
+        _configuration: typing.Optional[schemas.Configuration] = None,
+    ) -> 'NodeIdsSchema':
+        return super().__new__(
+            cls,
+            arg,
+            _configuration=_configuration,
+        )
+
+    def __getitem__(self, i: int) -> MetaOapg.items:
+        return super().__getitem__(i)
 RequestRequiredQueryParams = typing_extensions.TypedDict(
     'RequestRequiredQueryParams',
     {
+        'node_ids': typing.Union[NodeIdsSchema, list, tuple, ],
     }
 )
 RequestOptionalQueryParams = typing_extensions.TypedDict(
     'RequestOptionalQueryParams',
     {
+        'archive_type': typing.Union[ArchiveTypeSchema, str, ],
+        'file_name': typing.Union[FileNameSchema, str, ],
         'format': typing.Union[FormatSchema, str, ],
+        'include_version': typing.Union[IncludeVersionSchema, str, ],
     },
     total=False
 )
@@ -69,25 +148,52 @@ class RequestQueryParams(RequestRequiredQueryParams, RequestOptionalQueryParams)
     pass
 
 
+request_query_archive_type = api_client.QueryParameter(
+    name="archive_type",
+    style=api_client.ParameterStyle.FORM,
+    schema=ArchiveTypeSchema,
+    explode=True,
+)
+request_query_file_name = api_client.QueryParameter(
+    name="file_name",
+    style=api_client.ParameterStyle.FORM,
+    schema=FileNameSchema,
+    explode=True,
+)
 request_query_format = api_client.QueryParameter(
     name="format",
     style=api_client.ParameterStyle.FORM,
     schema=FormatSchema,
     explode=True,
 )
+request_query_include_version = api_client.QueryParameter(
+    name="include_version",
+    style=api_client.ParameterStyle.FORM,
+    schema=IncludeVersionSchema,
+    explode=True,
+)
+request_query_node_ids = api_client.QueryParameter(
+    name="node_ids",
+    style=api_client.ParameterStyle.FORM,
+    schema=NodeIdsSchema,
+    required=True,
+    explode=True,
+)
 _auth = [
     'Token Authentication',
 ]
-SchemaFor200ResponseBodyApplicationVndApijson = NodesDownload
-SchemaFor200ResponseBodyApplicationJson = NodesDownload
+SchemaFor200ResponseBodyApplicationPdf = schemas.BinarySchema
+SchemaFor200ResponseBodyApplicationZip = schemas.BinarySchema
+SchemaFor200ResponseBodyApplicationXGtar = schemas.BinarySchema
 
 
 @dataclass
 class ApiResponseFor200(api_client.ApiResponse):
     response: urllib3.HTTPResponse
     body: typing.Union[
-        SchemaFor200ResponseBodyApplicationVndApijson,
-        SchemaFor200ResponseBodyApplicationJson,
+        SchemaFor200ResponseBodyApplicationPdf,
+        SchemaFor200ResponseBodyApplicationZip,
+        SchemaFor200ResponseBodyApplicationXGtar,
     ]
     headers: schemas.Unset = schemas.unset
 
@@ -95,24 +201,27 @@ class ApiResponseFor200(api_client.ApiResponse):
 _response_for_200 = api_client.OpenApiResponse(
     response_cls=ApiResponseFor200,
     content={
-        'application/vnd.api+json': api_client.MediaType(
-            schema=SchemaFor200ResponseBodyApplicationVndApijson),
-        'application/json': api_client.MediaType(
-            schema=SchemaFor200ResponseBodyApplicationJson),
+        'application/pdf': api_client.MediaType(
+            schema=SchemaFor200ResponseBodyApplicationPdf),
+        'application/zip': api_client.MediaType(
+            schema=SchemaFor200ResponseBodyApplicationZip),
+        'application/x-gtar': api_client.MediaType(
+            schema=SchemaFor200ResponseBodyApplicationXGtar),
     },
 )
 _status_code_to_response = {
     '200': _response_for_200,
 }
 _all_accept_content_types = (
-    'application/vnd.api+json',
-    'application/json',
+    'application/pdf',
+    'application/zip',
+    'application/x-gtar',
 )
 
 
 class BaseApi(api_client.Api):
 
-    def _nodes_download_retrieve_oapg(
+    def _nodes_download_oapg(
         self: api_client.Api,
         query_params: RequestQueryParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
@@ -133,7 +242,11 @@ class BaseApi(api_client.Api):
 
         prefix_separator_iterator = None
         for parameter in (
+            request_query_archive_type,
+            request_query_file_name,
             request_query_format,
+            request_query_include_version,
+            request_query_node_ids,
         ):
             parameter_data = query_params.get(parameter.name, schemas.unset)
             if parameter_data is schemas.unset:
@@ -174,10 +287,10 @@ class BaseApi(api_client.Api):
         return api_response
 
 
-class NodesDownloadRetrieve(BaseApi):
+class NodesDownload(BaseApi):
     # this class is used by api classes that refer to endpoints with operationId fn names
 
-    def nodes_download_retrieve(
+    def nodes_download(
         self: BaseApi,
         query_params: RequestQueryParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
@@ -188,7 +301,7 @@ class NodesDownloadRetrieve(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization
     ]:
-        return self._nodes_download_retrieve_oapg(
+        return self._nodes_download_oapg(
             query_params=query_params,
             accept_content_types=accept_content_types,
             stream=stream,
@@ -211,7 +324,7 @@ class ApiForget(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization
     ]:
-        return self._nodes_download_retrieve_oapg(
+        return self._nodes_download_oapg(
             query_params=query_params,
             accept_content_types=accept_content_types,
             stream=stream,

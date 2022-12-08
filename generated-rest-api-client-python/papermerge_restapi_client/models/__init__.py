@@ -11,7 +11,6 @@
 # import sys
 # sys.setrecursionlimit(n)
 
-from papermerge_restapi_client.model.archive_type_enum import ArchiveTypeEnum
 from papermerge_restapi_client.model.auth_token_request import AuthTokenRequest
 from papermerge_restapi_client.model.auth_token_response import AuthTokenResponse
 from papermerge_restapi_client.model.custom_user_preference import CustomUserPreference
@@ -34,7 +33,6 @@ from papermerge_restapi_client.model.group import Group
 from papermerge_restapi_client.model.group_type_enum import GroupTypeEnum
 from papermerge_restapi_client.model.id import Id
 from papermerge_restapi_client.model.inbox_count import InboxCount
-from papermerge_restapi_client.model.include_version_enum import IncludeVersionEnum
 from papermerge_restapi_client.model.jsonapi import Jsonapi
 from papermerge_restapi_client.model.link import Link
 from papermerge_restapi_client.model.linkage import Linkage
@@ -45,7 +43,6 @@ from papermerge_restapi_client.model.node_id import NodeID
 from papermerge_restapi_client.model.node_move import NodeMove
 from papermerge_restapi_client.model.node_tags import NodeTags
 from papermerge_restapi_client.model.node_type_enum import NodeTypeEnum
-from papermerge_restapi_client.model.nodes_download import NodesDownload
 from papermerge_restapi_client.model.ocr import Ocr
 from papermerge_restapi_client.model.onlymeta import Onlymeta
 from papermerge_restapi_client.model.page import Page

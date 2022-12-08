@@ -11,7 +11,7 @@ Method | HTTP request | Description
 [**node_retrieve**](#node_retrieve) | **get** /api/nodes/{id}/ | 
 [**nodes_create**](#nodes_create) | **post** /api/nodes/ | 
 [**nodes_destroy**](#nodes_destroy) | **delete** /api/nodes/{id}/ | 
-[**nodes_download_retrieve**](#nodes_download_retrieve) | **get** /api/nodes/download/ | 
+[**nodes_download**](#nodes_download) | **get** /api/nodes/download/ | 
 [**nodes_inboxcount_retrieve**](#nodes_inboxcount_retrieve) | **get** /api/nodes/inboxcount/ | 
 [**nodes_list**](#nodes_list) | **get** /api/nodes/ | 
 [**nodes_move_create**](#nodes_move_create) | **post** /api/nodes/move/ | 
@@ -711,13 +711,13 @@ headers | Unset | headers were not defined |
 
 [[Back to top]](#__pageTop) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
 
-# **nodes_download_retrieve**
-<a name="nodes_download_retrieve"></a>
-> NodesDownload nodes_download_retrieve()
+# **nodes_download**
+<a name="nodes_download"></a>
+> file_type nodes_download(node_ids)
 
 
 
-Expects one or multiple of following HTTP GET parameters: * node_ids (required) - a list of node IDs to download * file_name - preferred file name for downloaded archive/document file * include_version = 'only_last' or 'only_original'     In case when include_version == 'only_last', downloaded     archive/document file(s) will contain only last version     of the document     Respectively for include_version == 'only_original' downloaded     archive/document file(s) will contain only orignial version     of the document     Default value is 'only_last' * archive_type = 'zip' or 'targz'     Applies only if there is more than one node to download.     Decides on type of archive to create.     Default value is 'zip'
+GET /nodes/download/
 
 ### Example
 
@@ -725,7 +725,6 @@ Expects one or multiple of following HTTP GET parameters: * node_ids (required) 
 ```python
 import papermerge_restapi_client
 from papermerge_restapi_client.apis.tags import nodes_api
-from papermerge_restapi_client.model.nodes_download import NodesDownload
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
@@ -748,24 +747,44 @@ with papermerge_restapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = nodes_api.NodesApi(api_client)
 
-    # example passing only optional values
+    # example passing only required values which don't have defaults set
     query_params = {
-        'format': "json",
+        'node_ids': [
+        "node_ids_example"
+    ],
     }
     try:
-        api_response = api_instance.nodes_download_retrieve(
+        api_response = api_instance.nodes_download(
             query_params=query_params,
         )
         pprint(api_response)
     except papermerge_restapi_client.ApiException as e:
-        print("Exception when calling NodesApi->nodes_download_retrieve: %s\n" % e)
+        print("Exception when calling NodesApi->nodes_download: %s\n" % e)
+
+    # example passing only optional values
+    query_params = {
+        'archive_type': "zip",
+        'file_name': "file_name_example",
+        'format': "json",
+        'include_version': "only_last",
+        'node_ids': [
+        "node_ids_example"
+    ],
+    }
+    try:
+        api_response = api_instance.nodes_download(
+            query_params=query_params,
+        )
+        pprint(api_response)
+    except papermerge_restapi_client.ApiException as e:
+        print("Exception when calling NodesApi->nodes_download: %s\n" % e)
 ```
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 query_params | RequestQueryParams | |
-accept_content_types | typing.Tuple[str] | default is ('application/vnd.api+json', 'application/json', ) | Tells the server the content type(s) that are accepted by the client
+accept_content_types | typing.Tuple[str] | default is ('application/pdf', 'application/zip', 'application/x-gtar', ) | Tells the server the content type(s) that are accepted by the client
 stream | bool | default is False | if True then the response.content will be streamed and loaded from a file like object. When downloading a file, set this to True to force the code to deserialize the content to a FileSchema file
 timeout | typing.Optional[typing.Union[int, typing.Tuple]] | default is None | the timeout used by the rest client
 skip_deserialization | bool | default is False | when True, headers and body will be unset and an instance of api_client.ApiResponseWithoutDeserialization will be returned
@@ -775,8 +794,26 @@ skip_deserialization | bool | default is False | when True, headers and body wil
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+archive_type | ArchiveTypeSchema | | optional
+file_name | FileNameSchema | | optional
 format | FormatSchema | | optional
+include_version | IncludeVersionSchema | | optional
+node_ids | NodeIdsSchema | | 
 
+
+# ArchiveTypeSchema
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+str,  | str,  |  | must be one of ["targz", "zip", ] if omitted the server will use the default value of "zip"
+
+# FileNameSchema
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+str,  | str,  |  | 
 
 # FormatSchema
 
@@ -785,31 +822,59 @@ Input Type | Accessed Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 str,  | str,  |  | must be one of ["json", "vnd.api+json", ] 
 
+# IncludeVersionSchema
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+str,  | str,  |  | must be one of ["only_original", "only_last", ] if omitted the server will use the default value of "only_last"
+
+# NodeIdsSchema
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+list, tuple,  | tuple,  |  | 
+
+### Tuple Items
+Class Name | Input Type | Accessed Type | Description | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+items | str, uuid.UUID,  | str,  |  | value must be a uuid
+
 ### Return Types, Responses
 
 Code | Class | Description
 ------------- | ------------- | -------------
 n/a | api_client.ApiResponseWithoutDeserialization | When skip_deserialization is True this response is returned
-200 | [ApiResponseFor200](#nodes_download_retrieve.ApiResponseFor200) | 
+200 | [ApiResponseFor200](#nodes_download.ApiResponseFor200) | 
 
-#### nodes_download_retrieve.ApiResponseFor200
+#### nodes_download.ApiResponseFor200
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 response | urllib3.HTTPResponse | Raw response |
-body | typing.Union[SchemaFor200ResponseBodyApplicationVndApijson, SchemaFor200ResponseBodyApplicationJson, ] |  |
+body | typing.Union[SchemaFor200ResponseBodyApplicationPdf, SchemaFor200ResponseBodyApplicationZip, SchemaFor200ResponseBodyApplicationXGtar, ] |  |
 headers | Unset | headers were not defined |
 
-# SchemaFor200ResponseBodyApplicationVndApijson
-Type | Description  | Notes
-------------- | ------------- | -------------
-[**NodesDownload**](../../models/NodesDownload.md) |  | 
+# SchemaFor200ResponseBodyApplicationPdf
 
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+bytes, io.FileIO, io.BufferedReader,  | bytes, FileIO,  |  | 
 
-# SchemaFor200ResponseBodyApplicationJson
-Type | Description  | Notes
-------------- | ------------- | -------------
-[**NodesDownload**](../../models/NodesDownload.md) |  | 
+# SchemaFor200ResponseBodyApplicationZip
 
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+bytes, io.FileIO, io.BufferedReader,  | bytes, FileIO,  |  | 
+
+# SchemaFor200ResponseBodyApplicationXGtar
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+bytes, io.FileIO, io.BufferedReader,  | bytes, FileIO,  |  | 
 
 ### Authorization
 

@@ -25,9 +25,27 @@ import frozendict  # noqa: F401
 
 from papermerge_restapi_client import schemas  # noqa: F401
 
-from papermerge_restapi_client.model.nodes_download import NodesDownload
-
 # query params
+
+
+class ArchiveTypeSchema(
+    schemas.EnumBase,
+    schemas.StrSchema
+):
+    
+    @schemas.classproperty
+    def TARGZ(cls):
+        return cls("targz")
+    
+    @schemas.classproperty
+    def ZIP(cls):
+        return cls("zip")
+
+
+class FileNameSchema(
+    schemas.StrSchema
+):
+    pass
 
 
 class FormatSchema(
@@ -42,17 +60,56 @@ class FormatSchema(
     @schemas.classproperty
     def VND_APIJSON(cls):
         return cls("vnd.api+json")
-SchemaFor200ResponseBodyApplicationVndApijson = NodesDownload
-SchemaFor200ResponseBodyApplicationJson = NodesDownload
+
+
+class IncludeVersionSchema(
+    schemas.EnumBase,
+    schemas.StrSchema
+):
+    
+    @schemas.classproperty
+    def ORIGINAL(cls):
+        return cls("only_original")
+    
+    @schemas.classproperty
+    def LAST(cls):
+        return cls("only_last")
+
+
+class NodeIdsSchema(
+    schemas.ListSchema
+):
+
+
+    class MetaOapg:
+        items = schemas.UUIDSchema
+
+    def __new__(
+        cls,
+        arg: typing.Union[typing.Tuple[typing.Union[MetaOapg.items, str, uuid.UUID, ]], typing.List[typing.Union[MetaOapg.items, str, uuid.UUID, ]]],
+        _configuration: typing.Optional[schemas.Configuration] = None,
+    ) -> 'NodeIdsSchema':
+        return super().__new__(
+            cls,
+            arg,
+            _configuration=_configuration,
+        )
+
+    def __getitem__(self, i: int) -> MetaOapg.items:
+        return super().__getitem__(i)
+SchemaFor200ResponseBodyApplicationPdf = schemas.BinarySchema
+SchemaFor200ResponseBodyApplicationZip = schemas.BinarySchema
+SchemaFor200ResponseBodyApplicationXGtar = schemas.BinarySchema
 _all_accept_content_types = (
-    'application/vnd.api+json',
-    'application/json',
+    'application/pdf',
+    'application/zip',
+    'application/x-gtar',
 )
 
 
 class BaseApi(api_client.Api):
 
-    def _nodes_download_retrieve_oapg(
+    def _nodes_download_oapg(
         self: api_client.Api,
         query_params: RequestQueryParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
@@ -73,7 +130,11 @@ class BaseApi(api_client.Api):
 
         prefix_separator_iterator = None
         for parameter in (
+            request_query_archive_type,
+            request_query_file_name,
             request_query_format,
+            request_query_include_version,
+            request_query_node_ids,
         ):
             parameter_data = query_params.get(parameter.name, schemas.unset)
             if parameter_data is schemas.unset:
@@ -114,10 +175,10 @@ class BaseApi(api_client.Api):
         return api_response
 
 
-class NodesDownloadRetrieve(BaseApi):
+class NodesDownload(BaseApi):
     # this class is used by api classes that refer to endpoints with operationId fn names
 
-    def nodes_download_retrieve(
+    def nodes_download(
         self: BaseApi,
         query_params: RequestQueryParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
@@ -128,7 +189,7 @@ class NodesDownloadRetrieve(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization
     ]:
-        return self._nodes_download_retrieve_oapg(
+        return self._nodes_download_oapg(
             query_params=query_params,
             accept_content_types=accept_content_types,
             stream=stream,
@@ -151,7 +212,7 @@ class ApiForget(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization
     ]:
-        return self._nodes_download_retrieve_oapg(
+        return self._nodes_download_oapg(
             query_params=query_params,
             accept_content_types=accept_content_types,
             stream=stream,

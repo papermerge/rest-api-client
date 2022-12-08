@@ -18,7 +18,6 @@ docs/apis/tags/TagsApi.md
 docs/apis/tags/TokensApi.md
 docs/apis/tags/UsersApi.md
 docs/apis/tags/VersionApi.md
-docs/models/ArchiveTypeEnum.md
 docs/models/AuthTokenRequest.md
 docs/models/AuthTokenResponse.md
 docs/models/CustomUserPreference.md
@@ -41,7 +40,6 @@ docs/models/Group.md
 docs/models/GroupTypeEnum.md
 docs/models/Id.md
 docs/models/InboxCount.md
-docs/models/IncludeVersionEnum.md
 docs/models/Jsonapi.md
 docs/models/Link.md
 docs/models/Linkage.md
@@ -52,7 +50,6 @@ docs/models/NodeID.md
 docs/models/NodeMove.md
 docs/models/NodeTags.md
 docs/models/NodeTypeEnum.md
-docs/models/NodesDownload.md
 docs/models/Ocr.md
 docs/models/Onlymeta.md
 docs/models/Page.md
@@ -121,8 +118,6 @@ papermerge_restapi_client/apis/tags/version_api.py
 papermerge_restapi_client/configuration.py
 papermerge_restapi_client/exceptions.py
 papermerge_restapi_client/model/__init__.py
-papermerge_restapi_client/model/archive_type_enum.py
-papermerge_restapi_client/model/archive_type_enum.pyi
 papermerge_restapi_client/model/auth_token_request.py
 papermerge_restapi_client/model/auth_token_request.pyi
 papermerge_restapi_client/model/auth_token_response.py
@@ -167,8 +162,6 @@ papermerge_restapi_client/model/id.py
 papermerge_restapi_client/model/id.pyi
 papermerge_restapi_client/model/inbox_count.py
 papermerge_restapi_client/model/inbox_count.pyi
-papermerge_restapi_client/model/include_version_enum.py
-papermerge_restapi_client/model/include_version_enum.pyi
 papermerge_restapi_client/model/jsonapi.py
 papermerge_restapi_client/model/jsonapi.pyi
 papermerge_restapi_client/model/link.py
@@ -189,8 +182,6 @@ papermerge_restapi_client/model/node_tags.py
 papermerge_restapi_client/model/node_tags.pyi
 papermerge_restapi_client/model/node_type_enum.py
 papermerge_restapi_client/model/node_type_enum.pyi
-papermerge_restapi_client/model/nodes_download.py
-papermerge_restapi_client/model/nodes_download.pyi
 papermerge_restapi_client/model/ocr.py
 papermerge_restapi_client/model/ocr.pyi
 papermerge_restapi_client/model/onlymeta.py
