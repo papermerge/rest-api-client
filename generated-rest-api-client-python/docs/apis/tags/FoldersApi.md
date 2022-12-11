@@ -55,7 +55,20 @@ with papermerge_restapi_client.ApiClient(configuration) as api_client:
         attributes=dict(
             id="id_example",
             title="title_example",
-            tags="tags_example",
+            tags=[
+                Tag(
+                    type=TagTypeEnum("tags"),
+                    id="id_example",
+                    attributes=dict(
+                        id="id_example",
+                        name="name_example",
+                        bg_color="bg_color_example",
+                        fg_color="fg_color_example",
+                        description="description_example",
+                        pinned=True,
+                    ),
+                )
+            ],
             created_at="1970-01-01T00:00:00.00Z",
             updated_at="1970-01-01T00:00:00.00Z",
         ),
@@ -398,7 +411,20 @@ with papermerge_restapi_client.ApiClient(configuration) as api_client:
         attributes=dict(
             id="id_example",
             title="title_example",
-            tags="tags_example",
+            tags=[
+                Tag(
+                    type=TagTypeEnum("tags"),
+                    id="id_example",
+                    attributes=dict(
+                        id="id_example",
+                        name="name_example",
+                        bg_color="bg_color_example",
+                        fg_color="fg_color_example",
+                        description="description_example",
+                        pinned=True,
+                    ),
+                )
+            ],
             created_at="1970-01-01T00:00:00.00Z",
             updated_at="1970-01-01T00:00:00.00Z",
         ),
