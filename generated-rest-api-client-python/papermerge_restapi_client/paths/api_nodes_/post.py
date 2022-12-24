@@ -62,8 +62,227 @@ _response_for_201 = api_client.OpenApiResponse(
             schema=SchemaFor201ResponseBodyApplicationVndApijson),
     },
 )
+
+
+class SchemaFor400ResponseBodyApplicationVndApijson(
+    schemas.DictSchema
+):
+
+
+    class MetaOapg:
+        
+        class properties:
+            
+            
+            class errors(
+                schemas.ListSchema
+            ):
+            
+            
+                class MetaOapg:
+                    
+                    
+                    class items(
+                        schemas.DictSchema
+                    ):
+                    
+                    
+                        class MetaOapg:
+                            
+                            class properties:
+                                detail = schemas.StrSchema
+                                status = schemas.StrSchema
+                                code = schemas.StrSchema
+                                
+                                
+                                class source(
+                                    schemas.DictSchema
+                                ):
+                                
+                                
+                                    class MetaOapg:
+                                        
+                                        class properties:
+                                            pointer = schemas.StrSchema
+                                            __annotations__ = {
+                                                "pointer": pointer,
+                                            }
+                                    
+                                    @typing.overload
+                                    def __getitem__(self, name: typing_extensions.Literal["pointer"]) -> MetaOapg.properties.pointer: ...
+                                    
+                                    @typing.overload
+                                    def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
+                                    
+                                    def __getitem__(self, name: typing.Union[typing_extensions.Literal["pointer", ], str]):
+                                        # dict_instance[name] accessor
+                                        return super().__getitem__(name)
+                                    
+                                    
+                                    @typing.overload
+                                    def get_item_oapg(self, name: typing_extensions.Literal["pointer"]) -> typing.Union[MetaOapg.properties.pointer, schemas.Unset]: ...
+                                    
+                                    @typing.overload
+                                    def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
+                                    
+                                    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["pointer", ], str]):
+                                        return super().get_item_oapg(name)
+                                    
+                                
+                                    def __new__(
+                                        cls,
+                                        *args: typing.Union[dict, frozendict.frozendict, ],
+                                        pointer: typing.Union[MetaOapg.properties.pointer, str, schemas.Unset] = schemas.unset,
+                                        _configuration: typing.Optional[schemas.Configuration] = None,
+                                        **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
+                                    ) -> 'source':
+                                        return super().__new__(
+                                            cls,
+                                            *args,
+                                            pointer=pointer,
+                                            _configuration=_configuration,
+                                            **kwargs,
+                                        )
+                                __annotations__ = {
+                                    "detail": detail,
+                                    "status": status,
+                                    "code": code,
+                                    "source": source,
+                                }
+                        
+                        @typing.overload
+                        def __getitem__(self, name: typing_extensions.Literal["detail"]) -> MetaOapg.properties.detail: ...
+                        
+                        @typing.overload
+                        def __getitem__(self, name: typing_extensions.Literal["status"]) -> MetaOapg.properties.status: ...
+                        
+                        @typing.overload
+                        def __getitem__(self, name: typing_extensions.Literal["code"]) -> MetaOapg.properties.code: ...
+                        
+                        @typing.overload
+                        def __getitem__(self, name: typing_extensions.Literal["source"]) -> MetaOapg.properties.source: ...
+                        
+                        @typing.overload
+                        def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
+                        
+                        def __getitem__(self, name: typing.Union[typing_extensions.Literal["detail", "status", "code", "source", ], str]):
+                            # dict_instance[name] accessor
+                            return super().__getitem__(name)
+                        
+                        
+                        @typing.overload
+                        def get_item_oapg(self, name: typing_extensions.Literal["detail"]) -> typing.Union[MetaOapg.properties.detail, schemas.Unset]: ...
+                        
+                        @typing.overload
+                        def get_item_oapg(self, name: typing_extensions.Literal["status"]) -> typing.Union[MetaOapg.properties.status, schemas.Unset]: ...
+                        
+                        @typing.overload
+                        def get_item_oapg(self, name: typing_extensions.Literal["code"]) -> typing.Union[MetaOapg.properties.code, schemas.Unset]: ...
+                        
+                        @typing.overload
+                        def get_item_oapg(self, name: typing_extensions.Literal["source"]) -> typing.Union[MetaOapg.properties.source, schemas.Unset]: ...
+                        
+                        @typing.overload
+                        def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
+                        
+                        def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["detail", "status", "code", "source", ], str]):
+                            return super().get_item_oapg(name)
+                        
+                    
+                        def __new__(
+                            cls,
+                            *args: typing.Union[dict, frozendict.frozendict, ],
+                            detail: typing.Union[MetaOapg.properties.detail, str, schemas.Unset] = schemas.unset,
+                            status: typing.Union[MetaOapg.properties.status, str, schemas.Unset] = schemas.unset,
+                            code: typing.Union[MetaOapg.properties.code, str, schemas.Unset] = schemas.unset,
+                            source: typing.Union[MetaOapg.properties.source, dict, frozendict.frozendict, schemas.Unset] = schemas.unset,
+                            _configuration: typing.Optional[schemas.Configuration] = None,
+                            **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
+                        ) -> 'items':
+                            return super().__new__(
+                                cls,
+                                *args,
+                                detail=detail,
+                                status=status,
+                                code=code,
+                                source=source,
+                                _configuration=_configuration,
+                                **kwargs,
+                            )
+            
+                def __new__(
+                    cls,
+                    arg: typing.Union[typing.Tuple[typing.Union[MetaOapg.items, dict, frozendict.frozendict, ]], typing.List[typing.Union[MetaOapg.items, dict, frozendict.frozendict, ]]],
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                ) -> 'errors':
+                    return super().__new__(
+                        cls,
+                        arg,
+                        _configuration=_configuration,
+                    )
+            
+                def __getitem__(self, i: int) -> MetaOapg.items:
+                    return super().__getitem__(i)
+            __annotations__ = {
+                "errors": errors,
+            }
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["errors"]) -> MetaOapg.properties.errors: ...
+    
+    @typing.overload
+    def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
+    
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["errors", ], str]):
+        # dict_instance[name] accessor
+        return super().__getitem__(name)
+    
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["errors"]) -> typing.Union[MetaOapg.properties.errors, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
+    
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["errors", ], str]):
+        return super().get_item_oapg(name)
+    
+
+    def __new__(
+        cls,
+        *args: typing.Union[dict, frozendict.frozendict, ],
+        errors: typing.Union[MetaOapg.properties.errors, list, tuple, schemas.Unset] = schemas.unset,
+        _configuration: typing.Optional[schemas.Configuration] = None,
+        **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
+    ) -> 'SchemaFor400ResponseBodyApplicationVndApijson':
+        return super().__new__(
+            cls,
+            *args,
+            errors=errors,
+            _configuration=_configuration,
+            **kwargs,
+        )
+
+
+@dataclass
+class ApiResponseFor400(api_client.ApiResponse):
+    response: urllib3.HTTPResponse
+    body: typing.Union[
+        SchemaFor400ResponseBodyApplicationVndApijson,
+    ]
+    headers: schemas.Unset = schemas.unset
+
+
+_response_for_400 = api_client.OpenApiResponse(
+    response_cls=ApiResponseFor400,
+    content={
+        'application/vnd.api+json': api_client.MediaType(
+            schema=SchemaFor400ResponseBodyApplicationVndApijson),
+    },
+)
 _status_code_to_response = {
     '201': _response_for_201,
+    '400': _response_for_400,
 }
 _all_accept_content_types = (
     'application/vnd.api+json',
