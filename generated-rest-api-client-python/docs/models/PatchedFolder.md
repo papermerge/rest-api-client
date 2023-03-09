@@ -25,6 +25,7 @@ Key | Input Type | Accessed Type | Description | Notes
 ------------ | ------------- | ------------- | ------------- | -------------
 **title** | str,  | str,  |  | 
 **id** | str, uuid.UUID,  | str,  |  | [optional] value must be a uuid
+**breadcrumb** | str,  | str,  |  | [optional] 
 **[tags](#tags)** | list, tuple,  | tuple,  |  | [optional] 
 **created_at** | str, datetime,  | str,  |  | [optional] value must conform to RFC-3339 date-time
 **updated_at** | str, datetime,  | str,  |  | [optional] value must conform to RFC-3339 date-time

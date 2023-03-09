@@ -55,6 +55,7 @@ with papermerge_restapi_client.ApiClient(configuration) as api_client:
         attributes=dict(
             id="id_example",
             title="title_example",
+            breadcrumb="breadcrumb_example",
             tags=[
                 Tag(
                     type=TagTypeEnum("tags"),
@@ -411,6 +412,7 @@ with papermerge_restapi_client.ApiClient(configuration) as api_client:
         attributes=dict(
             id="id_example",
             title="title_example",
+            breadcrumb="breadcrumb_example",
             tags=[
                 Tag(
                     type=TagTypeEnum("tags"),

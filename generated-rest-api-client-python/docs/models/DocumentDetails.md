@@ -28,6 +28,7 @@ Key | Input Type | Accessed Type | Description | Notes
 **lang** | str,  | str,  |  | [optional] 
 **ocr** | bool,  | BoolClass,  |  | [optional] 
 **ocr_status** | str,  | str,  |  | [optional] must be one of ["unknown", "received", "started", "succeeded", "failed", ] 
+**breadcrumb** | str,  | str,  |  | [optional] 
 **[versions](#versions)** | list, tuple,  | tuple,  |  | [optional] 
 **created_at** | str, datetime,  | str,  |  | [optional] value must conform to RFC-3339 date-time
 **updated_at** | str, datetime,  | str,  |  | [optional] value must conform to RFC-3339 date-time

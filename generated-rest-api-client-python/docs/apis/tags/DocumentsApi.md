@@ -533,6 +533,7 @@ with papermerge_restapi_client.ApiClient(configuration) as api_client:
             lang="lang_example",
             ocr=True,
             ocr_status="unknown",
+            breadcrumb="breadcrumb_example",
             versions=[
                 DocumentVersion(
                     id="id_example",
